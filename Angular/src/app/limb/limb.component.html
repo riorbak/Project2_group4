@@ -4,10 +4,10 @@
       <div class="col-sm-12 limb-border">
           <div class="decorated">
               <!-- Limb Author's Name and Limb's Time Stamp in top left corner of Limb -->
-              <span class="subtitle-left1">Name</span>
-              <span class="subtitle-left2" style="padding-left:5px">TimeStamp</span>
+              <span class="subtitle-left1">{{name}}</span>
+              <span class="subtitle-left2">{{timeStamp}}</span>
               <!-- Limb Author's Profile Picture -->
-              <div class="img-div post-header-container">
+              <div class="img-div profile-photo-size">
                   <app-profile-photo></app-profile-photo>
               </div>
               
@@ -21,7 +21,7 @@
 
           <!-- clickable like component -->
           <div class="bottom-right">
-              <small>I belong here</small>
+              <app-like [count] = "count"></app-like>
           </div>
       </div>
 

@@ -1,5 +1,5 @@
 /* Limb Header Styling */
-.post-header-container{
+.profile-photo-size{
     height: 90px;
     width: 90px;
 }
@@ -8,22 +8,39 @@
     overflow: hidden;
     text-align: center;
     padding-top: 10px;
+}
 
+@media (min-width: 1000px) {
+    .decorated > .subtitle-left1{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 12px;
+    }
+    .decorated > .subtitle-left2{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 142px;
+    }
 }
-.decorated > .subtitle-left1{
-    display: inline-block;
-    position: absolute;
-    top: 55px;
-    left: 4%;
+
+@media (max-width: 1000px) {
+    .decorated > .subtitle-left1{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 12px;
+    }
+    .decorated > .subtitle-left2{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        right: 12px;
+    }
 }
-.decorated > .subtitle-left2{
-    display: inline-block;
-    position: absolute;
-    top: 55px;
-    left: 6%;
-    margin-left:6%;
-    padding-left: 4%;
-}
+
+
 
 .decorated > .img-div{
    position: relative;
@@ -35,7 +52,7 @@
    top: 50%;
    border-bottom: 2px solid #97AABD;
    /* box-shadow: -.5px .5px 5px .05px rgb(135, 152, 168); */
-   width: 592px; /* half of limiter */
+   width: 25vw; /* half of limiter */
    margin: 0 10px;
 }
 .decorated > .img-div:before{
@@ -56,17 +73,17 @@
 .container-custom{
     /* margin: 30px; */
     /* max-width: 72vw; */
-    width: 60vw;
-    margin-left: 0vw;
+    width: 55vw;
+    margin-left: 3vw;
     margin-top: 5vw;
     margin-bottom: 5%;
 }
 
 .bottom-right{
-    padding: 5px;
+    /* padding: 5px; */
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5px;
+    right: -15px;
     width: auto;
     
 }
