@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { LoginComponent } from './login/login.component';
@@ -40,7 +40,8 @@ import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent],
