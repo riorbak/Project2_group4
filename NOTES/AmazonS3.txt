@@ -4,8 +4,8 @@ ________________________________________________________
 ________________________________________________________
 
 amazonProperties.endpointUrl=https://s3.us-east-2.amazonaws.com
-amazonProperties.accessKey=AKIAJZDHQB3AOIXV2XFQ
-amazonProperties.secretKey=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
+amazonProperties.accessKey=XXXXX
+amazonProperties.secretKey=XXXXX
 amazonProperties.bucketName=limbo-bucket
 
 ________________________________________________________
