@@ -3,16 +3,16 @@
   <!-- <div class="col-lg-2 col-md-4 col-sm-4 sidebar1" id="navBar"> -->
   <div class="sidebar1" id="navBar">
       <div class="img-div post-header-container">
-          <div class="ratio img-responsive img-circle profile-pic"></div>
+          <app-profile-photo></app-profile-photo>
           <div class="nav-user-details">
               Your Name
           </div>
       </div>
       <br>
       <div class="nav-pad">
-          <a class="nav-link" href="">Feed</a>
-          <a class="nav-link" href="">My Profile</a>
-          <a class="nav-link" href="">New Post</a>
+          <a class="nav-link" href="/feed">Feed</a>
+          <a class="nav-link" href="/profile">My Profile</a>
+          <span class="nav-link" (click)="open()">New Post</span>
           <a class="nav-link" href=""><i class="fa fa-cogs"></i> Settings</a>
 
           <div class="search-custom">
