@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -21,7 +22,8 @@ public class Boer {
 	private String lastName;
 	
 	@OneToMany(mappedBy="owner")
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<Limb> limbs;
 	
 	public Boer() {
