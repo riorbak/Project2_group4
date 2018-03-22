@@ -14,7 +14,8 @@ import { LimbBodyComponent } from './limb-body/limb-body.component';
 import { LimbListComponent } from './limb-list/limb-list.component';
 import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
-
+import { DbService } from './service/db.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,10 @@ import { SearchComponent } from './search/search.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

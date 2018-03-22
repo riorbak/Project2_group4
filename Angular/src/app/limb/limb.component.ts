@@ -13,4 +13,7 @@ export class LimbComponent implements OnInit {
   ngOnInit() {
   }
 
+  text : string = "testing sending text";
+  
+
 }
