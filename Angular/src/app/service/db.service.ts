@@ -25,15 +25,6 @@ export class DbService
     );
   }
 
-  postLimb( Limb : LimbComponent )
-  {
-    let url : string = 'http://localhost:8080/CashFlowServlet/CFservlet';
-    return this.http.post(url,Limb,httpOptions)
-    .pipe(
-      catchError(this.handleError('postLimb', []))
-    );
-  }
-
   private handleError<T> (operation = 'operation', result?: T) 
   {
     return (error: any): Observable<T> => {
