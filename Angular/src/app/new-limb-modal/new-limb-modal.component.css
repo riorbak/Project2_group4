@@ -2,10 +2,20 @@
     height: auto;
     width: auto;
     padding: 5%;
+    background: #314455;
+    border: none;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#314455, #314455, #644E5B);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#314455, #314455, #644E5B);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#314455, #314455, #644E5B);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#314455, #314455, #644E5B);
 }
 
 .modal-title {
-    color: #9E5A63;
+    color: #ffffff;
 }
 
 textarea {
@@ -19,6 +29,18 @@ textarea {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+}
+
+.form-control{
+    border-color: #644E5B;
+    border: 2px solid;
+    color: #644E5B;
+}
+
+.form-control:focus{
+    border-color: #97aabd;
+    box-shadow: 0 1px 1px #97aabd inset, 0 0 8px #97aabd;
+    color: #97aabd;
 }
 
 /* Hiding the ugly input */
@@ -38,6 +60,7 @@ textarea {
 .file-btn{
     color: #97AABD;
     background: #314455;
+    border: 1px solid #97AABD;
     padding: 3px 10px;
     border-radius: 25px;
    
@@ -66,30 +89,19 @@ textarea {
     height: 40px;
 }
 
-.btn-custom.outline{
-    border: 2px solid #C96567;
-    color: #C96567;
-    background: #ffffff;
-}
 
 
-.btn-custom.outline:hover, .btn-custom.outline:focus, .btn-custom.outline:active, .btn-custom.outline.active, .open > .dropdown-toggle.btn-custom {
-	color: #ffffff;
-    border-color: #C96567;
-    background-color: #C96567;
-}
-
-.btn-cancel {
+.btn-form {
     border: 2px solid #644E5B;
     color: #ffffff;
     background: #644E5B;
   
 }
 
-.btn-cancel:hover, .btn-cancel:focus {
-    color: #644E5B;
-    border-color: #644E5B;
-    background-color: #ffffff;
+.btn-form:hover, .btn-form:focus {
+    color: #ffffff;
+    border-color: #314455;
+    background-color: #314455;
 }
 
 .left-btn {
