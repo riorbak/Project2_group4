@@ -1,0 +1,104 @@
+.caption div {
+    box-shadow: 0 0 5px #C8C8C8;
+    transition: all 0.3s ease 0s;
+}
+.img-circle {
+    border-radius: 50%;
+    box-shadow: -2px 3px 8px 1px rgba(207, 207, 207, 0.808);
+}
+
+
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    
+}
+
+.post-profile-photo{
+    background-image:url(cat.png);
+}
+
+/* Limb Header Styling */
+.post-header-container{
+    height: 90px;
+    width: 90px;
+}
+
+.decorated{
+    overflow: hidden;
+    text-align: center;
+    padding-top: 10px;
+}
+.decorated > .subtitle-left1{
+    display: inline-block;
+    position: absolute;
+    top: 55px;
+    left: 4%;
+}
+.decorated > .subtitle-left2{
+    display: inline-block;
+    position: absolute;
+    top: 55px;
+    left: 6%;
+    margin-left:6%;
+    padding-left: 4%;
+}
+
+.decorated > .img-div{
+   position: relative;
+   display: inline-block;
+}
+.decorated > .img-div:before, .decorated > .img-div:after{
+   content: '';
+   position: absolute;
+   top: 50%;
+   border-bottom: 2px solid #97AABD;
+   /* box-shadow: -.5px .5px 5px .05px rgb(135, 152, 168); */
+   width: 592px; /* half of limiter */
+   margin: 0 10px;
+}
+.decorated > .img-div:before{
+   right: 100%;
+}
+.decorated > .img-div:after{
+   left: 100%;
+}
+
+/* Limb Body Styling */
+
+.limb-border {
+    box-shadow: -5px 10px 8px 2px rgba(207, 207, 207, 0.808);
+    height: auto;
+}
+
+.container-custom{
+    /* margin: 30px; */
+    /* max-width: 72vw; */
+    width: 60%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    
+}
+
+.bottom-right{
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    
+}

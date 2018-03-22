@@ -1,0 +1,11 @@
+.main-content{
+    margin-left: 20vw; 
+    /* use data binding to set margin-left */
+    padding: 0px 0px;
+}
+
+.feed-background{
+    /* background-color: #644E5B; */
+    height: 100%;
+    width: 100%;
+}

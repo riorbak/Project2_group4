@@ -1,0 +1,21 @@
+.main-content{
+    margin-left: 20vw; 
+    /* use data binding to set margin-left */
+    padding: 0px 0px;
+}
+
+.cover-photo{
+    background-image: url('kitten_background.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.profile-side-bar{
+    top: 100vh !important;
+}
+
+.profile-background{
+    height: 100%;
+    width: 100%;
+}
