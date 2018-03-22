@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { LimbBodyComponent } from './limb-body/limb-body.component';
 import { LimbListComponent } from './limb-list/limb-list.component';
 import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
+import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
+import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 
 
 @NgModule({
@@ -28,13 +30,17 @@ import { SearchComponent } from './search/search.component';
     LimbBodyComponent,
     LimbListComponent,
     LikeComponent,
-    SearchComponent
+    SearchComponent,
+    ProfilePhotoComponent,
+    NewLimbModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NewLimbModalComponent]
 })
 export class AppModule { }
