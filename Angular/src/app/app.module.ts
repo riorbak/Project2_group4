@@ -14,6 +14,7 @@ import { LimbBodyComponent } from './limb-body/limb-body.component';
 import { LimbListComponent } from './limb-list/limb-list.component';
 import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
+import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SearchComponent } from './search/search.component';
     LimbBodyComponent,
     LimbListComponent,
     LikeComponent,
-    SearchComponent
+    SearchComponent,
+    ProfilePhotoComponent
   ],
   imports: [
     BrowserModule,
