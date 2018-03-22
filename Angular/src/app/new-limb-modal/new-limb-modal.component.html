@@ -11,7 +11,7 @@
       </div>
       <div class="file-input-center">
         <div class="form-group-custom">
-          <input type="file" name="inputImg" id="newLimbImg" class="inputfile" (change)="changeLabel()" />
+          <input type="file" name="inputImg" id="newLimbImg" class="inputfile" (change)="changeLabel(this)"/>
           <label for="newLimbImg" id="inputImgLabel" class="file-btn">
             <i class="fa fa-upload" style="padding-right:.5em"></i> Add an Image</label>
         </div>
@@ -21,7 +21,7 @@
         <button type="button" id="cancelBtn" class="btn-custom btn-form">Cancel</button>
       </div>
       <div class="right-btn">
-        <button (click)="postLimb()" type="button" id="submitBtn" class="btn-custom btn-form">Post!</button>
+        <button type="button" (click)="postLimb()" id="submitBtn" class="btn-custom btn-form">Post!</button>
       </div>
     </form>
   </div>
