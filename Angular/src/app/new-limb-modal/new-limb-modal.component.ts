@@ -33,11 +33,5 @@ export class NewLimbModalComponent implements OnInit {
     document.getElementById("inputImgLabel").innerHTML = '<i class="fa fa-upload" style="padding-right:.5em"></i>' + filename;
   }
 
-  postLimb()
-  {
-    alert("hi");
-  }
-
-  
 
 }

@@ -4,7 +4,7 @@
   </h2>
 
   <div>
-    <form>
+    <form action="http://localhost:8080/CashFlowServlet/CFservlet" method="post" enctype="multipart/form-data">
       <div class="form-group-custom">
         <!-- <label for="limbTextArea">Example textarea</label> -->
         <textarea class="form-control post-content" id="limbTextArea" rows="3" placeholder="&#xf044;"></textarea>
@@ -21,7 +21,7 @@
         <button type="button" id="cancelBtn" class="btn-custom btn-form">Cancel</button>
       </div>
       <div class="right-btn">
-        <button (click)="postLimb()" type="button" id="submitBtn" class="btn-custom btn-form">Post!</button>
+        <button type="submit" id="submitBtn" class="btn-custom btn-form">Post!</button>
       </div>
     </form>
   </div>
