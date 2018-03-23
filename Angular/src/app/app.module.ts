@@ -18,7 +18,8 @@ import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
-
+import { BackendService } from './backend/backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { EditLimbComponent } from './edit-limb/edit-limb.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    HttpModule,
+    HttpClientModule,
     EmbedVideo.forRoot()
   ],
   providers: [BackendService],
