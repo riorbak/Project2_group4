@@ -10,6 +10,19 @@
     padding-top: 10px;
 }
 
+.edit-limb-position{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    width: auto;
+}
+.fa.fa-edit {
+    color: #97AABD;
+}
+.fa.fa-edit:hover {
+    color: #C96567;
+}
+
 @media (min-width: 1000px) {
     .decorated > .subtitle-left1{
         display: inline-block;

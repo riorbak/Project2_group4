@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { FeedComponent } from '../feed';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { EditLimbComponent } from '../edit-limb/edit-limb.component';
 
 @Component({
   selector: 'app-limb',
@@ -15,13 +16,17 @@ export class LimbComponent implements OnInit {
   @Input() limbId: number;
 
 
-  constructor() { 
+  constructor(private modalService: NgbModal) { 
     
   }
 
   ngOnInit() {
-  
+  }
 
+  open() {
+    const modalRef = this.modalService.open(EditLimbComponent);
+    modalRef.componentInstance.limbId = this.limbId;
+    modalRef.componentInstance.limbBody = this.limbBody;
   }
 
 }
