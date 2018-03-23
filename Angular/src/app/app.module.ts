@@ -17,6 +17,7 @@ import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
+import { BackendService } from './service/backend.service';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component
     HttpModule,
     EmbedVideo.forRoot()
   ],
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent],
   entryComponents: [NewLimbModalComponent]
 })

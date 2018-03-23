@@ -12,7 +12,6 @@ export class NewLimbModalComponent implements OnInit {
 
   @Input() name;
 
-
   constructor(
     public activeModal: NgbActiveModal
   ) {}
@@ -35,15 +34,27 @@ export class NewLimbModalComponent implements OnInit {
 
   detectlinks()
   {
+    let paragraph=document.getElementById("youtube_link");
+    paragraph.style.display="block";
+    let youtube_count = 0;
     let text = (<HTMLInputElement>document.getElementById("limbTextArea")).value;
-    
     let res = text.replace( /\n/g, " " ).split( " " )
     res.forEach(element => 
     {
         console.log(element);
         if(this.validateYouTubeUrl(element))
-        console.log("youtube link:"+element);
+        {
+          ++youtube_count;
+          console.log("youtube link:"+element);
+        }
     });
+
+    if(youtube_count==0)
+      paragraph.style.display="none";
+    else if(youtube_count==1)
+      paragraph.innerHTML=youtube_count+" youtube link detected";
+    else
+      paragraph.innerHTML=youtube_count+" youtube links detected";
 
   }
 
