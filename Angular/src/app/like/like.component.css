@@ -1,0 +1,52 @@
+.fa.fa-thermometer-empty{
+    color: #97AABD;
+}
+.fa.fa-thermometer-quarter{
+    color: #314455;
+}
+.fa.fa-thermometer-half{
+    color: #644E5B;
+}
+.fa.fa-thermometer-three-quarters{
+    color: #9E5A63;
+}
+.fa.fa-thermometer-full{
+    color: #C96567;
+}
+
+.color1 {
+    color: #97AABD;
+}
+.color2 {
+    color: #314455;
+}
+.color3 {
+    color: #644E5B;
+}
+.color4 {
+    color: #9E5A63;
+}
+.color5 {
+    color: #C96567;
+}
+
+.clickable-like {
+    width: 90%;
+    margin: auto;
+    cursor: pointer;
+    padding: 5px;
+    
+}
+
+.like-icon {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.like-cap {
+    display: inline-block;
+    height: auto;
+    width: 45%;
+    font-size: 9px;
+    text-align: center;
+}
