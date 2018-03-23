@@ -23,11 +23,12 @@ export class LikeComponent implements OnInit {
 
   changeCount() {
     this.clickCount++;
-    if(this.clickCount % 2 == 1){
-      this.count += 1;
-    } else {
-      this.count -= 1;
-    }
+    // if(this.clickCount % 2 == 1){
+    //   this.count += 1;
+    // } else {
+    //   this.count -= 1;
+    // }
+    this.count++;
     this.updateIcon(this.count);
     console.log(this.clickCount);
     console.log(this.count);
