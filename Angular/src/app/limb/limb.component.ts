@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { FeedComponent } from '../feed';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { EditLimbComponent } from '../edit-limb/edit-limb.component';
 
 @Component({
   selector: 'app-limb',
@@ -8,17 +9,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LimbComponent implements OnInit {
 
-  @Input() count: number = 0; //This will be the number of likes
-  @Input() name: string = 'My Name';
-  @Input() timeStamp: any = '1/01/00 00:00 AM';
+  @Input() count: number; //This will be the number of likes
+  @Input() name: string;
+  @Input() timeStamp: any;
   @Input() limbBody: string;
   @Input() limbId: number;
 
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { 
+    
+  }
 
   ngOnInit() {
+  }
 
+  open() {
+    const modalRef = this.modalService.open(EditLimbComponent);
+    modalRef.componentInstance.limbId = this.limbId;
+    modalRef.componentInstance.limbBody = this.limbBody;
   }
 
 }

@@ -1,14 +1,12 @@
 <div class="modal-container">
   <h2 class="modal-title">
-    New Post for {{name}}!
+    Edit (Post ID: {{limbId}}):
   </h2>
 
   <div>
-                  <!--servlet url-->
-    <form action="http://localhost:8000" method="post" enctype="multipart/form-data">
+    <form>
       <div class="form-group-custom">
-        <!-- <label for="limbTextArea">Example textarea</label> -->
-        <textarea class="form-control post-content" id="limbTextArea" rows="3" placeholder="&#xf044;" (change)="detectlinks()"></textarea>
+        <textarea class="form-control post-content" id="limbTextArea" rows="3">{{limbBody}}</textarea>
       </div>
       <div class="file-input-center">
         <div class="form-group-custom">
@@ -22,12 +20,8 @@
         <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
       </div>
       <div class="right-btn">
-        <button type="button" id="submitBtn" class="btn-custom btn-form">Post!</button>
+        <button type="button" id="submitBtn" class="btn-custom btn-form">Update!</button>
       </div>
-      <br>
-      <br>
-      <p id="youtube_link" style="color:white; display:none">
-      </p>
     </form>
   </div>
 </div>

@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpModule } from '@angular/http';
+import { EmbedVideo } from 'ngx-embed-video';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +18,8 @@ import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { AuthenticationService } from './auth/authentication.service';
+import { EditLimbComponent } from './edit-limb/edit-limb.component';
+
 
 
 @NgModule({
@@ -33,15 +36,22 @@ import { AuthenticationService } from './auth/authentication.service';
     LikeComponent,
     SearchComponent,
     ProfilePhotoComponent,
-    NewLimbModalComponent
+    NewLimbModalComponent,
+    EditLimbComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpModule,
+    EmbedVideo.forRoot()
   ],
-  providers: [AuthenticationService],
+
+  providers: [AuthenticationService, BackendService],
   bootstrap: [AppComponent],
-  entryComponents: [NewLimbModalComponent]
+  entryComponents: [
+    NewLimbModalComponent,
+    EditLimbComponent
+  ]
 })
 export class AppModule { }

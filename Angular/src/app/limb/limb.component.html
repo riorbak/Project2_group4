@@ -1,29 +1,32 @@
 <div class="container-custom">
 
-  <div class="row">
-      <div class="col-sm-12 limb-border">
-          <div class="decorated">
-              <!-- Limb Author's Name and Limb's Time Stamp in top left corner of Limb -->
-              <span class="subtitle-left1">{{name}}</span>
-              <span class="subtitle-left2">{{timeStamp}}</span>
-              <!-- Limb Author's Profile Picture -->
-              <div class="img-div profile-photo-size">
-                  <app-profile-photo></app-profile-photo>
-              </div>
-              
-          </div>
+    <div class="row">
+        <div class="col-sm-12 limb-border">
+            <div class="decorated">
+                <!-- Limb Author's Name and Limb's Time Stamp in top left corner of Limb -->
+                <span class="subtitle-left1">{{name}}</span>
+                <span class="subtitle-left2">{{timeStamp}}</span>
+                <!-- Limb Author's Profile Picture -->
+                <div class="img-div profile-photo-size">
+                    <app-profile-photo></app-profile-photo>
+                </div>
 
-          <div >
-          <!-- <div class="limb-body-border">     -->
-              <!-- This will be the Limb Body container -->
-              <app-limb-body [contents]="limbBody"></app-limb-body>
-         </div>
+            </div>
+            <!-- This will be the Limb Body container -->
+            <div>
+                <app-limb-body [contents]="limbBody"></app-limb-body>
+            </div>
+            <!-- clickable like component -->
+            <div class="bottom-right">
+                <app-like [count]="count"></app-like>
+            </div>
 
-          <!-- clickable like component -->
-          <div class="bottom-right">
-              <app-like [count] = "count"></app-like>
-          </div>
-      </div>
+            <!-- Clickable Edit Component. Only visible in user's own profile -->
+            <div class="edit-limb-position" (click)="open()">
+                <i class="fa fa-edit"></i>
+            </div>
+        </div>
 
-  </div>
+
+    </div>
 </div>
