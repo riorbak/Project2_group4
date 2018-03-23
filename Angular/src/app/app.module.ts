@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpModule } from '@angular/http';
+import { EmbedVideo } from 'ngx-embed-video';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { LoginComponent } from './login/login.component';
@@ -37,7 +38,9 @@ import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpModule,
+    EmbedVideo.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

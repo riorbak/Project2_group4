@@ -33,6 +33,34 @@ export class NewLimbModalComponent implements OnInit {
     document.getElementById("inputImgLabel").innerHTML = '<i class="fa fa-upload" style="padding-right:.5em"></i>' + filename;
   }
 
+  detectlinks()
+  {
+    let text = (<HTMLInputElement>document.getElementById("limbTextArea")).value;
+    
+    let res = text.replace( /\n/g, " " ).split( " " )
+    res.forEach(element => 
+    {
+        console.log(element);
+        if(this.validateYouTubeUrl(element))
+        console.log("youtube link:"+element);
+    });
+
+  }
+
+  validateYouTubeUrl(url:string) : boolean
+  {
+          if (url != undefined || url != '') {
+              var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+              var match = url.match(regExp);
+              if (match && match[2].length == 11) {
+                  return true;
+              }
+              else {
+                  return false;
+              }
+          }
+  }
+
   
 
 }
