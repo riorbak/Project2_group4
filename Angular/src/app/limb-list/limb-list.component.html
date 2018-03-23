@@ -1,5 +1,5 @@
 <ul class="limbs">
-  <li *ngFor="let limb of limbs">
-    <app-limb [name]="limb.owner" [timeStamp]="limb.timeStamp" [limbId]="limb.id" [limbBody]="limb.content" [count]="limb.count"></app-limb>
+  <li *ngFor="let limb of list">
+    <app-limb [name]="limb.name" [timeStamp]="limb.timeStamp" [limbId]="limb.limbId" [limbBody]="limb.limbBody" [count]="limb.count"></app-limb>
   </li>
 </ul>

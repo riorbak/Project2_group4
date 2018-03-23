@@ -12,7 +12,7 @@ export class LimbBodyComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.contents = "Some words and stuff";
+    // this.contents = "Some words and stuff";
   }
 
 }
