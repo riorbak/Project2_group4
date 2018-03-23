@@ -16,6 +16,7 @@ import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
+import { AuthenticationService } from './auth/authentication.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [NewLimbModalComponent]
 })
