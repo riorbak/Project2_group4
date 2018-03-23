@@ -1,5 +1,6 @@
 package com.revature.limbo.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,33 @@ public class LimbController {
 		return limbService.getLimbById(id);
 	}
 	
+//	@RequestMapping(method=RequestMethod.POST,
+//			value="/boers/{username}/limbs")
+//	public Limb addOrUpdateLimb(@PathVariable String username, @RequestBody Limb limb) {
+//		limb.setOwner(boerService.getBoer(username));
+//		limb.setPostTime(LocalDateTime.now());
+//		return limbService.addOrUpdateLimb(limb);
+//	}
+	
 	@RequestMapping(method=RequestMethod.POST,
-			value="/boers/{username}/limbs")
-	public Limb addOrUpdateLimb(@PathVariable String username, @RequestBody Limb limb) {
-		limb.setOwner(boerService.getBoer(username));
-		return limbService.addOrUpdateLimb(limb);
+			value="/boers/{posterUsername}/limbs/new")
+	public Limb addLimb(@PathVariable String posterUsername, @RequestBody Limb limb) {
+		limb.setOwner(boerService.getBoer(posterUsername));
+		limb.setPostTime(LocalDateTime.now()); // set post time.
+		return limbService.addLimb(limb);
+	}
+	
+	@RequestMapping(method=RequestMethod.POST,
+			value="/boers/{posterUsername}/limbs/update")
+	public Limb updateLimb(@PathVariable String posterUsername, @RequestBody Limb limb) {
+		if(limb.getId() == null) {
+			// unknown id
+			return null;
+		}
+		limb.setOwner(null);
+		limb.setPostTime(LocalDateTime.now());
+		
+		return limbService.updateLimb(limb);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE,
@@ -48,4 +71,21 @@ public class LimbController {
 		limbService.deleteLimbById(id);
 	}
 	
+	@RequestMapping(method=RequestMethod.GET,
+			value="/limbs/{id}/{likerUsername}/{like}")
+	public Integer likeLimb(@PathVariable Integer id,
+			@PathVariable String likerUsername,
+			@PathVariable Integer like) {
+		Integer count = 0;
+		
+		// like <= 0 -> remove like if exist
+		// like > 0 -> add like if not exist		
+		if(like > 0) {
+			count = limbService.likeLimb(id, likerUsername);
+		} else {
+			count = limbService.unlikeLimb(id, likerUsername);
+		}
+		
+		return count;
+	}
 }

@@ -18,13 +18,14 @@ public class BoerController {
 	@Autowired
 	private BoerService boerService;
 	
-	
+	// Get all
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
 	public List<Boer> getAllBoers() {
 		return boerService.getAllBoers();
 	}
 	
+	// Get user's limbs
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs")
 	public List<Limb> getLimbsByBoer(@PathVariable String username) {
@@ -32,18 +33,28 @@ public class BoerController {
 		return b.getLimbs();
 	}
 	
+	// Get by ID
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}")
 	public Boer getBoerById(@PathVariable String username) {
 		return boerService.getBoer(username);
 	}
 	
+	// Make new boer
 	@RequestMapping(method=RequestMethod.POST,
-			value="/boers")
-	public void addOrUpdateBoer(@RequestBody Boer b) {
-		boerService.addOrUpdateBoer(b);
+			value="/boers/new")
+	public Boer addBoer(@RequestBody Boer b) {
+		return boerService.addBoer(b);
 	}
 	
+	// Update boer
+	@RequestMapping(method=RequestMethod.POST,
+			value="/boers/update")
+	public Boer updateBoer(@RequestBody Boer b) {
+		return boerService.updateBoer(b);
+	}
+	
+	// Delete boer
 	@RequestMapping(method=RequestMethod.DELETE,
 			value="/boers/{username}")
 	public void deleteBoer(@PathVariable String username) {
