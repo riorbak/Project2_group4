@@ -17,6 +17,7 @@ import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
+import { ChangePhotoComponent } from './change-photo/change-photo.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { EditLimbComponent } from './edit-limb/edit-limb.component';
     SearchComponent,
     ProfilePhotoComponent,
     NewLimbModalComponent,
-    EditLimbComponent
+    EditLimbComponent,
+    ChangePhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { EditLimbComponent } from './edit-limb/edit-limb.component';
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
-    EditLimbComponent
+    EditLimbComponent,
+    ChangePhotoComponent
   ]
 })
 export class AppModule { }

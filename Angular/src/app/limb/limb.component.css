@@ -1,3 +1,6 @@
+.edit-visibility{
+    display: none;
+}
 /* Limb Header Styling */
 .profile-photo-size{
     height: 90px;

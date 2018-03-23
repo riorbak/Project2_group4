@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile-photo',
@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePhotoComponent implements OnInit {
 
-  // profilePhoto: any;
+  @Input() profilePhoto = "/assets/images/cat.png";
+  @Input('url') set url(value: any){
+    this.profilePhoto = value;
+  };
+
   constructor() { }
 
   ngOnInit() {
-    // this.profilePhoto = "'cat.png'";
+    this.profilePhoto = "/assets/images/cat.png";
+  }
+
+
+
+  setNewPhotoPreview(newPhoto: any) {
+    this.profilePhoto = newPhoto;
   }
 
 }

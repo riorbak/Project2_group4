@@ -45,3 +45,39 @@
     font-size: 3vh;
     font-weight: bold
 }
+
+.edit-icon-position {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.edit-visibility {
+    display: block;
+}
+
+.fa.fa-lock {
+    font-size: 30px;
+    color: #97AABD;
+}
+
+.fa.fa-unlock-alt {
+    font-size: 30px;
+    color: #C96567;
+}
+
+.fa.fa-edit.profile-pic {
+    color: #97AABD;
+    font-size: 3vw;
+}
+
+.fa.fa-edit.profile-pic:hover {
+    color: #C96567;
+    font-size: 3vw;
+}
+
+.profile-pic-edit-icon {
+    position: absolute;
+    right: 33vw;
+    top: 22vh;
+}

@@ -22,8 +22,10 @@
             </div>
 
             <!-- Clickable Edit Component. Only visible in user's own profile -->
-            <div class="edit-limb-position" (click)="open()">
-                <i class="fa fa-edit"></i>
+            <div *ngIf="editingOpen">
+                <div class="edit-limb-position" (click)="open()">
+                    <i class="fa fa-edit"></i>
+                </div>
             </div>
         </div>
 

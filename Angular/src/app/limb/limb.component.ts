@@ -14,7 +14,7 @@ export class LimbComponent implements OnInit {
   @Input() timeStamp: any;
   @Input() limbBody: string;
   @Input() limbId: number;
-
+  @Input() editingOpen;
 
   constructor(private modalService: NgbModal) { 
     
