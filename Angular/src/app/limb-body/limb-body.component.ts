@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-limb-body',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LimbBodyComponent implements OnInit {
 
+  @Input() contents: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.contents = "Some words and stuff";
   }
 
 }
