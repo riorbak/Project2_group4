@@ -47,7 +47,7 @@ import { EditLimbComponent } from './edit-limb/edit-limb.component';
     EmbedVideo.forRoot()
   ],
 
-  providers: [AuthenticationService, BackendService],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
