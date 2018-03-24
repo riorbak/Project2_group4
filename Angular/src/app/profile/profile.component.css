@@ -5,7 +5,7 @@
 }
 
 .cover-photo{
-    background-image: url('kitten_background.png');
+    background-image: url("/assets/images/bg2.png");
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -27,16 +27,19 @@
     border-radius:100%;
 }
 
+
 .profile-photo-center{
     padding-top: 25vh;
     padding-left: 37vw;
 }
+
 
 .profile-info-center{
     margin-top: 30px;
     width: 50%;
     margin: auto;
 }
+
 
 .profile-info{
     margin-top: 5vh;

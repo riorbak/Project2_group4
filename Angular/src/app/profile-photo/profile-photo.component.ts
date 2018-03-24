@@ -18,7 +18,7 @@ export class ProfilePhotoComponent implements OnInit {
   }
   
   ngOnInit() {
-    let aUrl = "/assets/images/cat.png";
+    let aUrl = "/assets/images/user-200.png";
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
 
   }
