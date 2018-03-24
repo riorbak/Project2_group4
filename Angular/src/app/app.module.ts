@@ -23,6 +23,7 @@ import { ChangePhotoComponent } from './change-photo/change-photo.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     NewLimbModalComponent,
     EditLimbComponent,
     ChangePhotoComponent,
-    AuthenticationLanderComponent
+    AuthenticationLanderComponent,
+    VerifyEmailComponent
 
   ],
   imports: [
