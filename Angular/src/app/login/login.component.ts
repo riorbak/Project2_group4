@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend/backend.service';
-import { Limb } from '../limb/mock-limb';
-import { AuthenticationService } from '../auth/authentication.service'
-import { User } from '../limb/mock-user'
+import { AuthenticationService } from '../auth/authentication.service';
+import { User } from '../objects';
+import { Limb } from '../objects';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,8 +11,8 @@ import { User } from '../limb/mock-user'
 
 export class LoginComponent implements OnInit 
 {
+  
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
-
 
   ngOnInit() 
   { 

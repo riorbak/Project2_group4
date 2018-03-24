@@ -22,6 +22,8 @@ import { EditLimbComponent } from './edit-limb/edit-limb.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MyDatePickerModule } from '../../node_modules/angular4-datepicker/src/my-date-picker';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    EmbedVideo.forRoot()
+    EmbedVideo.forRoot(),
+    MyDatePickerModule,
+    FormsModule
   ],
 
   providers: [AuthenticationService,BackendService],

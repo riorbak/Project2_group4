@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Limb } from '../limb/mock-limb';
-import { User } from '../limb/mock-user'
+import { Limb } from '../objects';
+import { User } from '../objects';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

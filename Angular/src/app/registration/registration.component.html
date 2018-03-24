@@ -10,7 +10,7 @@
                       <div class="form-group">
                           <div class="icon-addon">
                               <label for="newUserEmail" class="fa fa-envelope"></label>
-                              <input type="email" class="form-control" id="newUserEmail" placeholder="Email">
+                              <input type="email" class="form-control" id="newUserEmail" placeholder="Email" name="email" [(ngModel)]="user.email">
                           </div>
                           <small id="passwordHelpBlock" class="form-text text-muted" style="display: none"> Your email must be unique. Cannot be associated with another active Limbo account.</small>
                       </div>
@@ -21,14 +21,14 @@
                       <div class="form-group">
                           <div class="icon-addon">
                               <label for="newUserPass" class="fa fa-lock"></label>
-                              <input type="password" class="form-control" id="newUserPass" placeholder="Password">
+                              <input type="password" class="form-control" id="newUserPass" placeholder="Password" name="password" [(ngModel)]="password">
                           </div>
 
                       </div>
                   </div>
                   <div class="col-md-6 col-sm-6">
                       <div class="form-group">
-                          <input type="password" class="form-control" id="newUserPassConfirm" placeholder="Confirm Password">
+                          <input type="password" class="form-control" id="newUserPassConfirm" placeholder="Confirm Password" name="cpassword" [(ngModel)]="confirmpassword">
                       </div>
                   </div>
               </div>
@@ -37,14 +37,14 @@
                       <div class="form-group">
                           <div class="icon-addon">
                               <label for="newUserFName" class="fa fa-user"></label>
-                              <input type="text" class="form-control" id="newUserFName" placeholder="First Name">
+                              <input type="text" class="form-control" id="newUserFName" placeholder="First Name" name="firstName" [(ngModel)]="user.firstName">
                           </div>
 
                       </div>
                   </div>
                   <div class="col-md-6 col-sm-6">
                       <div class="form-group">
-                          <input type="text" class="form-control" id="newUserLName" placeholder="Last Name">
+                          <input type="text" class="form-control" id="newUserLName" placeholder="Last Name" name="lastName" [(ngModel)]="user.lastName">
                       </div>
                   </div>
               </div>
@@ -52,10 +52,8 @@
                   <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center">
                       <div class="form-group">
                           <div class="icon-addon">
-                              <label for="newUserBDay" class="fa fa-birthday-cake"></label>
-                              <input type="text" class="form-control" id="newUserBDay">
+                              <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
                           </div>
-                          <!-- Date Picker goes here -->
                       </div>
                   </div>
 
