@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LimbComponent } from '../limb/limb.component';
 // import { Observable } from 'rxjs/Observable';
@@ -45,6 +45,8 @@ list: Limb[] = [
     limbId: 4
   }
 ];
+
+@Input() editingOpen;
 // requestUrl: any;
 
 // private http: HttpClient
@@ -54,9 +56,9 @@ constructor() {
 
 ngOnInit() {
 
-
-
 }
+
+
 
   // getListOfLimbs(): Observable<LimbComponent[]>{
   //   return this.http.get<LimbComponent[]>(this.requestUrl);

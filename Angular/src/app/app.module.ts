@@ -19,6 +19,7 @@ import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
+import { ChangePhotoComponent } from './change-photo/change-photo.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,7 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProfilePhotoComponent,
     NewLimbModalComponent,
     EditLimbComponent,
+    ChangePhotoComponent,
     AuthenticationLanderComponent
+
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
-    EditLimbComponent
+    EditLimbComponent,
+    ChangePhotoComponent
   ]
 })
 export class AppModule { }
