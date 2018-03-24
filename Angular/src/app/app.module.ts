@@ -20,7 +20,8 @@ import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component
 import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
-
+import { BackendService } from './backend/backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,11 +46,11 @@ import { AuthenticationLanderComponent } from './authentication-lander/authentic
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    HttpModule,
+    HttpClientModule,
     EmbedVideo.forRoot()
   ],
 
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,BackendService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
