@@ -17,11 +17,13 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="id")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Limb implements Comparable<Limb> {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)

@@ -36,14 +36,6 @@ public class LimbController {
 		return limbService.getLimbById(id);
 	}
 	
-//	@RequestMapping(method=RequestMethod.POST,
-//			value="/boers/{username}/limbs")
-//	public Limb addOrUpdateLimb(@PathVariable String username, @RequestBody Limb limb) {
-//		limb.setOwner(boerService.getBoer(username));
-//		limb.setPostTime(LocalDateTime.now());
-//		return limbService.addOrUpdateLimb(limb);
-//	}
-	
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{posterUsername}/limbs/new")
 	public Limb addLimb(@PathVariable String posterUsername, @RequestBody Limb limb) {

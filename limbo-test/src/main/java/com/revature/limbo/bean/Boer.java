@@ -16,11 +16,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="username")
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Table(name="boer")
 public class Boer implements Comparable<Boer> {
 	@Id
