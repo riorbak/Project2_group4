@@ -1,3 +1,8 @@
-<div class="limb-body">
+<div>
+<div id="limb-body" class="limb-body">
 {{contents}}
+</div>
+<div id="limb-media" *ngIf = "hasMedia">
+    <img [src] = "srcUrl" class="limb-image">
+</div>
 </div>
