@@ -22,10 +22,9 @@ export class LoginComponent implements OnInit
 
   postLimb(limb : Limb): void 
   {
-    this.Server.postLimb(limb).subscribe(res=>{
-
-      console.log("thing 1"+res.timeStamp)
-
+    this.Server.postLimb(limb).subscribe( res=>{
+      let x : Limb=<Limb>res;
+      console.log("thing 1"+x.timeStamp);
     });
     console.log("thing 2");    
   }
