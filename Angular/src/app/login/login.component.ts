@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend/backend.service';
 import { Limb } from '../limb/mock-limb';
 import { LimbInterface } from '../limb/limb-interface';
-
+import { AuthenticationService } from '../auth/authentication.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +11,7 @@ import { LimbInterface } from '../limb/limb-interface';
 
 export class LoginComponent implements OnInit 
 {
-  constructor(private Server: BackendService) { }
+  constructor(private Server: BackendService,public auth: AuthenticationService) { }
 
   ngOnInit() 
   { 

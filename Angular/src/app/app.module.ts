@@ -17,9 +17,11 @@ import { LikeComponent } from './like/like.component';
 import { SearchComponent } from './search/search.component';
 import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
+import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     EmbedVideo.forRoot()
   ],
-  providers: [BackendService],
+
+  providers: [AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
