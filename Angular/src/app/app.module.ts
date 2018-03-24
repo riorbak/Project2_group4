@@ -48,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     EmbedVideo.forRoot()
   ],
 
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,BackendService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
