@@ -11,11 +11,24 @@ export class ChangePhotoComponent implements OnInit {
 
   @Input() email;
   @Input() type;
-  @Input() url;
+  @Input() url: any;
+  @Input() newImage;
 
   constructor(public activeModal: NgbActiveModal, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    console.log(this.type);
+    if(this.type == "Profile"){
+      this.url = "/assets/images/cat.png";
+    } else if (this.type == 'Cover'){
+      this.url =  "/assets/images/kitten_background.png";
+    } else {
+      this.url = "/assets/images/kitten_background.png";
+    }
+// The above may work if i send a regular url from the database
+    // console.log("change-photo this.url inside ngOnInit: " + this.url);
+
+    
   }
 
 
@@ -33,8 +46,8 @@ export class ChangePhotoComponent implements OnInit {
     filename = files[0].name;
     let label: any;
     document.getElementById("inputImgLabel").innerHTML = '<i class="fa fa-upload" style="padding-right:.5em"></i>' + filename;
-    this.url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(files[0]));
-
+    this.url = window.URL.createObjectURL(files[0]);
+    //  will persist new photo here.
   }
 
 
