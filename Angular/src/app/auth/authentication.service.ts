@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
+import { Auth0Lock } from 'auth0-lock';
 
 @Injectable()
 export class AuthenticationService {
+ 
+  userProfile: any;
 
   auth0 = new auth0.WebAuth({
     clientID: '0ALaNaZnhA2AYZfI1OnEnjXsW9DBc7bL',
@@ -14,6 +17,8 @@ export class AuthenticationService {
     redirectUri: 'http://localhost:4200/feed',
     scope: 'openid profile'
   });
+
+
   constructor(public router: Router) { }
 
   public login(): void {
@@ -21,6 +26,7 @@ export class AuthenticationService {
     this.handleAuthentication();
 
   }
+
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
@@ -41,7 +47,6 @@ export class AuthenticationService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('aTestKey', 'someTestData');
   }
 
   public logout(): void {
@@ -60,6 +65,19 @@ export class AuthenticationService {
     return new Date().getTime() < expiresAt;
   }
 
-  
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
 
 }

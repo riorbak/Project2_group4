@@ -10,6 +10,7 @@ import { LimbListComponent } from './limb-list/limb-list.component';
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'profile', component: ProfileComponent },
