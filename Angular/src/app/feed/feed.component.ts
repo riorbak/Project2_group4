@@ -16,13 +16,13 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
 
     this.auth.handleAuthentication();
-    const accessToken = sessionStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token');
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
     } else {
       this.auth.getProfile((err, profile) => {
         this.profile = profile;
-        sessionStorage.setItem('profile', profile);
+        localStorage.setItem('profile', profile);
         console.log(this.profile);
         
         

@@ -44,16 +44,16 @@ export class AuthenticationService {
   private setSession(authResult): void {
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    sessionStorage.setItem('access_token', authResult.accessToken);
-    sessionStorage.setItem('id_token', authResult.idToken);
-    sessionStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
   }
 
   public logout(): void {
-    // Remove tokens and expiry time from sessionStorage
-    sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('id_token');
-    sessionStorage.removeItem('expires_at');
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
     // Go back to the home route
     this.router.navigate(['/']);
   }
@@ -61,12 +61,12 @@ export class AuthenticationService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // Access Token's expiry time
-    const expiresAt = JSON.parse(sessionStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
 
   public getProfile(cb): void {
-    const accessToken = sessionStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
     }
