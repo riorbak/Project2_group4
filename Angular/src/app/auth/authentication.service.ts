@@ -2,36 +2,43 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
+import { Auth0Lock } from 'auth0-lock';
 
 @Injectable()
 export class AuthenticationService {
+
+  public userProfile: any;
 
   auth0 = new auth0.WebAuth({
     clientID: '0ALaNaZnhA2AYZfI1OnEnjXsW9DBc7bL',
     domain: 'revature-limbo.auth0.com',
     responseType: 'token id_token',
     audience: 'https://revature-limbo.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/feed',
-    scope: 'openid profile'
+    redirectUri: 'http://localhost:4200/auth',
+    scope: 'openid email'
   });
+
+
   constructor(public router: Router) { }
 
   public login(): void {
     this.auth0.authorize();
-    this.handleAuthentication();
+    // this.handleAuthentication();
 
   }
+
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/feed']);
+        //this.router.navigate(['/feed']);
       } else if (err) {
         this.router.navigate(['/login']);
         console.log(err);
       }
+      this.setSession(authResult);
     });
   }
 
@@ -41,7 +48,7 @@ export class AuthenticationService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('aTestKey', 'someTestData');
+    this.setProfile();
   }
 
   public logout(): void {
@@ -60,6 +67,34 @@ export class AuthenticationService {
     return new Date().getTime() < expiresAt;
   }
 
-  
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
+
+  public setProfile(): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+    const self = this;
+
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+        this.router.navigate(['/feed']);
+      }
+    });
+  }
 
 }

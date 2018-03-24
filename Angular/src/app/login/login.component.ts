@@ -13,8 +13,10 @@ export class LoginComponent implements OnInit
 {
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
 
+
   ngOnInit() 
   { 
+      localStorage.removeItem('profile');
       // let limb=new Limb();
       // this.postLimb(limb);
       let user=new User();

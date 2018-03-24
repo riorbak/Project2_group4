@@ -19,6 +19,7 @@ import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
+import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     ProfilePhotoComponent,
     NewLimbModalComponent,
-    EditLimbComponent
+    EditLimbComponent,
+    AuthenticationLanderComponent
   ],
   imports: [
     BrowserModule,
