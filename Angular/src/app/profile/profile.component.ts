@@ -24,7 +24,13 @@ export class ProfileComponent implements OnInit {
 
   openProfileEditModal(){
     const modalRef = this.modalService.open(ChangePhotoComponent);
-    modalRef.componentInstance.type = 'Profile Photo';
+    modalRef.componentInstance.type = 'Profile';
+    modalRef.componentInstance.email = this.email;
+  }
+
+  openCoverEditModal(){
+    const modalRef = this.modalService.open(ChangePhotoComponent);
+    modalRef.componentInstance.type = 'Cover';
     modalRef.componentInstance.email = this.email;
   }
 

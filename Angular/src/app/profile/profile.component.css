@@ -59,25 +59,44 @@
 .fa.fa-lock {
     font-size: 30px;
     color: #97AABD;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
 }
 
 .fa.fa-unlock-alt {
     font-size: 30px;
     color: #C96567;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
 }
 
 .fa.fa-edit.profile-pic {
     color: #97AABD;
-    font-size: 3vw;
+    font-size: 30px;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
 }
 
 .fa.fa-edit.profile-pic:hover {
     color: #C96567;
-    font-size: 3vw;
+    
 }
 
 .profile-pic-edit-icon {
     position: absolute;
     right: 33vw;
     top: 22vh;
+}
+
+.fa.fa-edit.cover-pic {
+    color: #97AABD;
+    font-size: 30px;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
+}
+
+.fa.fa-edit.cover-pic:hover {
+    color: #C96567;
+}
+
+.cover-pic-edit-icon {
+    position: absolute;
+    right: 60px;
+    top: 20px;
 }
