@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Limb } from '../limb/mock-limb';
-import { LimbInterface } from '../limb/limb-interface';
+import { User } from '../limb/mock-user'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,6 +25,16 @@ export class BackendService
       catchError(this.handleError('postLimb', []))
     );
   }
+
+  postNewUser( user : User )
+  {
+    let url : string = 'http://localhost:8080/boers/new';
+    return this.http.post(url,user,httpOptions)
+    .pipe(
+      catchError(this.handleError('postLimb', []))
+    );
+  }
+
 
   private handleError<T> (operation = 'operation', result?: T) 
   {

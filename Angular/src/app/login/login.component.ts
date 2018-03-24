@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend/backend.service';
 import { Limb } from '../limb/mock-limb';
-import { LimbInterface } from '../limb/limb-interface';
 import { AuthenticationService } from '../auth/authentication.service'
+import { User } from '../limb/mock-user'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,8 +15,10 @@ export class LoginComponent implements OnInit
 
   ngOnInit() 
   { 
-      let limb=new Limb();
-      this.postLimb(limb);
+      // let limb=new Limb();
+      // this.postLimb(limb);
+      let user=new User();
+      this.postNewUser(user);
       console.log("hi");
   }
 
@@ -25,6 +27,15 @@ export class LoginComponent implements OnInit
     this.Server.postLimb(limb).subscribe( res=>{
       let x : Limb=<Limb>res;
       console.log("thing 1"+x.timeStamp);
+    });
+    console.log("thing 2");    
+  }
+
+  postNewUser(user : User): void 
+  {
+    this.Server.postNewUser(user).subscribe( res=>{
+      let x : User=<User>res;
+      console.log("thing 1"+x.username);
     });
     console.log("thing 2");    
   }
