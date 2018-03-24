@@ -19,12 +19,9 @@ import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
-<<<<<<< HEAD
 import { ChangePhotoComponent } from './change-photo/change-photo.component';
-=======
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
->>>>>>> 7e1cf4eed57fb4368360f4cb5b0dd38558b1e21c
 
 
 @NgModule({
