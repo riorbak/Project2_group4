@@ -4,4 +4,5 @@ export class Limb {
     timeStamp: any = '1/01/00 00:00 AM';
     content: string;
     limbId: number;
+    media: any = "/assets/images/cat.png";
 }
