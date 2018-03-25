@@ -20,6 +20,7 @@ export class FeedComponent implements OnInit {
       this.router.navigate(['login']);
     }
     this.userEmail = this.auth.userProfile.email;
+    localStorage.setItem('email', this.userEmail);
     
   //   const accessToken = localStorage.getItem('access_token');
   //   if (this.auth.userProfile) {

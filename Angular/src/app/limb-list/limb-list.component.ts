@@ -20,28 +20,28 @@ list: Limb[] = [
     count: 0,
     name: 'My Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'Please work....',
+    content: 'Please work....',
     limbId: 1
   },
   {
     count: 1,
     name: 'Your Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'I believe in this test...',
+    content: 'I believe in this test...',
     limbId: 2
   },
   {
     count: 2,
     name: 'His Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'We can do it!',
+    content: 'We can do it!',
     limbId: 3
   },
   {
     count: 3,
     name: 'Her Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'I believe in us!',
+    content: 'I believe in us!',
     limbId: 4
   }
 ];
