@@ -1,14 +1,12 @@
 .main-content{
-    margin-left: 20vw; 
-    /* use data binding to set margin-left */
-    padding: 0px 0px;
+    padding-left: 20vw; 
 }
 
 .cover-photo{
     background-image: url("/assets/images/bg2.png");
     background-size: cover;
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 .profile-shadow{
@@ -16,9 +14,14 @@
 }
 
 .profile-background{
+    margin: 0px;
+    /* width: 100vw; */
+    padding-top: 50px;
+    background-image: url('/assets/images/bg2.png');
     height: 100%;
-    width: 100vw;
-    max-width:100vw;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
 }
 
 .profile-photo-size{

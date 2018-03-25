@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
 import { isNull } from 'util';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { LimbMediaModalComponent } from '../limb-media-modal/limb-media-modal.component';
 
 @Component({
   selector: 'app-limb-body',
@@ -13,7 +15,7 @@ export class LimbBodyComponent implements OnInit {
   @Input() media;
   srcUrl: any;
   hasMedia: boolean;
-  constructor(private sanitization: DomSanitizer) { }
+  constructor(private sanitization: DomSanitizer, private modalService: NgbModal) { }
 
   ngOnInit() {
     // this.contents = "Some words and stuff";
@@ -30,5 +32,9 @@ export class LimbBodyComponent implements OnInit {
   }
 
 
+  openImgModal() {
+    const modalRef = this.modalService.open(LimbMediaModalComponent);
+    modalRef.componentInstance.media = this.media;
+  }
 
 }
