@@ -1,7 +1,7 @@
 package com.revature.limbo.bean;
 
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -39,7 +39,8 @@ public class Boer implements Comparable<Boer> {
 	private String email;
 	
 	@Column(name="bdate")
-	private Date bdate;
+	private LocalDate bdate;
+	
 	
 	@Column(name="profilePic")
 	private URL profilePic;
@@ -63,7 +64,7 @@ public class Boer implements Comparable<Boer> {
 		setLikedLimbs(new TreeSet<Limb>());
 	}
 	
-	public Boer(String username, String firstName, String lastName, String email, Date bdate) {
+	public Boer(String username, String firstName, String lastName, String email, LocalDate bdate) {
 		super();
 		this.username = username;
 		this.firstName = firstName;
@@ -125,11 +126,11 @@ public class Boer implements Comparable<Boer> {
 		this.email = email;
 	}
 
-	public Date getBdate() {
+	public LocalDate getBdate() {
 		return bdate;
 	}
 
-	public void setBdate(Date bdate) {
+	public void setBdate(LocalDate bdate) {
 		this.bdate = bdate;
 	}
 

@@ -8,6 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.revature.limbo.bean.Boer;
 
 public interface BoerRepository extends CrudRepository<Boer, String> {
+	public long countLikersByLikedLimbsId(Integer id);
+	
 	public List<Boer> findLikersByLikedLimbsId(Integer id);
 	public Optional<Boer> findFirstBoerByEmail(String email);
 }

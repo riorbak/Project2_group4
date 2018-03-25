@@ -77,6 +77,9 @@ public class BoerController {
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/update")
 	public JsonNode updateBoer(@RequestBody Boer b) {
+		b.setLikedLimbs(null);
+		b.setLimbs(null);
+		
 		Boer updatedBoer = boerService.updateBoer(b);
 		return jsonGenService.generateBoerJsonNode(updatedBoer);
 	}

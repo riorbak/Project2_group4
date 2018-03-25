@@ -121,6 +121,6 @@ public class BoerService {
 	}
 	
 	public List<Limb> getLimbsLikedByUser(String username) {
-		return limbRepo.findLimbsLikedByLikedLimbsUsername(username);
+		return limbRepo.findLimbsLikedByLikersUsername(username);
 	}
 }

@@ -104,7 +104,7 @@ public class LimbService {
 			limbRepo.save(likedLimb);
 		}
 		
-		return (int)(limbRepo.countLikersByLikersLikedLimbsId(limbId));
+		return (int)(boerRepo.countLikersByLikedLimbsId(limbId));
 	}
 	
 	@Transactional
@@ -118,13 +118,13 @@ public class LimbService {
 			limbRepo.save(likedLimb);
 		}
 		
-		return (int)(limbRepo.countLikersByLikersLikedLimbsId(limbId));
+		return (int)(boerRepo.countLikersByLikedLimbsId(limbId));
 	}
 	
 	/////////////////////////////////////
 	
 	public long getLimbLikeCount(Integer limbId) {
-		return limbRepo.countLikersByLikersLikedLimbsId(limbId);
+		return boerRepo.countLikersByLikedLimbsId(limbId);
 	}
 	
 	public List<Boer> getLikersFromLimb(Integer limbId) {
