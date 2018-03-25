@@ -4,7 +4,7 @@ import { LimbComponent } from '../limb/limb.component';
 // import { Observable } from 'rxjs/Observable';
 // import { of } from 'rxjs/observable/of';
 
-import { Limb } from '../limb/mock-limb';
+import { Limb } from '../objects';
 
 
 @Component({

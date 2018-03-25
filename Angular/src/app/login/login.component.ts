@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit
       localStorage.removeItem('profile');
       // let limb=new Limb();
       // this.postLimb(limb);
-      let user=new User();
-      this.postNewUser(user);
+      //let user=new User();
+      //this.postNewUser(user);
       console.log("hi");
   }
 

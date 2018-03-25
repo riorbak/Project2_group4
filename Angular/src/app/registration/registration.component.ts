@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {BirthdayInput} from 'angularjs-input-birthday';
-import {IMyDpOptions} from '../../../node_modules/angular4-datepicker/src/my-date-picker';
-import {User} from '../objects';
+import { BirthdayInput } from 'angularjs-input-birthday';
+import { IMyDpOptions } from '../../../node_modules/angular4-datepicker/src/my-date-picker';
+import { User } from '../objects';
+import { BackendService } from '../backend/backend.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +11,7 @@ import {User} from '../objects';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private Server: BackendService) { }
 
   ngOnInit() {
   }
@@ -31,13 +32,41 @@ public model: any =
 public user=new User();
 public password: string;
 public confirmpassword: string;
+public disabled: boolean=true;
+
+
+verifyPasswords()
+{
+  if(this.password!==this.confirmpassword)
+  {
+      //TODO: show a modal or some shit
+      alert("Passwords must match");
+  }
+  else
+  {
+    this.disabled=false;;
+  }
+}
+
+
 
 registerUser()
 {
-  console.log(this.model);
-  console.log(this.user);
-  console.log("password:"+this.password);
-  console.log("confirm password:"+this.confirmpassword);
+  this.user.bdate=JSON.stringify(this.date).substring(1,11);
+  console.log(this.user.bdate);
+  this.postNewUser(this.user);
+}
+
+postNewUser(user : User): void 
+{
+  this.Server.postNewUser(user).subscribe( res=>{
+    let x : User=<User>res;
+    if(!x)
+      alert("username is already taken!");
+    else
+      alert("register succesful");
+    //login
+  });  
 }
 
 
