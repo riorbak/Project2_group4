@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Limb } from '../limb/mock-limb';
 import { User } from '../limb/mock-user'
 import { appSettings } from '../appSettings';
+import { Router } from '@angular/router';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,7 +16,7 @@ const httpOptions = {
 export class BackendService
 {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   postLimb( limb : Limb)
   {
@@ -41,7 +42,10 @@ export class BackendService
     let userEmail = {
       email: fetchedEmail
     };
-    return this.http.post(url, userEmail,  httpOptions);
+    return this.http.post(url, userEmail,  httpOptions)
+    .pipe(
+      catchError(this.handleUserNotFoundError('ErrorFindingUser'))
+    );
   }
 
 
@@ -49,6 +53,14 @@ export class BackendService
   {
     return (error: any): Observable<T> => {
       console.error(error); 
+      return of(result as T);
+    };
+  }
+
+  private handleUserNotFoundError<T> (operation = 'operation', result?: T) 
+  {
+    return (error: any): Observable<T> => {
+      this.router.navigate(['register']); 
       return of(result as T);
     };
   }
