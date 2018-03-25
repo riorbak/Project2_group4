@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Limb } from '../objects';
 import { User } from '../objects';
-
+import { appSettings } from '../appSettings';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -17,10 +17,10 @@ export class BackendService
 
   constructor(private http: HttpClient) { }
 
-  postLimb( limb : Limb)
+  postLimb( limb : Limb, username : string )
   {
-    let url : string = 'http://localhost:8080/CashFlowServlet/CFservlet';
-    return this.http.post(url,limb,httpOptions)
+    let url : string = appSettings.BACKEND_URL + '/boers/'+username+'/limbs/new';
+    return this.http.post(url,JSON.stringify(limb),httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
     );
@@ -28,7 +28,7 @@ export class BackendService
 
   postNewUser( user : User )
   {
-    let url : string = 'http://localhost:8080/boers/new';
+    let url : string = appSettings.BACKEND_URL + 'boers/new';
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postNewUser', []))
@@ -53,13 +53,22 @@ export class BackendService
     );
   }
 
-  getUser(username : string)
+  getUserByUsername(username : string)
   {
     let url : string = 'http://localhost:8080/boers/' + username;
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getUser', []))
     );
+  }
+
+  getUser( fetchedEmail: String )
+  {
+    let url : string = appSettings.BACKEND_URL + 'boers/email';
+    let userEmail = {
+      email: fetchedEmail
+    };
+    return this.http.post(url, userEmail,  httpOptions);
   }
 
 

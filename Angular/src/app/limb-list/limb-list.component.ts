@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LimbComponent } from '../limb/limb.component';
 // import { Observable } from 'rxjs/Observable';
@@ -20,31 +20,39 @@ list: Limb[] = [
     count: 0,
     name: 'My Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'Please work....',
-    limbId: 1
+    content: 'Please work....',
+    limbId: 1,
+    media: "/assets/images/cat.png"
   },
   {
     count: 1,
     name: 'Your Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'I believe in this test...',
-    limbId: 2
+    content: 'I believe in this test...',
+    limbId: 2,
+    media: null
   },
   {
     count: 2,
     name: 'His Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'We can do it!',
-    limbId: 3
+    content: 'We can do it!',
+    limbId: 3,
+    media: "/assets/images/kitten_background.png"
+
   },
   {
     count: 3,
     name: 'Her Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'I believe in us!',
-    limbId: 4
+    content: 'I believe in us!',
+    limbId: 4,
+    media: null
+
   }
 ];
+
+@Input() editingOpen;
 // requestUrl: any;
 
 // private http: HttpClient
@@ -52,14 +60,9 @@ constructor() {
 
 }
 
-ngOnInit() {
-
-
-
+ngOnInit() 
+{
+  
 }
-
-  // getListOfLimbs(): Observable<LimbComponent[]>{
-  //   return this.http.get<LimbComponent[]>(this.requestUrl);
-  // }
 
 }

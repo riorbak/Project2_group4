@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../auth/authentication.service';
+import { Router } from '@angular/router';
+import { User } from '../objects'
+import { BackendService } from '../backend/backend.service';
 
 
 // import { LimbComponent } from './limb';
@@ -11,21 +14,26 @@ import { AuthenticationService } from '../auth/authentication.service';
 })
 export class FeedComponent implements OnInit {
 
-  profile: any;
-  constructor(public auth: AuthenticationService) { }
- 
+  public userEmail: string;
+  constructor(public auth: AuthenticationService, public router: Router, private server: BackendService) { }
+
   ngOnInit() {
-    console.log(this.auth.userProfile);
-  //   const accessToken = localStorage.getItem('access_token');
-  //   if (this.auth.userProfile) {
-  //     this.profile = this.auth.userProfile;
-  //   } else {
-  //     this.auth.getProfile((err, profile) => {
-  //       this.profile = profile;
-  //       localStorage.setItem('profile', profile);
-  //       console.log(this.profile);        
-  //     });
-  //   }
-   }
+    if (!this.auth.userProfile) {
+      this.router.navigate(['login']);
+    }
+    this.userEmail = this.auth.userProfile.email;
+  ;
+    let postResult = this.server.getUser(this.userEmail).subscribe(res => {
+      let user: User = <User>res;
+      localStorage.setItem('username', user.username);
+    });
+
+   
+    //userObject = JSON.parse(userObject);
+    //var userName = userObject.username;
+
+    localStorage.setItem('email', this.userEmail);
+
+  }
 
 }

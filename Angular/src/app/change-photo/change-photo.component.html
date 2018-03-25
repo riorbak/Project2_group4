@@ -1,0 +1,31 @@
+<div class="modal-container">
+  <h2 class="modal-title">
+    Update Your {{type}} Photo
+  </h2>
+
+  <div>
+    <div class="center">
+      <div class="photo-size">
+        <app-profile-photo [url]="url"></app-profile-photo>
+      </div>
+    </div>
+
+
+    <form>
+      <div class="file-input-center">
+        <div class="form-group-custom">
+          <input type="file" name="inputImg" id="newProfileImg" class="inputfile" (change)="changeLabel()" />
+          <label for="newProfileImg" id="inputImgLabel" class="file-btn">
+            <i class="fa fa-upload" style="padding-right:.5em"></i> New Image</label>
+        </div>
+      </div>
+
+      <div class="left-btn">
+        <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
+      </div>
+      <div class="right-btn">
+        <button type="button" id="submitBtn" class="btn-custom btn-form">Update!</button>
+      </div>
+    </form>
+  </div>
+</div>

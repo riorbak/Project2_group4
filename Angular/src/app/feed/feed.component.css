@@ -1,12 +1,16 @@
 .main-content{
-    /* margin-left: 20vw;  */
-    /* use data binding to set margin-left */
-    /* padding: 0px 0px; */
+
     padding-left: 20vw;
 }
 
+
 .feed-background{
-    /* background-color: #644E5B; */
+    margin: 0px;
+    padding-top: 50px;
+    background-image: url('/assets/images/bg2.png');
     height: 100%;
-    width: 100%;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
 }
+

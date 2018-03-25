@@ -19,11 +19,15 @@ import { ProfilePhotoComponent } from './profile-photo/profile-photo.component';
 import { NewLimbModalComponent } from './new-limb-modal/new-limb-modal.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { EditLimbComponent } from './edit-limb/edit-limb.component';
+import { ChangePhotoComponent } from './change-photo/change-photo.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MyDatePickerModule } from '../../node_modules/angular4-datepicker/src/my-date-picker';
 import { FormsModule } from '@angular/forms';
+import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import { FormsModule } from '@angular/forms';
     ProfilePhotoComponent,
     NewLimbModalComponent,
     EditLimbComponent,
-    AuthenticationLanderComponent
+    ChangePhotoComponent,
+    AuthenticationLanderComponent,
+    LimbMediaModalComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,9 @@ import { FormsModule } from '@angular/forms';
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
-    EditLimbComponent
+    EditLimbComponent,
+    ChangePhotoComponent,
+    LimbMediaModalComponent
   ]
 })
 export class AppModule { }

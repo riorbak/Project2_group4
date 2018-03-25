@@ -14,7 +14,7 @@
             </div>
             <!-- This will be the Limb Body container -->
             <div>
-                <app-limb-body [contents]="limbBody"></app-limb-body>
+                <app-limb-body [contents]="limbBody" [media]="media"></app-limb-body>
             </div>
             <!-- clickable like component -->
             <div class="bottom-right">
@@ -22,8 +22,10 @@
             </div>
 
             <!-- Clickable Edit Component. Only visible in user's own profile -->
-            <div class="edit-limb-position" (click)="open()">
-                <i class="fa fa-edit"></i>
+            <div *ngIf="editingOpen">
+                <div class="edit-limb-position" (click)="open()">
+                    <i class="fa fa-edit"></i>
+                </div>
             </div>
         </div>
 

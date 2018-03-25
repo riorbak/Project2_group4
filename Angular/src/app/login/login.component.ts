@@ -13,39 +13,41 @@ export class LoginComponent implements OnInit
 {
   
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
-
   ngOnInit() 
   { 
       localStorage.removeItem('profile');
-      //TESTING
-      // let limb=new Limb();
-      // this.postLimb(limb);
-      let user=new User();
-      user.username="jim";
-      user.firstName="updated";
-      //this.postNewUser(user);
-      //this.getAllUsers();
-      //this.getUser("jim");
-      this.postUpdateUser(user);
-      this.getAllUsers();
-      console.log("hi");
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('expires_at');
+      // let user=new User();
+      // this.postNewUser(user);
+      // console.log(JSON.stringify(this.Server.getUser("GStar")));
+      let limb=new Limb();
+      limb.content="hi"
+      limb.count=2;
+      limb.limbId=3;
+      limb.media="this is my url";
+      limb.name="f";
+      limb.timeStamp="00/00/00 00:00 AM";
+      this.postLimb(limb,'jiim');
   }
 
   //TESTING
-  postLimb(limb : Limb): void 
+  postLimb(limb : Limb, username : string): void 
   {
-    this.Server.postLimb(limb).subscribe( res=>{
+    this.Server.postLimb(limb,username).subscribe( res=>{
+      console.log(res);
       let x : Limb=<Limb>res;
       console.log("thing 1"+x.timeStamp);
     });
-    console.log("thing 2");    
+    //console.log("thing 2");    
   }
 
   postNewUser(user : User): void 
   {
     this.Server.postNewUser(user).subscribe( res=>{
       let x : User=<User>res;
-      console.log("thing 1"+x.username);
+      console.log("User: " + JSON.stringify(user));
     });
     console.log("thing 2");    
   }

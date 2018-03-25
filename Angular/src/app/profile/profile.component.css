@@ -1,14 +1,12 @@
 .main-content{
-    margin-left: 20vw; 
-    /* use data binding to set margin-left */
-    padding: 0px 0px;
+    padding-left: 20vw; 
 }
 
 .cover-photo{
-    background-image: url('kitten_background.png');
+    background-image: url("/assets/images/bg2.png");
     background-size: cover;
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
 .profile-shadow{
@@ -16,9 +14,14 @@
 }
 
 .profile-background{
+    margin: 0px;
+    /* width: 100vw; */
+    padding-top: 50px;
+    background-image: url('/assets/images/bg2.png');
     height: 100%;
-    width: 100vw;
-    max-width:100vw;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
 }
 
 .profile-photo-size{
@@ -27,10 +30,12 @@
     border-radius:100%;
 }
 
+
 .profile-photo-center{
     padding-top: 25vh;
     padding-left: 37vw;
 }
+
 
 .profile-info-center{
     margin-top: 30px;
@@ -38,10 +43,66 @@
     margin: auto;
 }
 
+
 .profile-info{
     margin-top: 5vh;
     text-align:center;
     color:white;
     font-size: 3vh;
     font-weight: bold
+}
+
+.edit-icon-position {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.edit-visibility {
+    display: block;
+}
+
+.fa.fa-lock {
+    font-size: 30px;
+    color: #97AABD;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
+}
+
+.fa.fa-unlock-alt {
+    font-size: 30px;
+    color: #C96567;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
+}
+
+.fa.fa-edit.profile-pic {
+    color: #97AABD;
+    font-size: 30px;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
+}
+
+.fa.fa-edit.profile-pic:hover {
+    color: #C96567;
+    
+}
+
+.profile-pic-edit-icon {
+    position: absolute;
+    right: 33vw;
+    top: 22vh;
+}
+
+.fa.fa-edit.cover-pic {
+    color: #97AABD;
+    font-size: 30px;
+    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);
+}
+
+.fa.fa-edit.cover-pic:hover {
+    color: #C96567;
+}
+
+.cover-pic-edit-icon {
+    position: absolute;
+    right: 60px;
+    top: 20px;
 }
