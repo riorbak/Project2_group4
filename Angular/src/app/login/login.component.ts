@@ -11,11 +11,7 @@ import { User } from '../limb/mock-user'
 
 export class LoginComponent implements OnInit 
 {
-
-
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
-
-
   ngOnInit() 
   { 
       localStorage.removeItem('profile');
@@ -26,6 +22,7 @@ export class LoginComponent implements OnInit
       // this.postLimb(limb);
       let user=new User();
       this.postNewUser(user);
+      console.log(JSON.stringify(this.Server.getUser("GStar")));
   }
 
   postLimb(limb : Limb): void 

@@ -1,6 +1,9 @@
 import { Component, Input, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BackendService } from '../backend/backend.service';
+import { Limb } from '../limb/mock-limb';
+import { Timestamp } from 'rxjs/operators/timestamp';
 
 
 @Component({
@@ -13,7 +16,7 @@ export class NewLimbModalComponent implements OnInit {
   @Input() name;
 
   constructor(
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal, public server: BackendService
   ) {}
 
 
@@ -77,6 +80,17 @@ export class NewLimbModalComponent implements OnInit {
           }
   }
 
+
+  makeLimb() : void {
+
+    let limbText : string = (<HTMLInputElement>document.getElementById("limbTextArea")).value;
+    var limb: Limb = new Limb();
+    limb.count = 0;
+    limb.name = "Gilbert";
+    limb.timeStamp = Timestamp;
+    limb.content = limbText;
+    this.server.postLimb( limb ).subscribe();
+  }
   
 
 }

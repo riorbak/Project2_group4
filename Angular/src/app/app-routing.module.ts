@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'limbListTest', component: LimbListComponent },
   { path: 'auth', component: AuthenticationLanderComponent },
+  { path: 'auth/:code/:state', component: AuthenticationLanderComponent },
   { path: 'verify', component: VerifyEmailComponent }
 
 ];

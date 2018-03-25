@@ -20,15 +20,14 @@ list: Limb[] = [
     count: 0,
     name: 'My Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'Please work....',
-    limbId: 1,
+    content: 'Please work....',
     media: "/assets/images/cat.png"
   },
   {
     count: 1,
     name: 'Your Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'I believe in this test...',
+    content: 'I believe in this test...',
     limbId: 2,
     media: null
   },
@@ -36,17 +35,21 @@ list: Limb[] = [
     count: 2,
     name: 'His Name',
     timeStamp: '00/00/00 00:00 AM',
-    limbBody: 'We can do it!',
+    content: 'We can do it!',
     limbId: 3,
     media: "/assets/images/kitten_background.png"
+
   },
   {
     count: 3,
     name: 'Her Name',
     timeStamp: '00/00/00 00:00 AM',
+
+    content: 'I believe in us!',
     limbBody: 'I believe in us!',
     limbId: 4,
     media: null
+
   }
 ];
 

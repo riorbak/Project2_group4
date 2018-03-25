@@ -19,8 +19,8 @@ export class BackendService
 
   postLimb( limb : Limb)
   {
-    let url : string = appSettings.BACKEND_URL + 'CFservlet';
-    return this.http.post(url,limb,httpOptions)
+    let url : string = appSettings.BACKEND_URL + '/boers/GStar/limbs/new';
+    return this.http.post(url,JSON.stringify(limb),httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
     );
@@ -29,10 +29,17 @@ export class BackendService
   postNewUser( user : User )
   {
     let url : string = appSettings.BACKEND_URL + 'boers/new';
+    console.log(url);
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
     );
+  }
+
+  getUser( userName: String )
+  {
+    let url : string = appSettings.BACKEND_URL + 'boers/' + userName;
+    return this.http.get(url, httpOptions);
   }
 
 
