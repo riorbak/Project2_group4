@@ -18,10 +18,10 @@ export class FeedComponent implements OnInit {
   constructor(public auth: AuthenticationService, public router: Router, private server: BackendService) { }
 
   ngOnInit() {
-    if (!this.auth.userProfile) {
-      this.router.navigate(['login']);
+    // if (!this.auth.userProfile) {
+    //   this.router.navigate(['login']);
     
-    }
+    // }
     this.userEmail = this.auth.userProfile.email;
     let postResult = this.server.getUser(this.userEmail).subscribe(res => {
       let user: User = <User>res;

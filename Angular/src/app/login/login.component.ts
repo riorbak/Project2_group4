@@ -20,15 +20,15 @@ export class LoginComponent implements OnInit
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
       let user=new User();
-      // user.username = 'GStar';
-      // user.email='scott.g.bennett@gmail.com';
-      // user.firstName='Scott';
-      // user.lastName='Bennett';
-      // user.bdate='Sun Mar 25 2018 00:00:00 GMT-0400 (EDT)';
+      user.username = 'GStar';
+      user.email='scott.g.bennett@gmail.com';
+      user.firstName='Scott';
+      user.lastName='Bennett';
+      //user.bdate='Sun Mar 25 2018 00:00:00 GMT-0400 (EDT)';
       
       
-      // console.log("User is: " + JSON.stringify(user));
-      // this.postNewUser(user);
+      console.log("User is: " + JSON.stringify(user));
+      this.postNewUser(user);
       // console.log(JSON.stringify(this.Server.getUser("GStar")));
       // let limb=new Limb();
       // limb.content="hi"
