@@ -35,8 +35,12 @@ export class AuthenticationService {
       } else if (err) {
         this.router.navigate(['/verify']);
         console.log(err);
+        this.router.navigate(['/login']);
+
+      } else {
+        this.router.navigate(['/login']);
+
       }
-      this.setSession(authResult);
     });
   }
 
