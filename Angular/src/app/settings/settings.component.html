@@ -3,12 +3,12 @@
     User Settings
   </h2>
 
-  <div>
+  <div class="adjust-width">
     <div class="edit-icon-position edit-visibility" (click)="openCloseEditing()">
       <i id="editIcon" class="fa fa-lock edit"></i>
     </div>
     <div *ngIf="editingOpen">
-      <div class="col-lg-6 offset-lg-3 form-container-custom">
+      <div class="form-container-custom">
         <!--servlet url-->
         <form action="http://localhost:8000" method="post" enctype="multipart/form-data">
           <div class="form-row">
@@ -58,7 +58,7 @@
     </div>
 
     <div *ngIf="!editingOpen">
-      <div class="col-lg-6 offset-lg-3 form-container-custom">
+      <div class="form-container-custom">
         <div class="row">
           <div class="col-md-3 col-sm-3 text-right">
             <span class="icon-color">
@@ -94,7 +94,7 @@
               {{password}}
             </span>
           </div>
-          <div class="col-md-3 col-sm-3 text-right">
+          <div class="col-md-3 col-sm-3">
             <span class="icon-color">
                 <i id="passVisible" class="fa fa-eye-slash" (click)="showHidePass()"></i>
             </span> 
