@@ -11,17 +11,21 @@ import { User } from '../limb/mock-user'
 
 export class LoginComponent implements OnInit 
 {
+
+
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
 
 
   ngOnInit() 
   { 
       localStorage.removeItem('profile');
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('expires_at');
       // let limb=new Limb();
       // this.postLimb(limb);
       let user=new User();
       this.postNewUser(user);
-      console.log("hi");
   }
 
   postLimb(limb : Limb): void 
@@ -30,7 +34,7 @@ export class LoginComponent implements OnInit
       let x : Limb=<Limb>res;
       console.log("thing 1"+x.timeStamp);
     });
-    console.log("thing 2");    
+    //console.log("thing 2");    
   }
 
   postNewUser(user : User): void 
