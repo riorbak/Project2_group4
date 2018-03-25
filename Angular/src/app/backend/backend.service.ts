@@ -26,12 +26,21 @@ export class BackendService
     );
   }
 
+  getAllUsers()
+  {
+    let url : string = 'http://localhost:8080/boers';
+    return this.http.get(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('getAllUsers', []))
+    );
+  }
+
   postNewUser( user : User )
   {
     let url : string = 'http://localhost:8080/boers/new';
     return this.http.post(url,user,httpOptions)
     .pipe(
-      catchError(this.handleError('postLimb', []))
+      catchError(this.handleError('postNewUser', []))
     );
   }
 

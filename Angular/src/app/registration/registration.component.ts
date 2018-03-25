@@ -52,7 +52,7 @@ verifyPasswords()
 
 registerUser()
 {
-  this.user.bdate=JSON.stringify(this.date).substring(1,11);
+  this.user.bdate=this.model.jsdate;
   console.log(this.user.bdate);
   this.postNewUser(this.user);
 }

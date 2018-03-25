@@ -17,13 +17,16 @@ export class LoginComponent implements OnInit
   ngOnInit() 
   { 
       localStorage.removeItem('profile');
+      //TESTING
       // let limb=new Limb();
       // this.postLimb(limb);
       //let user=new User();
       //this.postNewUser(user);
+      this.getAllUsers();
       console.log("hi");
   }
 
+  //TESTING
   postLimb(limb : Limb): void 
   {
     this.Server.postLimb(limb).subscribe( res=>{
@@ -41,5 +44,13 @@ export class LoginComponent implements OnInit
     });
     console.log("thing 2");    
   }
+
+  getAllUsers()
+  {
+      this.Server.getAllUsers().subscribe( res=>{
+      console.log(res);
+    });
+  }
+
 
 }
