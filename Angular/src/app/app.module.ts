@@ -25,6 +25,7 @@ import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -47,7 +48,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     ChangePhotoComponent,
     AuthenticationLanderComponent,
     LimbMediaModalComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     NewLimbModalComponent,
     EditLimbComponent,
     ChangePhotoComponent,
-    LimbMediaModalComponent
+    LimbMediaModalComponent,
+    SettingsComponent
   ]
 })
 export class AppModule { }
