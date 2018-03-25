@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit
   {
     this.Server.postNewUser(user).subscribe( res=>{
       let x : User=<User>res;
-      console.log("thing 1"+x.username);
+      console.log("User: " + JSON.stringify(user));
     });
     console.log("thing 2");    
   }
