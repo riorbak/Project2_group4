@@ -3,6 +3,7 @@ package com.revature.limbo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class BoerController {
 	private BoerService boerService;
 	
 	// Get all
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
 	public List<Boer> getAllBoers() {
@@ -26,6 +28,7 @@ public class BoerController {
 	}
 	
 	// Get user's limbs
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs")
 	public List<Limb> getLimbsByBoer(@PathVariable String username) {
@@ -34,6 +37,7 @@ public class BoerController {
 	}
 	
 	// Get by ID
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}")
 	public Boer getBoerById(@PathVariable String username) {
@@ -41,6 +45,7 @@ public class BoerController {
 	}
 	
 	// Make new boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/new")
 	public Boer addBoer(@RequestBody Boer b) {
@@ -48,6 +53,7 @@ public class BoerController {
 	}
 	
 	// Update boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/update")
 	public Boer updateBoer(@RequestBody Boer b) {
@@ -55,6 +61,7 @@ public class BoerController {
 	}
 	
 	// Delete boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.DELETE,
 			value="/boers/{username}")
 	public void deleteBoer(@PathVariable String username) {
