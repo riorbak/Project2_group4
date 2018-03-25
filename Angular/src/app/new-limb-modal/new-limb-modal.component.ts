@@ -13,6 +13,8 @@ import { Timestamp } from 'rxjs/operators/timestamp';
 })
 export class NewLimbModalComponent implements OnInit {
 
+  userName = localStorage.getItem('username');
+
   @Input() name;
 
   constructor(
@@ -86,10 +88,11 @@ export class NewLimbModalComponent implements OnInit {
     let limbText : string = (<HTMLInputElement>document.getElementById("limbTextArea")).value;
     var limb: Limb = new Limb();
     limb.count = 0;
-    limb.name = "Gilbert";
+    limb.name = this.userName;
     limb.timeStamp = Timestamp;
     limb.content = limbText;
-    this.server.postLimb( limb ).subscribe();
+    this.server.postLimb( limb, this.userName ).subscribe();
+    this.closeModal();
   }
   
 

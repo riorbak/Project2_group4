@@ -25,7 +25,6 @@ export class FeedComponent implements OnInit {
     this.userEmail = this.auth.userProfile.email;
     let postResult = this.server.getUser(this.userEmail).subscribe(res => {
       let user: User = <User>res;
-      console.log(JSON.stringify(user));
       if (!user.lastName) {
         this.router.navigate(['register']);
       }

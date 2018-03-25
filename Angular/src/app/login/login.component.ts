@@ -19,17 +19,25 @@ export class LoginComponent implements OnInit
       localStorage.removeItem('access_token');
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
-      // let user=new User();
+      let user=new User();
+      // user.username = 'GStar';
+      // user.email='scott.g.bennett@gmail.com';
+      // user.firstName='Scott';
+      // user.lastName='Bennett';
+      // user.bdate='Sun Mar 25 2018 00:00:00 GMT-0400 (EDT)';
+      
+      
+      // console.log("User is: " + JSON.stringify(user));
       // this.postNewUser(user);
       // console.log(JSON.stringify(this.Server.getUser("GStar")));
-      let limb=new Limb();
-      limb.content="hi"
-      limb.count=2;
-      limb.limbId=3;
-      limb.media="this is my url";
-      limb.name="f";
-      limb.timeStamp="00/00/00 00:00 AM";
-      this.postLimb(limb,'jiim');
+      // let limb=new Limb();
+      // limb.content="hi"
+      // limb.count=2;
+      // limb.limbId=3;
+      // limb.media="this is my url";
+      // limb.name="f";
+      // limb.timeStamp="00/00/00 00:00 AM";
+      // this.postLimb(limb,'Gstar');
   }
 
   //TESTING
@@ -47,7 +55,7 @@ export class LoginComponent implements OnInit
   {
     this.Server.postNewUser(user).subscribe( res=>{
       let x : User=<User>res;
-      console.log("User: " + JSON.stringify(user));
+      console.log(res);
     });
     console.log("thing 2");    
   }

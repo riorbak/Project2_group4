@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LikeComponent implements OnInit {
 
 
-  @Input() count;
+  @Input() likes;
   temp: string;
   clickCount: number;
   color: string;
@@ -17,7 +17,7 @@ export class LikeComponent implements OnInit {
 
   ngOnInit() {
     this.clickCount = 0;
-    this.updateIcon(this.count);
+    this.updateIcon(this.likes);
     
   }
 
@@ -28,10 +28,10 @@ export class LikeComponent implements OnInit {
     // } else {
     //   this.count -= 1;
     // }
-    this.count++;
-    this.updateIcon(this.count);
+    this.likes++;
+    this.updateIcon(this.likes);
     console.log(this.clickCount);
-    console.log(this.count);
+    console.log(this.likes);
   }
 
   updateIcon(numCount: number) {

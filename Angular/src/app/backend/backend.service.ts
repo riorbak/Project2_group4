@@ -20,7 +20,7 @@ export class BackendService
 
   postLimb( limb : Limb, username : string )
   {
-    let url : string = appSettings.BACKEND_URL + '/boers/'+username+'/limbs/new';
+    let url : string = appSettings.BACKEND_URL + 'boers/'+username+'/limbs/new';
     return this.http.post(url,JSON.stringify(limb),httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
@@ -51,6 +51,14 @@ export class BackendService
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getAllUsers', []))
+    );
+  }
+
+  getAllLimbs() {
+    let url : string = appSettings.BACKEND_URL + 'limbs/'
+    return this.http.get(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('getAllLimbs', []))
     );
   }
 

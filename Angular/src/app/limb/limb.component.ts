@@ -9,13 +9,13 @@ import { EditLimbComponent } from '../edit-limb/edit-limb.component';
 })
 export class LimbComponent implements OnInit {
 
-  @Input() count: number; //This will be the number of likes
-  @Input() name: string;
-  @Input() timeStamp: any;
-  @Input() limbBody: string;
-  @Input() limbId: number;
-  @Input() editingOpen;
-  @Input() media;
+  @Input() likes: number; //This will be the number of likes
+  @Input() owner: string;
+  @Input() postTime: any;
+  @Input() content: string;
+  @Input() id: number;
+  @Input() editingOpen : any;
+  @Input() media : string;
 
   constructor(private modalService: NgbModal) { 
     
@@ -26,8 +26,8 @@ export class LimbComponent implements OnInit {
 
   open() {
     const modalRef = this.modalService.open(EditLimbComponent);
-    modalRef.componentInstance.limbId = this.limbId;
-    modalRef.componentInstance.limbBody = this.limbBody;
+    modalRef.componentInstance.id = this.id;
+    modalRef.componentInstance.content = this.content;
   }
 
 }

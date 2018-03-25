@@ -11,7 +11,7 @@ import { LimbMediaModalComponent } from '../limb-media-modal/limb-media-modal.co
 })
 export class LimbBodyComponent implements OnInit {
 
-  @Input() contents: string;
+  @Input() content: string;
   @Input() media;
   srcUrl: any;
   hasMedia: boolean;

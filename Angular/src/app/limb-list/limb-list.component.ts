@@ -5,6 +5,8 @@ import { LimbComponent } from '../limb/limb.component';
 // import { of } from 'rxjs/observable/of';
 
 import { Limb } from '../objects';
+import { BackendService } from '../backend/backend.service';
+
 
 
 @Component({
@@ -13,52 +15,27 @@ import { Limb } from '../objects';
   styleUrls: ['./limb-list.component.css']
 })
 export class LimbListComponent implements OnInit {
-
+  constructor (private Server: BackendService) {
+    this.getAllLimbs();
+   }
 // list: Array<LimbComponent>; 
-list: Limb[] = [
-  {
-    count: 0,
-    name: 'My Name',
-    timeStamp: '00/00/00 00:00 AM',
-    content: 'Please work....',
-    limbId: 1,
-    media: "/assets/images/cat.png"
-  },
-  {
-    count: 1,
-    name: 'Your Name',
-    timeStamp: '00/00/00 00:00 AM',
-    content: 'I believe in this test...',
-    limbId: 2,
-    media: null
-  },
-  {
-    count: 2,
-    name: 'His Name',
-    timeStamp: '00/00/00 00:00 AM',
-    content: 'We can do it!',
-    limbId: 3,
-    media: "/assets/images/kitten_background.png"
+list: Limb[] = [];
 
-  },
-  {
-    count: 3,
-    name: 'Her Name',
-    timeStamp: '00/00/00 00:00 AM',
-    content: 'I believe in us!',
-    limbId: 4,
-    media: null
+getAllLimbs()
+{
+    this.Server.getAllLimbs().subscribe( res=>{
+      for (var i in res) {
+        this.list.push(<Limb>res[i]);
+      }
+      console.log(this.list);
+  });
+}
 
-  }
-];
 
 @Input() editingOpen;
 // requestUrl: any;
 
 // private http: HttpClient
-constructor() {
-
-}
 
 ngOnInit() 
 {
