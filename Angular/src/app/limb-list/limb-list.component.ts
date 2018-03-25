@@ -25,6 +25,7 @@ getAllLimbs()
 {
     this.Server.getAllLimbs().subscribe( res=>{
       for (var i in res) {
+        res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);

@@ -22,7 +22,10 @@ export class FeedComponent implements OnInit {
     //   this.router.navigate(['login']);
     
     // }
-    this.userEmail = this.auth.userProfile.email;
+    let userProfile = {email: ''};
+    var profile = localStorage.getItem('profile');
+    userProfile = JSON.parse(profile);
+    this.userEmail = userProfile.email;
     let postResult = this.server.getUser(this.userEmail).subscribe(res => {
       let user: User = <User>res;
       if (!user.lastName) {

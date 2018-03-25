@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EditLimbComponent } from '../edit-limb/edit-limb.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-limb',
@@ -18,10 +19,10 @@ export class LimbComponent implements OnInit {
   @Input() media : string;
 
   constructor(private modalService: NgbModal) { 
-    
   }
 
   ngOnInit() {
+
   }
 
   open() {
