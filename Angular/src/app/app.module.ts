@@ -24,6 +24,8 @@ import { AuthenticationLanderComponent } from './authentication-lander/authentic
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+
 
 
 @NgModule({
@@ -44,8 +46,8 @@ import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.com
     EditLimbComponent,
     ChangePhotoComponent,
     AuthenticationLanderComponent,
-    LimbMediaModalComponent
-
+    LimbMediaModalComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,

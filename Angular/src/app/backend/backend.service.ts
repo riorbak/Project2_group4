@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Limb } from '../limb/mock-limb';
 import { User } from '../limb/mock-user'
-
+import { appSettings } from '../appSettings';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -19,7 +19,7 @@ export class BackendService
 
   postLimb( limb : Limb)
   {
-    let url : string = 'http://localhost:8080/CashFlowServlet/CFservlet';
+    let url : string = appSettings.BACKEND_URL + 'CFservlet';
     return this.http.post(url,limb,httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
@@ -28,7 +28,7 @@ export class BackendService
 
   postNewUser( user : User )
   {
-    let url : string = 'http://localhost:8080/boers/new';
+    let url : string = appSettings.BACKEND_URL + 'boers/new';
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))

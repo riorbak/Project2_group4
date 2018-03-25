@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../auth/authentication.service';
+import { Router } from '@angular/router';
 
 
 // import { LimbComponent } from './limb';
@@ -11,11 +12,15 @@ import { AuthenticationService } from '../auth/authentication.service';
 })
 export class FeedComponent implements OnInit {
 
-  profile: any;
-  constructor(public auth: AuthenticationService) { }
+  public userEmail: string;
+  constructor(public auth: AuthenticationService, public router: Router) { }
  
   ngOnInit() {
-    console.log(this.auth.userProfile);
+    if(!this.auth.userProfile){
+      this.router.navigate(['login']);
+    }
+    this.userEmail = this.auth.userProfile.email;
+    
   //   const accessToken = localStorage.getItem('access_token');
   //   if (this.auth.userProfile) {
   //     this.profile = this.auth.userProfile;

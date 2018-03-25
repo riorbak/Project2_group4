@@ -3,18 +3,19 @@ import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { Auth0Lock } from 'auth0-lock';
-
+import { appSettings } from '../appSettings';
 @Injectable()
 export class AuthenticationService {
 
   public userProfile: any;
+  public errorMessage: any;
 
   auth0 = new auth0.WebAuth({
     clientID: '0ALaNaZnhA2AYZfI1OnEnjXsW9DBc7bL',
     domain: 'revature-limbo.auth0.com',
     responseType: 'token id_token',
     audience: 'https://revature-limbo.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/auth',
+    redirectUri: appSettings.ANGULAR_URL + 'auth',
     scope: 'openid email'
   });
 
@@ -23,8 +24,6 @@ export class AuthenticationService {
 
   public login(): void {
     this.auth0.authorize();
-    // this.handleAuthentication();
-
   }
 
 
@@ -33,9 +32,8 @@ export class AuthenticationService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        //this.router.navigate(['/feed']);
       } else if (err) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/verify']);
         console.log(err);
       }
       this.setSession(authResult);
