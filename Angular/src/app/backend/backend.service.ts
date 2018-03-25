@@ -29,17 +29,19 @@ export class BackendService
   postNewUser( user : User )
   {
     let url : string = appSettings.BACKEND_URL + 'boers/new';
-    console.log(url);
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postLimb', []))
     );
   }
 
-  getUser( userName: String )
+  getUser( fetchedEmail: String )
   {
-    let url : string = appSettings.BACKEND_URL + 'boers/' + userName;
-    return this.http.get(url, httpOptions);
+    let url : string = appSettings.BACKEND_URL + 'boers/email';
+    let userEmail = {
+      email: fetchedEmail
+    };
+    return this.http.post(url, userEmail,  httpOptions);
   }
 
 

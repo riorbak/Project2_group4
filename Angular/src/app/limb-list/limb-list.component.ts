@@ -21,6 +21,7 @@ list: Limb[] = [
     name: 'My Name',
     timeStamp: '00/00/00 00:00 AM',
     content: 'Please work....',
+    limbId: 1,
     media: "/assets/images/cat.png"
   },
   {
@@ -44,9 +45,7 @@ list: Limb[] = [
     count: 3,
     name: 'Her Name',
     timeStamp: '00/00/00 00:00 AM',
-
     content: 'I believe in us!',
-    limbBody: 'I believe in us!',
     limbId: 4,
     media: null
 
