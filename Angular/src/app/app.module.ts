@@ -23,7 +23,9 @@ import { ChangePhotoComponent } from './change-photo/change-photo.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+
 
 
 @NgModule({
@@ -44,8 +46,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     EditLimbComponent,
     ChangePhotoComponent,
     AuthenticationLanderComponent,
+    LimbMediaModalComponent,
     VerifyEmailComponent
-
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
   entryComponents: [
     NewLimbModalComponent,
     EditLimbComponent,
-    ChangePhotoComponent
+    ChangePhotoComponent,
+    LimbMediaModalComponent
   ]
 })
 export class AppModule { }

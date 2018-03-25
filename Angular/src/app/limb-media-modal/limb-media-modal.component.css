@@ -1,0 +1,68 @@
+.modal-container {
+    max-height: 95vh;
+    max-width: 75vw;
+    padding: 2%;
+    text-align: center;
+    background: #314455;
+    background-size: cover;
+    border: none;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#314455, #314455, #644E5B);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#314455, #314455, #644E5B);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#314455, #314455, #644E5B);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#314455, #314455, #644E5B);
+}
+
+.modal-title {
+    color: #ffffff;
+}
+
+
+
+
+
+/* button customization */
+.btn-custom{
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+}
+
+
+
+.btn-form {
+    border: 2px solid #644E5B;
+    color: #ffffff;
+    background: #644E5B;
+  
+}
+
+.btn-form:hover, .btn-form:focus {
+    color: #ffffff;
+    border-color: #314455;
+    background-color: #314455;
+}
+
+.left-btn {
+    display: block;
+}
+
+.right-btn {
+    display: inline-block;
+    position:absolute;
+    right: 5%;
+}
+
+.adjust-width {
+    padding: 2%;
+}
+
+
+.image-format {
+    max-width: 50vw;
+    height: auto;
+    max-height: 70vh;
+}
