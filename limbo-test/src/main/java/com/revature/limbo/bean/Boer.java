@@ -1,9 +1,7 @@
 package com.revature.limbo.bean;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -16,10 +14,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+
+@Entity(name="boers")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="username")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -49,15 +49,17 @@ public class Boer implements Comparable<Boer> {
 	
 	@OneToMany(mappedBy="owner")
 	@JsonIdentityReference(alwaysAsId=true)
-	private List<Limb> limbs;
+	@JsonIgnore
+	private Set<Limb> limbs;
 	
-	@ManyToMany(mappedBy="likedBy")
+	@ManyToMany(mappedBy="likers")
 	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnore
 	private Set<Limb> likedLimbs;
 	
 	
 	public Boer() {
-		setLimbs(new ArrayList<>());
+		setLimbs(new TreeSet<>());
 		setLikedLimbs(new TreeSet<Limb>());
 	}
 	
@@ -69,7 +71,7 @@ public class Boer implements Comparable<Boer> {
 		this.email = email;
 		this.bdate = bdate;
 		
-		setLimbs(new ArrayList<>());
+		setLimbs(new TreeSet<>());
 		setLikedLimbs(new TreeSet<Limb>());
 		setProfilePic(null);
 		setCoverPic(null);
@@ -99,11 +101,11 @@ public class Boer implements Comparable<Boer> {
 		this.lastName = lastName;
 	}
 
-	public List<Limb> getLimbs() {
+	public Set<Limb> getLimbs() {
 		return limbs;
 	}
 
-	public void setLimbs(List<Limb> limbs) {
+	public void setLimbs(Set<Limb> limbs) {
 		this.limbs = limbs;
 	}
 

@@ -12,13 +12,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.limbo.bean.Boer;
+import com.revature.limbo.bean.Limb;
 import com.revature.limbo.repository.BoerRepository;
+import com.revature.limbo.repository.LimbRepository;
 
 @Service
 public class BoerService {
 	
 	@Autowired
 	private BoerRepository boerRepo;
+	
+	@Autowired
+	private LimbRepository limbRepo;
 	
 	public List<Boer> getAllBoers() {
 		List<Boer> boerList = new ArrayList<>();
@@ -28,8 +33,14 @@ public class BoerService {
 	}
 	
 	
-	public Boer getBoer(String id) {
+	public Boer getBoerById(String id) {
 		Optional<Boer> b = boerRepo.findById(id);
+		return b.isPresent() ? b.get() : null;
+	}
+	
+	
+	public Boer getBoerByEmail(String email) {
+		Optional<Boer> b = boerRepo.findFirstBoerByEmail(email);
 		return b.isPresent() ? b.get() : null;
 	}
 	
@@ -40,7 +51,7 @@ public class BoerService {
 	 */
 	@Transactional
 	public Boer addBoer(Boer b) {
-		Boer existing = getBoer(b.getUsername());
+		Boer existing = getBoerById(b.getUsername());
 		
 		if(existing != null)
 			return null;
@@ -57,7 +68,7 @@ public class BoerService {
 	 */
 	@Transactional
 	public Boer updateBoer(Boer b) {
-		Boer existing = getBoer(b.getUsername());
+		Boer existing = getBoerById(b.getUsername());
 		
 		if(existing == null)
 			return null;
@@ -93,5 +104,23 @@ public class BoerService {
 	
 	public void deleteBoer(String id) {
 		boerRepo.deleteById(id);
+	}
+	
+	////////////////////////////////////////////
+	
+	public long getUserLimbsCount(String username) {
+		return limbRepo.countLimbsByOwnerUsername(username);
+	}
+	
+	public long getUserLikedLimbsCount(String username) {
+		return limbRepo.countLikedLimbsByLikersUsername(username);
+	}
+	
+	public List<Limb> getAllUserLimbs(String username) {
+		return limbRepo.findAllByOwnerUsername(username);
+	}
+	
+	public List<Limb> getLimbsLikedByUser(String username) {
+		return limbRepo.findLimbsLikedByLikedLimbsUsername(username);
 	}
 }
