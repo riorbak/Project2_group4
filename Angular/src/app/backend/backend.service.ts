@@ -26,6 +26,15 @@ export class BackendService
     );
   }
 
+  postNewUser( user : User )
+  {
+    let url : string = 'http://localhost:8080/boers/new';
+    return this.http.post(url,user,httpOptions)
+    .pipe(
+      catchError(this.handleError('postNewUser', []))
+    );
+  }
+
   getAllUsers()
   {
     let url : string = 'http://localhost:8080/boers';
@@ -35,12 +44,12 @@ export class BackendService
     );
   }
 
-  postNewUser( user : User )
+  getUser(username : string)
   {
-    let url : string = 'http://localhost:8080/boers/new';
-    return this.http.post(url,user,httpOptions)
+    let url : string = 'http://localhost:8080/boers/' + username;
+    return this.http.get(url,httpOptions)
     .pipe(
-      catchError(this.handleError('postNewUser', []))
+      catchError(this.handleError('getUser', []))
     );
   }
 

@@ -65,7 +65,6 @@ postNewUser(user : User): void
       alert("username is already taken!");
     else
       alert("register succesful");
-    //login
   });  
 }
 

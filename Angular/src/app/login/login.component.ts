@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit
       // this.postLimb(limb);
       //let user=new User();
       //this.postNewUser(user);
-      this.getAllUsers();
+      //this.getAllUsers();
+      this.getUser("jim");
       console.log("hi");
   }
 
@@ -48,6 +49,13 @@ export class LoginComponent implements OnInit
   getAllUsers()
   {
       this.Server.getAllUsers().subscribe( res=>{
+      console.log(res);
+    });
+  }
+
+  getUser(username : string)
+  {
+    this.Server.getUser(username).subscribe( res=>{
       console.log(res);
     });
   }
