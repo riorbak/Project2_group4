@@ -1,6 +1,5 @@
 package com.revature.limbo.bean;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
@@ -43,10 +42,10 @@ public class Boer implements Comparable<Boer> {
 	
 	
 	@Column(name="profilePic")
-	private URL profilePic;
+	private String profilePic;
 	
 	@Column(name="coverPic")
-	private URL coverPic;
+	private String coverPic;
 	
 	@OneToMany(mappedBy="owner")
 	@JsonIdentityReference(alwaysAsId=true)
@@ -134,19 +133,19 @@ public class Boer implements Comparable<Boer> {
 		this.bdate = bdate;
 	}
 
-	public URL getProfilePic() {
+	public String getProfilePic() {
 		return profilePic;
 	}
 
-	public void setProfilePic(URL profilePic) {
+	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
 
-	public URL getCoverPic() {
+	public String getCoverPic() {
 		return coverPic;
 	}
 
-	public void setCoverPic(URL coverPic) {
+	public void setCoverPic(String coverPic) {
 		this.coverPic = coverPic;
 	}
 
