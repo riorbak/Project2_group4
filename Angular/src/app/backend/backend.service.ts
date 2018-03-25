@@ -35,6 +35,15 @@ export class BackendService
     );
   }
 
+  postUpdateUser( user : User )
+  {
+    let url : string = 'http://localhost:8080/boers/update';
+    return this.http.post(url,user,httpOptions)
+    .pipe(
+      catchError(this.handleError('postNewUser', []))
+    );
+  }
+
   getAllUsers()
   {
     let url : string = 'http://localhost:8080/boers';

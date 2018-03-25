@@ -20,10 +20,14 @@ export class LoginComponent implements OnInit
       //TESTING
       // let limb=new Limb();
       // this.postLimb(limb);
-      //let user=new User();
+      let user=new User();
+      user.username="jim";
+      user.firstName="updated";
       //this.postNewUser(user);
       //this.getAllUsers();
-      this.getUser("jim");
+      //this.getUser("jim");
+      this.postUpdateUser(user);
+      this.getAllUsers();
       console.log("hi");
   }
 
@@ -44,6 +48,15 @@ export class LoginComponent implements OnInit
       console.log("thing 1"+x.username);
     });
     console.log("thing 2");    
+  }
+
+  postUpdateUser( user : User )
+  {
+    this.Server.postUpdateUser(user).subscribe( res=>{
+      let x : User=<User>res;
+      console.log("thing 1"+x.firstName);
+    });
+    console.log("thing 2"); 
   }
 
   getAllUsers()
