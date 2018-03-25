@@ -62,6 +62,14 @@ export class BackendService
     );
   }
 
+  getLimbsByUserName(username : string) {
+    let url : string = appSettings.BACKEND_URL + 'boers/' + username + '/limbs' 
+    return this.http.get(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('getLimbsByUsername', []))
+    );
+  }
+
   getUserByUsername(username : string)
   {
     let url : string = 'http://localhost:8080/boers/' + username;
