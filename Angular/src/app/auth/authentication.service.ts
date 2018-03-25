@@ -23,8 +23,6 @@ export class AuthenticationService {
 
   public login(): void {
     this.auth0.authorize();
-    // this.handleAuthentication();
-
   }
 
 
@@ -33,12 +31,14 @@ export class AuthenticationService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        //this.router.navigate(['/feed']);
       } else if (err) {
-        this.router.navigate(['/login']);
         console.log(err);
+        this.router.navigate(['/login']);
+
+      } else {
+        this.router.navigate(['/login']);
+
       }
-      this.setSession(authResult);
     });
   }
 
