@@ -12,16 +12,9 @@ export class AuthenticationLanderComponent implements OnInit {
   
   constructor(public auth: AuthenticationService, public router: Router) {
     this.auth.handleAuthentication();
-   }
+  }
 
   ngOnInit() {
-
-    // if (this.profile) {
-    //   this.router.navigate(['feed']);
-    // }
-    // else {
-    //   this.router.navigate(['login']);
-    // }
   }
 
 }
