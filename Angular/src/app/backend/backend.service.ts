@@ -38,7 +38,7 @@ export class BackendService
 
   postUpdateUser( user : User )
   {
-    let url : string = 'http://localhost:8080/boers/update';
+    let url : string =  appSettings.BACKEND_URL +'boers/update';
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postNewUser', []))
@@ -47,7 +47,7 @@ export class BackendService
 
   getAllUsers()
   {
-    let url : string = 'http://localhost:8080/boers';
+    let url : string =  appSettings.BACKEND_URL + 'boers';
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getAllUsers', []))
@@ -72,7 +72,7 @@ export class BackendService
 
   getUserByUsername(username : string)
   {
-    let url : string = 'http://localhost:8080/boers/' + username;
+    let url : string = appSettings.BACKEND_URL + 'boers/' + username;
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getUser', []))
@@ -91,6 +91,14 @@ export class BackendService
     );
   }
 
+  public doLike(userName : string, limbId : number) {
+    let url : string = appSettings.BACKEND_URL + "limbs/" + limbId + '/' + userName + '/1';
+    console.log(url);
+    return this.http.get(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('doLike', []))
+      ); 
+  }
 
   private handleError<T> (operation = 'operation', result?: T) 
   {
