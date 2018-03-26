@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit
 
   getUser(username : string)
   {
-    this.Server.getUser(username).subscribe( res=>{
+    this.Server.getUserByUsername(username).subscribe( res=>{
       console.log(res);
     });
   }

@@ -4,7 +4,7 @@
       <input #searchBox type="text" class="form-control" id="navSearch" placeholder="Search" (keyup)="search(searchBox.value)" >
       <ul class="search-result">
         <li *ngFor="let user of users$ | async" >
-          <a routerLink="/detail/{{user.username}}">
+          <a href="http://localhost:4200/profile/{{user.username}}">
             {{user.username}}
           </a>
         </li>

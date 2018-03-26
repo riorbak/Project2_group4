@@ -85,7 +85,7 @@ export class BackendService
     );
   }
 
-  getUser( fetchedEmail: String )
+  getUserByEmail( fetchedEmail: String )
   {
     let url : string = appSettings.BACKEND_URL + 'boers/email';
     let userEmail = {
