@@ -18,7 +18,9 @@ export class RegistrationComponent implements OnInit {
 
 public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'mm/dd/yyyy',
+
 };
+
 public date = new Date();
 public model: any = 
 { 
@@ -33,20 +35,20 @@ public user=new User();
 public password: string;
 public confirmpassword: string;
 public disabled: boolean=true;
+public email = localStorage.getItem("email");
 
-
-verifyPasswords()
-{
-  if(this.password!==this.confirmpassword)
-  {
-      //TODO: show a modal or some shit
-      alert("Passwords must match");
-  }
-  else
-  {
-    this.disabled=false;;
-  }
-}
+// verifyPasswords()
+// {
+//   if(this.password!==this.confirmpassword)
+//   {
+//       //TODO: show a modal or some shit
+//       alert("Passwords must match");
+//   }
+//   else
+//   {
+//     this.disabled=false;;
+//   }
+// }
 
 
 
