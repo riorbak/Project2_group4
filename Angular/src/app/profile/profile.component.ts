@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ChangePhotoComponent } from '../change-photo/change-photo.component';
 import { AuthenticationService } from '../auth/authentication.service';
 import { Router } from '@angular/router';
+import { User } from '../objects';
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +14,19 @@ export class ProfileComponent implements OnInit {
 
   @Input() email: string;
   @Input() type: string;
+  user: User;
+  firstName: string;
+  lastName: string;
 
   editingOpen: boolean = false;
 
   // check to see if current user's username matches this profile's username
 
-  constructor(private modalService: NgbModal, public auth:AuthenticationService, private router:Router) { }
+  constructor(private modalService: NgbModal, public auth:AuthenticationService, private router:Router) {
+    this.user = JSON.parse(localStorage.getItem('userObject'));
+    this.firstName = this.user.firstName;
+    this.lastName = this.user.lastName;
+  }
 
   ngOnInit() {
     // if (!this.auth.userProfile) {

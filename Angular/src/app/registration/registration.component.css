@@ -29,10 +29,16 @@
     box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);
 }
 
-.form-control:focus{
+.form-control:focus, .form-control:hover{
     border-color: #97aabd;
     box-shadow: 0 1px 1px #97aabd inset, 0 0 8px #97aabd;
+    
     color: #97aabd;
+}
+.form-control.disabled:focus, .form-control.disabled:hover{
+    border-color: #644E5B;
+    box-shadow:-5px 6px 8px 2px rgba(0, 0, 0, 0.808);
+    color: #644E5B;
 }
 
 
@@ -58,10 +64,11 @@
 }
 
 
-.disabled .form-control:focus, .disabled .form-control:hover{
+.disabled .form-control, .disabled .form-control:focus, .disabled .form-control:hover{
     border-color: #644E5B;
     color: #644E5B;
 }
+
 
 .icon-addon.disabled, .icon-addon.disabled:hover, .icon-addon.disabled:focus {
     color: #644E5B;

@@ -16,6 +16,10 @@
 .selection.ng-untouched.ng-pristine.ng-valid {
     text-align: center;
 }
+.selection.ng-touched.ng-pristine.ng-valid {
+    text-align: center;
+}
+
 
 div.mydp {
     border: 1px solid #9E5A63;
