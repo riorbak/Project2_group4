@@ -1,0 +1,260 @@
+.modal-container {
+    height: auto;
+    width: auto;
+    padding: 5%;
+    background: #314455;
+    border: none;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#314455, #314455, #644E5B);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#314455, #314455, #644E5B);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#314455, #314455, #644E5B);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#314455, #314455, #644E5B);
+    background-size: 100%;
+}
+
+.adjust-width {
+    /* margin: 10px; */
+    display: inline-block;
+    width: max-content;
+}
+
+.modal-title {
+    color: #ffffff;
+}
+
+.row {
+    margin: 15px;
+}
+
+.user-info {
+    font-size: 20px;
+    
+    color: #97AABD;
+}
+
+.user-info.pass {
+    display: inline-block;
+    overflow: hidden;
+    -webkit-text-security: circle;
+    width: 80%;
+}
+
+.form-container-custom {
+    margin-top: 30px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+
+}
+
+
+.form-row{
+    margin: 5px;
+}
+
+.form-control{
+    border-color: #9E5A63;
+    color: #9E5A63;
+}
+
+.form-control:focus, .form-control:hover{
+    border-color: #97aabd;
+    box-shadow: 0 1px 1px #97aabd inset, 0 0 8px #97aabd;
+    color: #97aabd;
+}
+
+.disabled .form-control:focus, .disabled .form-control:hover{
+    border-color: #9E5A63;
+    color: #9E5A63;
+    box-shadow: 0 0 0 #ffffff;
+}
+
+
+
+/* button customization */
+.btn-custom{
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+}
+
+
+
+.btn-form {
+    border: 2px solid #644E5B;
+    color: #ffffff;
+    background: #644E5B;
+  
+}
+
+.btn-form:hover, .btn-form:focus {
+    color: #ffffff;
+    border-color: #314455;
+    background-color: #314455;
+}
+
+.btn-visible {
+    display: none;
+}
+
+.left-btn {
+    display: inline-block;
+}
+
+.right-btn {
+    display: inline-block;
+    position:absolute;
+    right: 5%;
+}
+
+.post-content {
+    width: 80%;
+    margin:auto;
+    margin-top: 5%;
+}
+
+.edit-icon-position {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.edit-visibility {
+    display: block;
+}
+
+.fa.fa-lock.edit {
+    font-size: 30px;
+    color: #97AABD;
+    text-shadow: 2px 2px rgba(24, 24, 24, 0.884);
+}
+
+.fa.fa-unlock-alt {
+    font-size: 30px;
+    color: #C96567;
+    text-shadow: 2px 2px rgba(24, 24, 24, 0.884);
+}
+
+.fa.fa-eye-slash {
+    font-size: 25px;
+    color: #97AABD;
+    text-shadow: 2px 2px rgba(24, 24, 24, 0.884);
+
+}
+
+.fa.fa-eye {
+    font-size: 25px;
+    color: #C96567;
+    text-shadow: 2px 2px rgba(24, 24, 24, 0.884);
+
+}
+
+.fa.fa-eye-slash:hover, .fa.fa-eye:hover, .fa.fa-unlock-alt:hover, .fa.fa-lock.edit:hover {
+    text-shadow: 0px 0px rgba(24, 24, 24, 0.884);
+
+}
+
+/* Icon in Input CSS */
+.center-block {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon-addon.disabled, .icon-addon.disabled:hover, .icon-addon.disabled:focus {
+    color: #644E5B;
+}
+
+.icon-addon.disabled .form-control:focus + .fa,
+.icon-addon.disabled:hover .fa {
+    color: #644E5B;
+}
+
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #9E5A63;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.fa.md, .icon-color {
+    font-size: 25px; 
+    color:  #97AABD;
+}
+
+.icon-addon.addon-lg .form-control {
+    line-height: 1.33;
+    height: 46px;
+    font-size: 18px;
+    padding: 10px 16px 10px 40px;
+}
+
+.icon-addon.addon-sm .form-control {
+    height: 30px;
+    padding: 5px 10px 5px 28px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon-addon.addon-lg .fa,
+.icon-addon.addon-lg .glyphicon {
+    font-size: 18px;
+    margin-left: 0;
+    left: 11px;
+    top: 4px;
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon.addon-sm .fa,
+.icon-addon.addon-sm .glyphicon {
+    margin-left: 0;
+    font-size: 12px;
+    left: 5px;
+    top: -1px
+}
+
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #97aabd;
+}
+
+/* End Icon CSS */
