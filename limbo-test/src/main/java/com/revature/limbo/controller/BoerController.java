@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -146,7 +147,7 @@ public class BoerController {
 			consumes="multipart/form-data",
 			produces="applicatoin/json")
 	public JsonNode uploadCoverImage(@PathVariable String username,
-			@RequestBody MultipartFile coverFile) {
+			@RequestParam(name="inputImg") MultipartFile coverFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
 		final String KEY_SUCCESS = "success";
 		final String KEY_MESSAGE = "message";
@@ -220,18 +221,22 @@ public class BoerController {
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{username}/profile-img",
 			consumes="multipart/form-data",
-			produces="applicatoin/json")
+			produces="application/json")
 	public JsonNode uploadProfileImage(@PathVariable String username,
-			@RequestBody MultipartFile profileFile) {
+			@RequestParam(name="inputImg") MultipartFile profileFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
 		final String KEY_SUCCESS = "success";
 		final String KEY_MESSAGE = "message";
 		final String KEY_OWNER = "owner";
 		
 		// Check for non-empty 
-		if(profileFile == null || profileFile.isEmpty()) {
+		if(profileFile == null) {
 			resultJsonObj.put(KEY_SUCCESS, false);
-			resultJsonObj.put(KEY_MESSAGE, "File null or empty.");
+			resultJsonObj.put(KEY_MESSAGE, "File null.");
+			return resultJsonObj;
+		} else if(profileFile.isEmpty()) {
+			resultJsonObj.put(KEY_SUCCESS, false);
+			resultJsonObj.put(KEY_MESSAGE, "File empty.");
 			return resultJsonObj;
 		}
 		
@@ -263,7 +268,7 @@ public class BoerController {
 				resultJsonObj.put(KEY_MESSAGE, "Boer does not exist.");
 				resultJsonObj.putNull(KEY_OWNER);
 				return resultJsonObj;
-			} else if(b.getCoverPic().equals(urlString)) { // Updated boer data successfully.
+			} else if(b.getProfilePic().equals(urlString)) { // Updated boer data successfully.
 				// Successful update.
 				resultJsonObj.put(KEY_SUCCESS, true);
 				resultJsonObj.put(KEY_MESSAGE, "Image successfully uploaded.");
