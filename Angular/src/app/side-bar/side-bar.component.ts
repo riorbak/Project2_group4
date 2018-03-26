@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewLimbModalComponent } from '../new-limb-modal/new-limb-modal.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../objects';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SideBarComponent implements OnInit {
 
-  
+  user: User;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {
+    this.user = JSON.parse(localStorage.getItem('userObject'));
+   }
 
   ngOnInit() {
   }
