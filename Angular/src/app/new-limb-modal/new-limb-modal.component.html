@@ -5,10 +5,10 @@
 
   <div class="form-container">
                   <!--servlet url-->
-    <form action="http://localhost:8000" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:8080/boers/GStar/limbs/new" method="post" enctype="multipart/form-data">
       <div class="form-group-custom">
         <!-- <label for="limbTextArea">Example textarea</label> -->
-        <textarea class="form-control post-content" id="limbTextArea" rows="3" placeholder="&#xf044;" (change)="detectlinks()"></textarea>
+        <textarea class="form-control post-content" name="postText" id="limbTextArea" rows="3" placeholder="&#xf044;" (change)="detectlinks()"></textarea>
       </div>
       <div class="file-input-center">
         <div class="form-group-custom">
@@ -22,7 +22,7 @@
         <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
       </div>
       <div class="right-btn">
-        <button type="button" id="submitBtn" class="btn-custom btn-form">Post!</button>
+        <button type="button" id="submitBtn" class="btn-custom btn-form" (click)="makeLimb()">Post</button>
       </div>
       <br>
       <br>

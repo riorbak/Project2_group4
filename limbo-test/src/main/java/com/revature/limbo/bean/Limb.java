@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,10 +18,11 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity(name="limbs")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="id")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,16 +40,18 @@ public class Limb implements Comparable<Limb> {
 	
 	@ManyToOne(cascade=CascadeType.ALL,
 			optional=false)
+	@JoinColumn(name="owner")
 	@JsonIdentityReference(alwaysAsId=true)
 	private Boer owner;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="liked_limbs",
 		joinColumns=@JoinColumn(name="liked_post", referencedColumnName="id"),
 		inverseJoinColumns=@JoinColumn(name="liked_by", referencedColumnName="username")
 	)
 	@JsonIdentityReference(alwaysAsId=true)
-	private Set<Boer> likedBy;
+	@JsonIgnore
+	private Set<Boer> likers;
 	
 	
 	public Limb() {
@@ -104,14 +108,14 @@ public class Limb implements Comparable<Limb> {
 		this.postTime = postTime;
 	}
 
-	public Set<Boer> getLikedBy() {
-		return likedBy;
+	public Set<Boer> getLikers() {
+		return likers;
 	}
 
-	public void setLikedBy(Set<Boer> likedBy) {
-		this.likedBy = likedBy;
+	public void setLikedBy(Set<Boer> likers) {
+		this.likers = likers;
 	}
-
+	
 	@Override
 	public int compareTo(Limb o) {
 		return id.compareTo(o.getId());

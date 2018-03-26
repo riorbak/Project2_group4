@@ -22,9 +22,19 @@ export class SideBarComponent implements OnInit {
     modalRef.componentInstance.name = 'World';
   }
 
+
   openSettings() {
     const modalRef = this.modalService.open(SettingsComponent);
     // modalRef.componentInstance.email = 'World';
+  }
+  
+  logOut() {
+    localStorage.removeItem('profile');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
   }
   
 

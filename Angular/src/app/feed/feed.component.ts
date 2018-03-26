@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../auth/authentication.service';
 import { Router } from '@angular/router';
+import { User } from '../objects'
+import { BackendService } from '../backend/backend.service';
 
 
 // import { LimbComponent } from './limb';
@@ -13,24 +15,26 @@ import { Router } from '@angular/router';
 export class FeedComponent implements OnInit {
 
   public userEmail: string;
-  constructor(public auth: AuthenticationService, public router: Router) { }
- 
+  constructor(public auth: AuthenticationService, public router: Router, private server: BackendService) { }
+
   ngOnInit() {
-    if(!this.auth.userProfile){
-      this.router.navigate(['login']);
-    }
-    this.userEmail = this.auth.userProfile.email;
+    // if (!this.auth.userProfile) {
+    //   this.router.navigate(['login']);
     
-  //   const accessToken = localStorage.getItem('access_token');
-  //   if (this.auth.userProfile) {
-  //     this.profile = this.auth.userProfile;
-  //   } else {
-  //     this.auth.getProfile((err, profile) => {
-  //       this.profile = profile;
-  //       localStorage.setItem('profile', profile);
-  //       console.log(this.profile);        
-  //     });
-  //   }
-   }
+    // }
+    let userProfile = {email: ''};
+    var profile = localStorage.getItem('profile');
+    userProfile = JSON.parse(profile);
+    this.userEmail = userProfile.email;
+    let postResult = this.server.getUser(this.userEmail).subscribe(res => {
+      let user: User = <User>res;
+      if (!user.lastName) {
+        this.router.navigate(['register']);
+      }
+      localStorage.setItem('username', user.username);
+    });
+    localStorage.setItem('email', this.userEmail);
+
+  }
 
 }

@@ -17,14 +17,14 @@ export class ChangePhotoComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    console.log(this.type);
-    if(this.type == "Profile"){
-      this.url = "/assets/images/cat.png";
-    } else if (this.type == 'Cover'){
-      this.url =  "/assets/images/kitten_background.png";
-    } else {
-      this.url = "/assets/images/kitten_background.png";
-    }
+    // console.log(this.type);
+    // if(this.type == "Profile"){
+    //   this.url = "/assets/images/cat.png";
+    // } else if (this.type == 'Cover'){
+    //   this.url =  "/assets/images/kitten_background.png";
+    // } else {
+    //   this.url = "/assets/images/kitten_background.png";
+    // }
 // The above may work if i send a regular url from the database
     // console.log("change-photo this.url inside ngOnInit: " + this.url);
 
@@ -49,6 +49,18 @@ export class ChangePhotoComponent implements OnInit {
     this.url = window.URL.createObjectURL(files[0]);
     //  will persist new photo here.
   }
+
+  submitPhoto() {
+    let formData : FormData=new FormData;
+    //formData.append()
+    if (this.type == "Profile") {
+      //do profile things
+    }
+    else {
+      //do cover photo things
+    }
+  }
+  
 
 
 }

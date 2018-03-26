@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend/backend.service';
-import { Limb } from '../limb/mock-limb';
-import { AuthenticationService } from '../auth/authentication.service'
-import { User } from '../limb/mock-user'
+import { AuthenticationService } from '../auth/authentication.service';
+import { User } from '../objects';
+import { Limb } from '../objects';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,26 +11,27 @@ import { User } from '../limb/mock-user'
 
 export class LoginComponent implements OnInit 
 {
-
-
+  
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
-
-
   ngOnInit() 
   { 
-      localStorage.removeItem('profile');
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('expires_at');
-      // let limb=new Limb();
-      // this.postLimb(limb);
       let user=new User();
+      user.username = 'GStar';
+      user.email='scott.g.bennett@gmail.com';
+      user.firstName='Scott';
+      user.lastName='Bennett';
+      //user.bdate='Sun Mar 25 2018 00:00:00 GMT-0400 (EDT)';
+      
+      
+      console.log("User is: " + JSON.stringify(user));
       this.postNewUser(user);
   }
 
-  postLimb(limb : Limb): void 
+  //TESTING
+  postLimb(limb : Limb, username : string): void 
   {
-    this.Server.postLimb(limb).subscribe( res=>{
+    this.Server.postLimb(limb,username).subscribe( res=>{
+      console.log(res);
       let x : Limb=<Limb>res;
       console.log("thing 1"+x.timeStamp);
     });
@@ -41,9 +42,33 @@ export class LoginComponent implements OnInit
   {
     this.Server.postNewUser(user).subscribe( res=>{
       let x : User=<User>res;
-      console.log("thing 1"+x.username);
+      console.log(res);
     });
     console.log("thing 2");    
   }
+
+  postUpdateUser( user : User )
+  {
+    this.Server.postUpdateUser(user).subscribe( res=>{
+      let x : User=<User>res;
+      console.log("thing 1"+x.firstName);
+    });
+    console.log("thing 2"); 
+  }
+
+  getAllUsers()
+  {
+      this.Server.getAllUsers().subscribe( res=>{
+      console.log(res);
+    });
+  }
+
+  getUser(username : string)
+  {
+    this.Server.getUser(username).subscribe( res=>{
+      console.log(res);
+    });
+  }
+
 
 }

@@ -21,9 +21,9 @@ export class ProfileComponent implements OnInit {
   constructor(private modalService: NgbModal, public auth:AuthenticationService, private router:Router) { }
 
   ngOnInit() {
-    if (!this.auth.userProfile) {
-      this.router.navigate(['login']);
-    }
+    // if (!this.auth.userProfile) {
+    //   this.router.navigate(['login']);
+    // }
   }
 
   openProfileEditModal(){
