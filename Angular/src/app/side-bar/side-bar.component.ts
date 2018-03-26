@@ -21,6 +21,15 @@ export class SideBarComponent implements OnInit {
     const modalRef = this.modalService.open(NewLimbModalComponent);
     modalRef.componentInstance.name = 'World';
   }
+
+  logOut() {
+    localStorage.removeItem('profile');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
+  }
   
 
 }

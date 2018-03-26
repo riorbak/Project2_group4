@@ -15,10 +15,6 @@ export class LoginComponent implements OnInit
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
   ngOnInit() 
   { 
-      localStorage.removeItem('profile');
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('expires_at');
       let user=new User();
       user.username = 'GStar';
       user.email='scott.g.bennett@gmail.com';
@@ -29,15 +25,6 @@ export class LoginComponent implements OnInit
       
       console.log("User is: " + JSON.stringify(user));
       this.postNewUser(user);
-      // console.log(JSON.stringify(this.Server.getUser("GStar")));
-      // let limb=new Limb();
-      // limb.content="hi"
-      // limb.count=2;
-      // limb.limbId=3;
-      // limb.media="this is my url";
-      // limb.name="f";
-      // limb.timeStamp="00/00/00 00:00 AM";
-      // this.postLimb(limb,'Gstar');
   }
 
   //TESTING
