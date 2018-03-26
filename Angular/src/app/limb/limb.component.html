@@ -4,8 +4,8 @@
         <div class="col-sm-12 limb-border">
             <div class="decorated">
                 <!-- Limb Author's Name and Limb's Time Stamp in top left corner of Limb -->
-                <span class="subtitle-left1">{{name}}</span>
-                <span class="subtitle-left2">{{timeStamp}}</span>
+                <span class="subtitle-left1">{{owner}}</span>
+                <span class="subtitle-left2">{{postTime}}</span>
                 <!-- Limb Author's Profile Picture -->
                 <div class="img-div profile-photo-size">
                     <app-profile-photo></app-profile-photo>
@@ -14,11 +14,11 @@
             </div>
             <!-- This will be the Limb Body container -->
             <div>
-                <app-limb-body [contents]="limbBody" [media]="media"></app-limb-body>
+                <app-limb-body [content]="content" [media]="media"></app-limb-body>
             </div>
             <!-- clickable like component -->
             <div class="bottom-right">
-                <app-like [count]="count"></app-like>
+                <app-like [likes]="likes" [owner]="owner" [id]="id"></app-like>
             </div>
 
             <!-- Clickable Edit Component. Only visible in user's own profile -->

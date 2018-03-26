@@ -23,6 +23,8 @@ import { ChangePhotoComponent } from './change-photo/change-photo.component';
 import { AuthenticationLanderComponent } from './authentication-lander/authentication-lander.component';
 import { BackendService } from './backend/backend.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MyDatePickerModule } from '../../node_modules/angular4-datepicker/src/my-date-picker';
+import { FormsModule } from '@angular/forms';
 import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -56,7 +58,9 @@ import { SettingsComponent } from './settings/settings.component';
     AppRoutingModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    EmbedVideo.forRoot()
+    EmbedVideo.forRoot(),
+    MyDatePickerModule,
+    FormsModule
   ],
 
   providers: [AuthenticationService,BackendService],

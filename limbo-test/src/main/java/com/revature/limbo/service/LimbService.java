@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.limbo.bean.Boer;
 import com.revature.limbo.bean.Limb;
+import com.revature.limbo.repository.BoerRepository;
 import com.revature.limbo.repository.LimbRepository;
 
 @Service
@@ -21,7 +22,8 @@ public class LimbService {
 	@Autowired
 	private LimbRepository limbRepo;
 	
-	@Autowired BoerService boerService;
+	@Autowired
+	private BoerRepository boerRepo;
 	
 	public List<Limb> getAllLimbs() {
 		List<Limb> limbList = new ArrayList<>();
@@ -93,28 +95,39 @@ public class LimbService {
 	
 	@Transactional
 	public Integer likeLimb(Integer limbId, String likerUsername) {
-		Boer liker = boerService.getBoer(likerUsername);
-		Limb likedLimb = limbRepo.findById(limbId).get();
+		Optional<Boer> liker = boerRepo.findById(likerUsername);
 		
 		// add user to liker set if not liked.
-		likedLimb.getLikedBy().add(liker);
+		if(liker.isPresent()) {
+			Limb likedLimb = limbRepo.findById(limbId).get();
+			likedLimb.getLikers().add(liker.get());
+			limbRepo.save(likedLimb);
+		}
 		
-		limbRepo.save(likedLimb);
-		
-		return likedLimb.getLikedBy().size();
+		return (int)(boerRepo.countLikersByLikedLimbsId(limbId));
 	}
 	
 	@Transactional
 	public Integer unlikeLimb(Integer limbId, String likerUsername) {
-		Boer liker = boerService.getBoer(likerUsername);
-		Limb unlikedLimb = limbRepo.findById(limbId).get();
+		Optional<Boer> liker = boerRepo.findById(likerUsername);
 		
-		// add user to liker set if not liked.
-		unlikedLimb.getLikedBy().remove(liker);
+		// remove user from liker set.
+		if(liker.isPresent()) {
+			Limb likedLimb = limbRepo.findById(limbId).get();
+			likedLimb.getLikers().remove(liker.get());
+			limbRepo.save(likedLimb);
+		}
 		
-		limbRepo.save(unlikedLimb);
-		
-		return unlikedLimb.getLikedBy().size();
+		return (int)(boerRepo.countLikersByLikedLimbsId(limbId));
 	}
 	
+	/////////////////////////////////////
+	
+	public long getLimbLikeCount(Integer limbId) {
+		return boerRepo.countLikersByLikedLimbsId(limbId);
+	}
+	
+	public List<Boer> getLikersFromLimb(Integer limbId) {
+		return boerRepo.findLikersByLikedLimbsId(limbId);
+	}
 }
