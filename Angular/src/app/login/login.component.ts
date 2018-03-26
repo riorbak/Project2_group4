@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit
       
       console.log("User is: " + JSON.stringify(user));
       this.postNewUser(user);
+      
   }
 
   //TESTING
