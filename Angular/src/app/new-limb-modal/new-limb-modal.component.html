@@ -1,0 +1,33 @@
+<div class="modal-container">
+  <h2 class="modal-title">
+    New Post for {{name}}!
+  </h2>
+
+  <div>
+                  <!--servlet url-->
+    <form action="http://localhost:8080/boers/GStar/limbs/new" method="post" enctype="multipart/form-data">
+      <div class="form-group-custom">
+        <!-- <label for="limbTextArea">Example textarea</label> -->
+        <textarea class="form-control post-content" name="postText" id="limbTextArea" rows="3" placeholder="&#xf044;" (change)="detectlinks()"></textarea>
+      </div>
+      <div class="file-input-center">
+        <div class="form-group-custom">
+          <input type="file" name="inputImg" id="newLimbImg" class="inputfile" (change)="changeLabel()" />
+          <label for="newLimbImg" id="inputImgLabel" class="file-btn">
+            <i class="fa fa-upload" style="padding-right:.5em"></i> Add an Image</label>
+        </div>
+      </div>
+      
+      <div class="left-btn">
+        <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
+      </div>
+      <div class="right-btn">
+        <button type="button" id="submitBtn" class="btn-custom btn-form" (click)="makeLimb()">Post</button>
+      </div>
+      <br>
+      <br>
+      <p id="youtube_link" style="color:white; display:none">
+      </p>
+    </form>
+  </div>
+</div>

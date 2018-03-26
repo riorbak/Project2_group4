@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,7 @@ public class LimbController {
 	private JsonGeneratorService jsonGenService;
 	
 	// Get all
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/limbs")
 	public List<? extends JsonNode> getAllLimbs() {
@@ -57,6 +59,7 @@ public class LimbController {
 	
 	
 	// Get by ID
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/limbs/{id}")
 	public JsonNode getLimbById(@PathVariable Integer id) {
@@ -64,6 +67,7 @@ public class LimbController {
 	}
 	
 	// Add new 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{posterUsername}/limbs/new")
 	public JsonNode addLimb(@PathVariable String posterUsername, @RequestBody Limb limb) {
@@ -76,6 +80,7 @@ public class LimbController {
 	
 	
 	// Update existing
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{posterUsername}/limbs/update")
 	public JsonNode updateLimb(@PathVariable String posterUsername, @RequestBody Limb limb) {
@@ -91,6 +96,7 @@ public class LimbController {
 	
 	
 	// Delete by ID
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.DELETE,
 			value="/limbs/{id}")
 	public void deleteLimbById(@PathVariable Integer id) {
@@ -100,6 +106,7 @@ public class LimbController {
 	//////////////////////////////////////
 	
 	// Like/Unlike limb
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/limbs/{id}/{likerUsername}/{like}")
 	public JsonNode likeLimb(@PathVariable Integer id,
@@ -123,6 +130,7 @@ public class LimbController {
 	
 	
 	// Get likers
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/limbs/{id}/likers")
 	public List<? extends JsonNode> getLikersByLimbId(@PathVariable Integer id) {

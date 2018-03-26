@@ -27,7 +27,7 @@ public class AmazonBucketService {
 	@Value("${amazonProperties.endpointUrl}")
 	private String endpointUrl;
 	
-	@Value("${amazonProperties.buckektName}")
+	@Value("${amazonProperties.bucketName}")
 	private String bucketName;
 	
 	@Value("${amazonProperties.accessKey}")

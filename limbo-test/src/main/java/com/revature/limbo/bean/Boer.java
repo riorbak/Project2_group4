@@ -61,6 +61,8 @@ public class Boer implements Comparable<Boer> {
 	public Boer() {
 		setLimbs(new TreeSet<>());
 		setLikedLimbs(new TreeSet<Limb>());
+		this.profilePic = "";
+		this.coverPic = "";
 	}
 	
 	public Boer(String username, String firstName, String lastName, String email, LocalDate bdate) {
@@ -70,6 +72,8 @@ public class Boer implements Comparable<Boer> {
 		this.lastName = lastName;
 		this.email = email;
 		this.bdate = bdate;
+		this.profilePic = "";
+		this.coverPic = "";
 		
 		setLimbs(new TreeSet<>());
 		setLikedLimbs(new TreeSet<Limb>());

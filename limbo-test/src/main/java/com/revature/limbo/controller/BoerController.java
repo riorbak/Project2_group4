@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import org.apache.tomcat.util.buf.HexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,7 @@ public class BoerController {
 	private AmazonBucketService s3BucketService;
 	
 	// Get all
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
 	public List<? extends JsonNode> getAllBoers() {
@@ -54,6 +56,7 @@ public class BoerController {
 	}
 	
 	// Get by ID
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}")
 	public JsonNode getBoerById(@PathVariable String username) {
@@ -63,6 +66,7 @@ public class BoerController {
 	}
 	
 	// Get by Email
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/email")
 	public JsonNode getBoerByEmail(@RequestBody(required=true) ObjectNode param) {
@@ -80,6 +84,7 @@ public class BoerController {
 	}
 	
 	// Make new boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/new")
 	public JsonNode addBoer(@RequestBody Boer b) {
@@ -88,6 +93,7 @@ public class BoerController {
 	}
 	
 	// Update boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/update")
 	public JsonNode updateBoer(@RequestBody Boer b) {
@@ -99,6 +105,7 @@ public class BoerController {
 	}
 	
 	// Delete boer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.DELETE,
 			value="/boers/{username}")
 	public void deleteBoer(@PathVariable String username) {
@@ -108,6 +115,7 @@ public class BoerController {
 	/////////////////////////////////////////////////////////////////////////// 
 	
 	// Get user's limbs
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs")
 	public List<? extends JsonNode> getLimbsByBoer(@PathVariable String username) {
@@ -123,6 +131,7 @@ public class BoerController {
 	}
 	
 	// Get user's liked limbs
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs/liked")
 	public List<? extends JsonNode> getLikedLimbsByBoer(@PathVariable String username) {
@@ -268,7 +277,7 @@ public class BoerController {
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{username}/profile-img",
 			consumes="multipart/form-data",
-			produces="applicatoin/json")
+			produces="application/json")
 	public JsonNode uploadProfileImage(@PathVariable String username,
 			@RequestParam(name="inputImg") MultipartFile profileFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
@@ -277,9 +286,13 @@ public class BoerController {
 		final String KEY_OWNER = "owner";
 		
 		// Check for non-empty 
-		if(profileFile == null || profileFile.isEmpty()) {
+		if(profileFile == null) {
 			resultJsonObj.put(KEY_SUCCESS, false);
-			resultJsonObj.put(KEY_MESSAGE, "File null or empty.");
+			resultJsonObj.put(KEY_MESSAGE, "File null.");
+			return resultJsonObj;
+		} else if(profileFile.isEmpty()) {
+			resultJsonObj.put(KEY_SUCCESS, false);
+			resultJsonObj.put(KEY_MESSAGE, "File empty.");
 			return resultJsonObj;
 		}
 		

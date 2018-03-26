@@ -1,0 +1,108 @@
+.edit-visibility{
+    display: none;
+}
+/* Limb Header Styling */
+.profile-photo-size{
+    height: 90px;
+    width: 90px;
+}
+
+.decorated{
+    overflow: hidden;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.edit-limb-position{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    width: auto;
+}
+.fa.fa-edit {
+    color: #97AABD;
+}
+.fa.fa-edit:hover {
+    color: #C96567;
+}
+
+@media (min-width: 1000px) {
+    .decorated > .subtitle-left1{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 12px;
+    }
+    .decorated > .subtitle-left2{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 142px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .decorated > .subtitle-left1{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        left: 12px;
+    }
+    .decorated > .subtitle-left2{
+        display: inline-block;
+        position: absolute;
+        top: 55px;
+        right: 12px;
+    }
+}
+
+
+
+.decorated > .img-div{
+   position: relative;
+   display: inline-block;
+}
+.decorated > .img-div:before, .decorated > .img-div:after{
+   content: '';
+   position: absolute;
+   top: 50%;
+   border-bottom: 2px solid #97AABD;
+   /* box-shadow: -.5px .5px 5px .05px rgb(135, 152, 168); */
+   width: 25vw; /* half of limiter */
+   margin: 0 10px;
+}
+.decorated > .img-div:before{
+   right: 100%;
+}
+.decorated > .img-div:after{
+   left: 100%;
+}
+
+/* Limb Body Styling */
+
+.limb-border {
+    box-shadow: -5px 10px 8px 2px rgba(0, 0, 0, 0.808);
+    height: auto;
+    margin: 4px;
+    background-color: #ffffff;
+   
+}
+
+.container-custom{
+    /* margin: 30px; */
+    /* max-width: 72vw; */
+    width: 55vw;
+    margin-left: 3vw;
+    margin-top: 5vw;
+    margin-bottom: 5%;
+    
+}
+
+.bottom-right{
+    /* padding: 5px; */
+    position: absolute;
+    bottom: 5px;
+    right: -15px;
+    width: auto;
+    
+}

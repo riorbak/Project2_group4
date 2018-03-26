@@ -1,0 +1,35 @@
+<app-side-bar></app-side-bar>
+
+<div class="cover-photo">
+  <div class="edit-icon-position edit-visibility" (click)="openCloseEditing()">
+    <i id="editIcon" class="fa fa-lock"></i>
+  </div>
+  <div *ngIf="editingOpen">
+    <div class="cover-pic-edit-icon" (click)="openCoverEditModal()">
+      <i class="fa fa-edit cover-pic"></i>
+    </div>
+  </div>
+  <div class="profile-photo-center">
+    <div class="profile-photo-size profile-shadow">
+      <app-profile-photo></app-profile-photo>
+      <div *ngIf="editingOpen">
+        <div class="profile-pic-edit-icon" (click)="openProfileEditModal()">
+          <i class="fa fa-edit profile-pic"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="profile-info-center">
+    <div class="profile-info">
+      <p>My Name</p>
+      <p>Number of Posts?</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="main-content profile-background">
+  <!-- <app-limb-list [requestUrl] = '/boers/{{username}}/limbs'></app-limb-list> -->
+  <app-limb-list [editingOpen]="editingOpen" [parameter]="2"></app-limb-list>
+</div>

@@ -1,0 +1,5 @@
+<ul class="limbs">
+  <li *ngFor="let limb of list">
+    <app-limb [owner]="limb.owner" [postTime]="limb.postTime" [id]="limb.id" [content]="limb.content" [likes]="limb.likes" [media]="limb.media" [editingOpen]="editingOpen"></app-limb>
+  </li>
+</ul>

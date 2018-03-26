@@ -1,0 +1,8 @@
+<div>
+<div id="limb-body" class="limb-body">
+{{content}}
+</div>
+<div id="limb-media" *ngIf = "hasMedia" (click)="openImgModal()">
+    <img [src] = "srcUrl" class="limb-image">
+</div>
+</div>

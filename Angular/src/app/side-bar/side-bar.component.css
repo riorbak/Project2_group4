@@ -1,0 +1,190 @@
+/* My CSS for Image */
+
+.img-div{
+    width: 50%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.post-header-container{
+    height: 90px;
+    width: 90px
+}
+
+/* Template CSS */
+.sidebar1 {
+    background: #644E5B;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#314455, #314455, #644E5B);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#314455, #314455, #644E5B);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#314455, #314455, #644E5B);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#314455, #314455, #644E5B);
+    /* Standard syntax */
+    padding: 0px;
+    /* min-height: 100%; */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 5px 8px 8px 2px rgba(0, 0, 0, 0.808);
+    /* max-width: 20vw; */
+    width: 20vw;
+    /* min-width: 20vw; */
+    height: auto;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left:0;
+}
+.logo {
+    max-height: 130px;
+}
+.logo>img {
+    margin:auto;
+    width: 50%;
+    
+    padding: 3px;
+    border: none;
+    border-radius: 100%;
+}
+
+/* .main-content{
+    margin-left: 20vw; 
+    /* use data binding to set margin-left */
+   /* padding: 0px 0px;
+} */
+
+
+/* My CSS for Nav */
+
+.nav-pad{
+    padding-top: 35px;
+}
+.nav-user-details{
+    color:#9E5A63;
+    padding: 2px;
+    margin-top:5px;
+    font-weight: bold;
+}
+
+.center-block {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-custom{
+    max-width: 80%;
+    margin-bottom:20px;
+    /* padding-bottom:10px; */
+    margin-top:10px;
+    margin-left: 10%;
+    margin-right: 10px;
+}
+
+.nav-link{
+    padding: 5px 0px 5px 40px;
+    color: #97AABD;
+    /* color: #C96567; */
+}
+
+.nav-link:hover{
+    background-color: rgba(151, 170, 189, 0.432);
+    border-left: 3px solid #97AABD;
+    color: #97AABD;
+    /* font-weight: bolder; */
+    padding-left: 35px;
+}
+
+.form-control{
+    border-color: #9E5A63;
+    color: #9E5A63;
+}
+
+.form-control:focus{
+    border-color: #97aabd;
+    box-shadow: 0 1px 1px #97aabd inset, 0 0 8px #97aabd;
+    color: #97aabd;
+}
+
+/* Icon CSS */
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #9E5A63;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.icon-addon.addon-lg .form-control {
+    line-height: 1.33;
+    height: 46px;
+    font-size: 18px;
+    padding: 10px 16px 10px 40px;
+}
+
+.icon-addon.addon-sm .form-control {
+    height: 30px;
+    padding: 5px 10px 5px 28px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon-addon.addon-lg .fa,
+.icon-addon.addon-lg .glyphicon {
+    font-size: 18px;
+    margin-left: 0;
+    left: 11px;
+    top: 4px;
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon.addon-sm .fa,
+.icon-addon.addon-sm .glyphicon {
+    margin-left: 0;
+    font-size: 12px;
+    left: 5px;
+    top: -1px
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #97aabd;
+}
+
