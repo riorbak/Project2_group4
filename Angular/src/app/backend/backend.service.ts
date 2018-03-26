@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
+const ImagehttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })
+};
 
 @Injectable()
 export class BackendService
@@ -98,6 +100,21 @@ export class BackendService
       .pipe(
         catchError(this.handleError('doLike', []))
       ); 
+  }
+
+  uploadPhoto(userName:string, imageType:string, formData : FormData) {
+    let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
+    if (imageType == "Profile")
+      url +='/profile-img';
+    else
+      url +='/cover-img';
+
+      return this.http.post(url, formData, httpOptions)
+      .pipe(
+        catchError(this.handleError('uploadPhoto', []))
+      );
+
+
   }
 
   private handleError<T> (operation = 'operation', result?: T) 
