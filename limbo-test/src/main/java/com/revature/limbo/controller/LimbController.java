@@ -205,6 +205,7 @@ public class LimbController {
 		
 		// Check for valid URL
 		try {
+			@SuppressWarnings("unused")
 			URL urlCheck = new URL(url);
 		} catch(MalformedURLException ex) {
 			resultJson.put(KEY_SUCCESS, false);
