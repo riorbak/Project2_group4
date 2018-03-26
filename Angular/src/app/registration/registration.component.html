@@ -17,30 +17,14 @@
               <div class="form-row">
                   <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center">
                       <div class="form-group">
-                          <div class="icon-addon">
+                          <div class="icon-addon disabled">
                               <label for="newUserEmail" class="fa fa-envelope"></label>
-                              <input type="email" class="form-control" id="newUserEmail" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+                              <input type="email" class="form-control" id="newUserEmail" placeholder="Email" name="email" [(ngModel)]="user.email" value="{{email}}" disabled>
                           </div>
-                          <small id="passwordHelpBlock" class="form-text text-muted" style="display: none"> Your email must be unique. Cannot be associated with another active Limbo account.</small>
                       </div>
                   </div>
               </div>
-              <div class="form-row">
-                  <div class="col-md-6 col-sm-6">
-                      <div class="form-group">
-                          <div class="icon-addon">
-                              <label for="newUserPass" class="fa fa-lock"></label>
-                              <input type="password" class="form-control" id="newUserPass" placeholder="Password" name="password" [(ngModel)]="password" required>
-                          </div>
-
-                      </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                      <div class="form-group">
-                          <input type="password" class="form-control" id="newUserPassConfirm" placeholder="Confirm Password" name="cpassword" [(ngModel)]="confirmpassword" (change)="verifyPasswords()" required>
-                      </div>
-                  </div>
-              </div>
+              
               <div class="form-row">
                   <div class="col-md-6 col-sm-6">
                       <div class="form-group">
@@ -61,6 +45,7 @@
                   <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center">
                       <div class="form-group">
                           <div class="icon-addon">
+                              <label for="date" class="fa fa-birthday-cake"></label>
                               <my-date-picker id="date" name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
                           </div>
                       </div>
@@ -69,7 +54,7 @@
               </div>
 
               <div>
-                  <button type="button" [disabled]="disabled" class="btn btn-custom outline" id="newUserSubmitButton" (click)="registerUser()">Register</button>
+                  <button type="button" class="btn btn-custom outline" id="newUserSubmitButton" (click)="registerUser()">Register</button>
               </div>
 
           </form>
