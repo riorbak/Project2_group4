@@ -5,6 +5,7 @@ export class Limb {
     content: string;
     limbId: number;
     media: any = "/assets/images/cat.png";
+    likes: number;
 }
 
 export class User {

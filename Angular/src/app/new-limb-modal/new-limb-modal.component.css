@@ -16,6 +16,12 @@
 
 .modal-title {
     color: #ffffff;
+    
+}
+
+.form-container {
+    height: auto;
+    margin: auto;
 }
 
 textarea {
@@ -68,6 +74,8 @@ textarea {
 
 .form-group-custom {
     text-align: center;
+    width: 30vw;
+    margin:auto;
 }
 
 .file-btn:hover {
@@ -76,8 +84,6 @@ textarea {
 }
 
 .file-input-center {
-    width:50%;
-    margin: auto;
     margin-top: 5%;
     
 }

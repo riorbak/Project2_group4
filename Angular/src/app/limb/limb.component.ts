@@ -18,10 +18,10 @@ export class LimbComponent implements OnInit {
   @Input() media : string;
 
   constructor(private modalService: NgbModal) { 
-    
   }
 
   ngOnInit() {
+
   }
 
   open() {

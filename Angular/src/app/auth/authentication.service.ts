@@ -36,10 +36,8 @@ export class AuthenticationService {
         this.router.navigate(['/verify']);
         console.log(err);
         this.router.navigate(['/login']);
-
       } else {
         this.router.navigate(['/login']);
-
       }
     });
   }
@@ -94,6 +92,7 @@ export class AuthenticationService {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+        localStorage.setItem('profile', JSON.stringify(profile));
         this.router.navigate(['/feed']);
       }
     });

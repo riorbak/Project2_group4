@@ -1,5 +1,7 @@
 package com.revature.limbo.controller;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.limbo.bean.Boer;
 import com.revature.limbo.bean.Limb;
+import com.revature.limbo.service.AmazonBucketService;
 import com.revature.limbo.service.BoerService;
 import com.revature.limbo.service.JsonGeneratorService;
 import com.revature.limbo.service.LimbService;
@@ -29,6 +35,9 @@ public class LimbController {
 	
 	@Autowired
 	private BoerService boerService;
+	
+	@Autowired
+	private AmazonBucketService s3BucketService;
 	
 	@Autowired
 	private JsonGeneratorService jsonGenService;
@@ -133,5 +142,88 @@ public class LimbController {
 		});
 		
 		return likedLimbJsonList;
+	}
+	
+	
+	@RequestMapping(method=RequestMethod.POST,
+			value="/upload",
+			consumes="multipart/form-data",
+			produces="application/json")
+	public JsonNode uploadMedia(@RequestParam(name="inputImg") MultipartFile mediaFile) {
+		final String KEY_SUCCESS = "success";
+		final String KEY_MESSAGE = "message";
+		final String KEY_URL = "url";
+		ObjectNode resultJson = JsonNodeFactory.instance.objectNode();
+		
+		if(mediaFile == null) { // No file given.
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "No file given.");
+			resultJson.putNull(KEY_URL);
+			return resultJson;
+		} else if(mediaFile.isEmpty()) { // Empty file.
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "File is empty.");
+			resultJson.putNull(KEY_URL);
+			return resultJson;
+		}
+		
+		String url = s3BucketService.uploadFile(mediaFile);
+		
+		if(url == null || url.isEmpty()) { // Upload error.
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "Error occurred during upload.");
+			resultJson.putNull(KEY_URL);
+			return resultJson;
+		}
+		
+		
+		// Successful.
+		resultJson.put(KEY_SUCCESS, true);
+		resultJson.put(KEY_MESSAGE, "File successfully uploaded.");
+		resultJson.put(KEY_URL, url);
+		
+		return resultJson;
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE,
+			value="/upload/delete")
+	public JsonNode deleteMedia(@RequestBody JsonNode args) {
+		final String KEY_SUCCESS = "success";
+		final String KEY_MESSAGE = "message";
+		ObjectNode resultJson = JsonNodeFactory.instance.objectNode();
+		
+		// Get url
+		JsonNode urlNode = args.get("url");
+		String url = urlNode.textValue();
+		
+		// Check for null.
+		if(url == null) {
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "URL not found.");
+			return resultJson;
+		}
+		
+		// Check for valid URL
+		try {
+			URL urlCheck = new URL(url);
+		} catch(MalformedURLException ex) {
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "URL provided is not valid.");
+			return resultJson;
+		}
+		
+		
+		try {
+			s3BucketService.deleteFileFromS3Bucket(url);
+		} catch(Exception ex) {
+			resultJson.put(KEY_SUCCESS, false);
+			resultJson.put(KEY_MESSAGE, "Error occurred during deletion.");
+			return resultJson;
+		}
+		
+		resultJson.put(KEY_SUCCESS, true);
+		resultJson.put(KEY_MESSAGE, "File successfully deleted.");
+		
+		return resultJson;
 	}
 }

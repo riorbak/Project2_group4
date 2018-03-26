@@ -16,8 +16,9 @@ import { BackendService } from '../backend/backend.service';
 })
 export class LimbListComponent implements OnInit {
   constructor (private Server: BackendService) {
-    this.getAllLimbs();
    }
+
+  @Input() parameter: number;
 // list: Array<LimbComponent>; 
 list: Limb[] = [];
 
@@ -25,10 +26,21 @@ getAllLimbs()
 {
     this.Server.getAllLimbs().subscribe( res=>{
       for (var i in res) {
+        res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);
   });
+}
+
+getLimbsByUser(userName:string) {
+  this.Server.getLimbsByUserName(userName).subscribe( res=>{
+    for (var i in res) {
+      res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
+      this.list.push(<Limb>res[i]);
+    }
+    console.log(this.list);
+});
 }
 
 
@@ -39,7 +51,13 @@ getAllLimbs()
 
 ngOnInit() 
 {
-  
+  console.log("parameter is "+this.parameter);
+  if(this.parameter==1)
+    this.getAllLimbs();
+  else
+  {
+    this.getLimbsByUser(localStorage.getItem('username'))
+  }
 }
 
 }

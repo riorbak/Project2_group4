@@ -5,16 +5,16 @@
         <div class="img-div post-header-container">
             <app-profile-photo></app-profile-photo>
             <div class="nav-user-details">
-                Your Name
+                {{user.firstName}} {{user.lastName}}
             </div>
         </div>
         <br>
         <div class="nav-pad">
             <a class="nav-link" href="/feed">Feed</a>
             <a class="nav-link" href="/profile">My Profile</a>
-            <span class="nav-link" (click)="open()">New Post</span>
-            <a class="nav-link" href="">
-                <i class="fa fa-cogs"></i> Settings</a>
+            <span class="nav-link" (click)="openNewPost()">New Post</span>
+            <span class="nav-link" (click)="openSettings()">
+                <i class="fa fa-cogs"></i> Settings</span>
             <a class="nav-link" href="">Log Out</a>
             <app-search></app-search>
 

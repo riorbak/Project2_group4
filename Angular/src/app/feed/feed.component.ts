@@ -16,19 +16,23 @@ export class FeedComponent implements OnInit {
 
   public userEmail: string;
   constructor(public auth: AuthenticationService, public router: Router, private server: BackendService) { }
-
   ngOnInit() {
     // if (!this.auth.userProfile) {
     //   this.router.navigate(['login']);
-    
+
     // }
-    this.userEmail = this.auth.userProfile.email;
+    let userProfile = { email: '' };
+    var profile = localStorage.getItem('profile');
+    userProfile = JSON.parse(profile);
+    this.userEmail = userProfile.email;
     let postResult = this.server.getUser(this.userEmail).subscribe(res => {
       let user: User = <User>res;
+      console.log(user);
       if (!user.lastName) {
         this.router.navigate(['register']);
       }
       localStorage.setItem('username', user.username);
+      localStorage.setItem('userObject', JSON.stringify(user));
     });
     localStorage.setItem('email', this.userEmail);
 

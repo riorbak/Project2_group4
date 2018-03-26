@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
+const ImagehttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })
+};
 
 @Injectable()
 export class BackendService
@@ -38,7 +40,7 @@ export class BackendService
 
   postUpdateUser( user : User )
   {
-    let url : string = 'http://localhost:8080/boers/update';
+    let url : string =  appSettings.BACKEND_URL +'boers/update';
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postNewUser', []))
@@ -47,7 +49,7 @@ export class BackendService
 
   getAllUsers()
   {
-    let url : string = 'http://localhost:8080/boers';
+    let url : string =  appSettings.BACKEND_URL + 'boers';
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getAllUsers', []))
@@ -62,9 +64,17 @@ export class BackendService
     );
   }
 
+  getLimbsByUserName(username : string) {
+    let url : string = appSettings.BACKEND_URL + 'boers/' + username + '/limbs' 
+    return this.http.get(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('getLimbsByUsername', []))
+    );
+  }
+
   getUserByUsername(username : string)
   {
-    let url : string = 'http://localhost:8080/boers/' + username;
+    let url : string = appSettings.BACKEND_URL + 'boers/' + username;
     return this.http.get(url,httpOptions)
     .pipe(
       catchError(this.handleError('getUser', []))
@@ -83,6 +93,37 @@ export class BackendService
     );
   }
 
+  public doLike(userName : string, limbId : number) {
+    let url : string = appSettings.BACKEND_URL + "limbs/" + limbId + '/' + userName + '/1';
+    console.log(url);
+    return this.http.get(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('doLike', []))
+      ); 
+  }
+
+  uploadPhoto(userName:string, imageType:string, formData : FormData) {
+    let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
+    if (imageType == "Profile")
+      url +='/profile-img';
+    else
+      url +='/cover-img';
+      return this.http.post(url, formData, httpOptions)
+      .pipe(
+        catchError(this.handleError('uploadPhoto', []))
+      );
+  }
+
+  searchUsers(term: string): Observable<User[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    console.log(<string>(appSettings.BACKEND_URL+`boers/?name=${term}`));
+    return this.http.get<User[]>(<string>(appSettings.BACKEND_URL+`boers/?name=${term}`)).pipe(
+      catchError(this.handleError<User[]>('searchHeroes', []))
+    );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) 
   {
