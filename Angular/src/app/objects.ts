@@ -14,4 +14,6 @@ export class User {
     lastName: string;
     email: string;
     bdate: string;
+    profilePic: string;
+    coverPic: string;
 }

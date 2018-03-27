@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit
       
       console.log("User is: " + JSON.stringify(user));
       this.postNewUser(user);
+      
   }
 
   //TESTING
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit
 
   getUser(username : string)
   {
-    this.Server.getUser(username).subscribe( res=>{
+    this.Server.getUserByUsername(username).subscribe( res=>{
       console.log(res);
     });
   }

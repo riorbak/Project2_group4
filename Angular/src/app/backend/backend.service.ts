@@ -7,6 +7,7 @@ import { Limb } from '../objects';
 import { User } from '../objects';
 import { appSettings } from '../appSettings';
 import { Router } from '@angular/router';
+import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 import { Form } from '@angular/forms';
 
 const acceptHeader = {
@@ -24,7 +25,10 @@ const ImagehttpOptions = {
 export class BackendService
 {
 
-  constructor(private http: HttpClient, private router:Router) { }
+  public users : Observable<User[]>;
+  constructor(private http: HttpClient, private router:Router) { 
+      this.users = this.getAllUsers();
+  }
 
   postLimb( limb : Limb, username : string )
   {
@@ -53,10 +57,10 @@ export class BackendService
     );
   }
 
-  getAllUsers()
+  getAllUsers() : Observable<User[]>
   {
     let url : string =  appSettings.BACKEND_URL + 'boers';
-    return this.http.get(url,httpOptions)
+    return this.http.get<User[]>(url,httpOptions)
     .pipe(
       catchError(this.handleError('getAllUsers', []))
     );
@@ -87,7 +91,7 @@ export class BackendService
     );
   }
 
-  getUser( fetchedEmail: String )
+  getUserByEmail( fetchedEmail: String )
   {
     let url : string = appSettings.BACKEND_URL + 'boers/email';
     let userEmail = {
@@ -123,8 +127,15 @@ export class BackendService
       .pipe(
         catchError(this.handleError('uploadPhoto', []))
       );
+  }
 
-
+  searchUsers(term: string): Observable<User[]> {
+    console.log(term);
+    if(!term)  
+    {
+      term="garbled junk that isn't a username!!!";
+    }
+    return this.users.map(users => users.filter( user => user.username.includes(term)));
   }
 
   private handleError<T> (operation = 'operation', result?: T) 

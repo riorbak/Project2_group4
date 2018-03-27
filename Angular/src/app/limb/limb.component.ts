@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EditLimbComponent } from '../edit-limb/edit-limb.component';
-import { DatePipe } from '@angular/common';
 import { User } from '../objects';
 import { BackendService } from '../backend/backend.service';
 
@@ -21,17 +20,21 @@ export class LimbComponent implements OnInit {
   @Input() media : string;
   firstName: string;
   lastName: string;
-  user: User;
 
-  constructor(private modalService: NgbModal, private server: BackendService) {
+  @Input() user: User=new User;
+  url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
 
-  }
+
+  constructor(private modalService: NgbModal, private server: BackendService) {  }
 
   ngOnInit() {
+    this.url =  "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
     let authorResult = this.server.getUserByUsername(this.owner).subscribe(res => {
-      let user: User = <User>res;
-      this.firstName = user.firstName;
-      this.lastName = user.lastName;
+      this.user = <User> res;
+          if(this.user.profilePic)
+            this.url=this.user.profilePic;
+          console.log(this.url+" of "+this.user.firstName)
+          console.log("User:"+JSON.stringify(this.user));
     });
   }
 

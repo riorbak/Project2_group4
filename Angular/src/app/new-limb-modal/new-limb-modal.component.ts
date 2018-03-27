@@ -40,6 +40,7 @@ export class NewLimbModalComponent implements OnInit {
   closeModal()
   {
     this.activeModal.close();
+
   }
 
   detectlinks()
@@ -92,6 +93,7 @@ export class NewLimbModalComponent implements OnInit {
     limb.timeStamp = Timestamp;
     limb.content = limbText;
     this.server.postLimb( limb, this.userName ).subscribe();
+    //reload the limb list
     this.closeModal();
   }
   

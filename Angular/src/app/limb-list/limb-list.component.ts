@@ -6,6 +6,7 @@ import { LimbComponent } from '../limb/limb.component';
 
 import { Limb } from '../objects';
 import { BackendService } from '../backend/backend.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -15,8 +16,8 @@ import { BackendService } from '../backend/backend.service';
   styleUrls: ['./limb-list.component.css']
 })
 export class LimbListComponent implements OnInit {
-  constructor(private Server: BackendService) {
-  }
+  constructor (private Server: BackendService,private route: ActivatedRoute) {
+   }
 
   @Input() parameter: number;
   // list: Array<LimbComponent>; 
@@ -63,13 +64,15 @@ export class LimbListComponent implements OnInit {
 
   // private http: HttpClient
 
-  ngOnInit() {
-    console.log("parameter is " + this.parameter);
-    if (this.parameter == 1)
-      this.getAllLimbs();
-    else {
-      this.getLimbsByUser(localStorage.getItem('username'))
-    }
+ngOnInit() 
+{
+  console.log("parameter is "+this.parameter);
+  if(this.parameter==1)
+    this.getAllLimbs();
+  else
+  {
+    this.getLimbsByUser(this.route.snapshot.paramMap.get('username'))
   }
+}
 
 }
