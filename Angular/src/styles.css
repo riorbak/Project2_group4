@@ -16,6 +16,10 @@
 .selection.ng-untouched.ng-pristine.ng-valid {
     text-align: center;
 }
+.selection.ng-touched.ng-pristine.ng-valid {
+    text-align: center;
+}
+
 
 div.mydp {
     border: 1px solid #9E5A63;
@@ -34,4 +38,24 @@ span.mydpicon.icon-mydpcalendar {
 }
 span.mydpicon.icon-mydpcalendar:hover, span.mydpicon.icon-mydpcalendar:focus {
     color:#97aabd;
+}
+
+@font-face {
+    font-family: Junction-bold;
+    src: url("/assets/fonts/junction/Junction-bold.otf") format("opentype");
+}
+@font-face {
+    font-family: Junction-light;
+    src: url("/assets/fonts/junction/Junction-light.otf") format("opentype");
+}
+@font-face {
+    font-family: Junction-regular;
+    src: url("/assets/fonts/junction/Junction-regular.otf") format("opentype");
+}
+div, span {
+    font-family: Junction-regular;
+}
+
+label {
+    font-family: Junction-light;
 }

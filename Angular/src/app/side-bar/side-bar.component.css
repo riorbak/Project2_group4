@@ -59,13 +59,15 @@
 /* My CSS for Nav */
 
 .nav-pad{
-    padding-top: 35px;
+    padding-top: 15px;
 }
 .nav-user-details{
     color:#9E5A63;
     padding: 2px;
-    margin-top:5px;
     font-weight: bold;
+    width: fit-content;
+    margin: auto;
+    margin-top: 15px;
 }
 
 .center-block {
