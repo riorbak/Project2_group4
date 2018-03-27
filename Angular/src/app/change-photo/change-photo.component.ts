@@ -74,6 +74,7 @@ export class ChangePhotoComponent implements OnInit {
         this.updateUser();
       });
     }
+    this.closeModal();
   }
 
 updateUser() {
