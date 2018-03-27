@@ -26,11 +26,9 @@ export class LimbBodyComponent implements OnInit {
     }
 
     if(this.hasMedia){
-      this.srcUrl = this.sanitization.bypassSecurityTrustUrl(this.media);
+      this.srcUrl= this.sanitization.bypassSecurityTrustUrl(this.media);
     }
-
     this.format_images();
-
   }
 
 
@@ -46,6 +44,15 @@ export class LimbBodyComponent implements OnInit {
     {
       let url=this.content.substring(this.content.lastIndexOf("&&&http")+3);
       console.log("URL:"+url);
+
+      this.srcUrl=url;
+      // var image=document.createElement("img");
+      // image.src=url;
+      // document.getElementById("limb-body").appendChild(image);
+
+      //after done
+      url="&&&"+url;
+      this.content=this.content.replace(url,'');
     }
 
   }
