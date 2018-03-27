@@ -33,8 +33,10 @@ export class LimbComponent implements OnInit {
       this.user = <User> res;
           if(this.user.profilePic)
             this.url=this.user.profilePic;
-          // console.log(this.url+" of "+this.user.firstName)
-          // console.log("User:"+JSON.stringify(this.user));
+          else
+            this.url = '../../assets/images/user-200';
+          console.log(this.url+" of "+this.user.firstName)
+          console.log("User:"+JSON.stringify(this.user));
     });
   }
 

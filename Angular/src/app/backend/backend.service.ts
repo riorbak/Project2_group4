@@ -119,6 +119,10 @@ export class BackendService
     let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
     if (imageType == "Profile"){
       url +='/profile-img';
+    else if (imageType == "Cover")
+      url +='/cover-img';
+    else 
+      url = appSettings.BACKEND_URL + 'upload';
     } else {
       url +='/cover-img';
     }

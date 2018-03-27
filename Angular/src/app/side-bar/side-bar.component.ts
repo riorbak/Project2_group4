@@ -4,6 +4,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../objects';
 import { SettingsComponent } from '../settings/settings.component';
 import { BackendService } from '../backend/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -15,8 +16,9 @@ export class SideBarComponent implements OnInit {
   @Input() user: User=new User;
   url : string;
 
-  constructor(private modalService: NgbModal, private server: BackendService) {
-    this.getUser();
+
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
+    this.user = JSON.parse(localStorage.getItem('userObject'));
    }
 
   ngOnInit() {
@@ -63,6 +65,8 @@ export class SideBarComponent implements OnInit {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('email');
     localStorage.removeItem('username');
+    localStorage.removeItem('userObject');
+    this.router.navigate(['']);
   }
   
 

@@ -4,6 +4,8 @@ import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { Auth0Lock } from 'auth0-lock';
 import { appSettings } from '../appSettings';
+import { BackendService } from '../backend/backend.service';
+import { User } from '../objects';
 @Injectable()
 export class AuthenticationService {
 
@@ -20,7 +22,7 @@ export class AuthenticationService {
   });
 
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private server: BackendService) { }
 
   public login(): void {
     this.auth0.authorize();
@@ -93,9 +95,27 @@ export class AuthenticationService {
       if (profile) {
         self.userProfile = profile;
         localStorage.setItem('profile', JSON.stringify(profile));
-        this.router.navigate(['/feed']);
+        this.initializeUser();
       }
     });
+  }
+
+  initializeUser() {
+    let userProfile = { email: '' };
+    var profile = localStorage.getItem('profile');
+    userProfile = JSON.parse(profile);
+    //this.userEmail = userProfile.email;
+    let postResult = this.server.getUserByEmail(userProfile.email).subscribe(res => {
+      let user: User = <User>res;
+      console.log(user);
+      if (!user.lastName) {
+        this.router.navigate(['register']);
+      }
+      localStorage.setItem('username', user.username);
+      localStorage.setItem('userObject', JSON.stringify(user));
+    });
+    localStorage.setItem('email', userProfile.email);
+    this.router.navigate(['feed']);
   }
 
 }
