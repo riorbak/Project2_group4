@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 import { BackendService } from '../backend/backend.service';
 import { User } from '../objects';
 import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
-
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-profile',
@@ -36,6 +36,8 @@ export class ProfileComponent implements OnInit {
 
                 this.getUser();
                 this.showHideProfileEditing();
+               
+
   }
 
 

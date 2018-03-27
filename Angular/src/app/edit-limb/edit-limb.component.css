@@ -1,7 +1,8 @@
 .modal-container {
     height: auto;
-    width: auto;
-    padding: 5%;
+    width: 500px;
+    padding: 20px;
+   
     background: #314455;
     border: none;
     /* For browsers that do not support gradients */
@@ -16,6 +17,9 @@
 
 .modal-title {
     color: #ffffff;
+    width: max-content;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 textarea {
@@ -76,8 +80,7 @@ textarea {
 }
 
 .file-input-center {
-    width:50%;
-    margin: auto;
+    margin: 15px;
     margin-top: 5%;
     
 }
@@ -106,19 +109,25 @@ textarea {
 
 .left-btn {
     display: inline-block;
-    /* padding-left: 15%; */
+    margin-right: 5px;
 }
 
 .right-btn {
     display: inline-block;
     position:absolute;
     right: 5%;
-    /* margin-right: 10px;
-    margin-bottom: 10px; */
 }
 
+.center-btn {
+    display: inline-block;
+    position: absolute;
+    left: 42%;
+}
+
+
 .post-content {
-    width: 80%;
+    min-width: 300px;
     margin:auto;
     margin-top: 5%;
+    margin-bottom: 5%;
 }
