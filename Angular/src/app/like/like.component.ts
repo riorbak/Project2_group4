@@ -22,7 +22,6 @@ export class LikeComponent implements OnInit {
   ngOnInit() {
     this.clickCount = 0;
     this.updateIcon(this.likes);
-
   }
 
 
@@ -36,7 +35,6 @@ export class LikeComponent implements OnInit {
       //   this.count -= 1;
       // }
 
-      console.log("Likes:"+this.likes);
     }
     else {
       alert("Don't like your own post, loser.");
@@ -49,7 +47,6 @@ export class LikeComponent implements OnInit {
       let result: Limb;
       result=<Limb>res;
       this.likes = result.likes;
-
       console.log(result.likes);
       if(prev_likes!=this.likes)
         this.updateIcon(this.likes);
