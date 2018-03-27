@@ -7,6 +7,12 @@ import { Limb } from '../objects';
 import { User } from '../objects';
 import { appSettings } from '../appSettings';
 import { Router } from '@angular/router';
+import { Form } from '@angular/forms';
+
+const acceptHeader = {
+  headers: new HttpHeaders({ 'Accept': 'application/json' })
+};
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -102,14 +108,18 @@ export class BackendService
       ); 
   }
 
-  uploadPhoto(userName:string, imageType:string, formData : FormData) {
+  uploadPhoto(userName:string, imageType:string, file : File) {
+    //let form : Form = new Form();
+    let formData : FormData = new FormData();
+    formData.append('inputImg', file, file.name);
     let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
     if (imageType == "Profile")
       url +='/profile-img';
     else
       url +='/cover-img';
 
-      return this.http.post(url, formData, httpOptions)
+    console.log("profile photo upload: " + url);
+      return this.http.post(url, formData)
       .pipe(
         catchError(this.handleError('uploadPhoto', []))
       );
