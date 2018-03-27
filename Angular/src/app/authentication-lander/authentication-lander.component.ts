@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../auth/authentication.service';
 import { Router } from '@angular/router';
+import { BackendService } from '../backend/backend.service';
+import { User } from '../objects';
 
 @Component({
   selector: 'app-authentication-lander',
@@ -9,12 +11,14 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationLanderComponent implements OnInit {
 
-  
-  constructor(public auth: AuthenticationService, public router: Router) {
+
+  constructor(public auth: AuthenticationService, public router: Router, public server: BackendService) {
     this.auth.handleAuthentication();
   }
 
   ngOnInit() {
   }
+
+
 
 }

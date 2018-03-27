@@ -39,9 +39,10 @@ export class LimbComponent implements OnInit {
             this.url = "/assets/images/user-200.png";
             // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
           }
+
     });
   }
-
+  
   open() {
     const modalRef = this.modalService.open(EditLimbComponent);
     modalRef.componentInstance.id = this.id;

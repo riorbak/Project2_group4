@@ -144,7 +144,7 @@ public class LimbController {
 		return likedLimbJsonList;
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/upload",
 			consumes="multipart/form-data",
