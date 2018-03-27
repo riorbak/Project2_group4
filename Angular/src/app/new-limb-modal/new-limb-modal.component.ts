@@ -112,7 +112,8 @@ export class NewLimbModalComponent implements OnInit {
           urlObject=JSON.parse(JSON.stringify(res));
           console.log(urlObject.url);
 
-          limb.content=limb.content+"&"+urlObject.url;
+          limb.content=limb.content+"&&&"+urlObject.url;
+
           this.server.postLimb( limb, this.userName ).subscribe();
           //reload the limb list
           this.closeModal();

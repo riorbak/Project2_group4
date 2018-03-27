@@ -34,8 +34,11 @@ export class LimbListComponent implements OnInit {
           tod = "AM";
         }
         res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
+        
+        let limb : Limb =<Limb>res[i]
+        limb.content=this.format_images(limb.content);
+        this.list.push(limb);
 
-        this.list.push(<Limb>res[i]);
       }
       console.log(this.list);
     });
@@ -52,10 +55,24 @@ export class LimbListComponent implements OnInit {
           tod = "AM";
         }
         res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
-        this.list.push(<Limb>res[i]);
+        
+        let limb : Limb =<Limb>res[i]
+        limb.content=this.format_images(limb.content);
+        this.list.push(limb);
       }
       console.log(this.list);
     });
+  }
+
+  format_images(content : string) : string
+  {
+    if(limb.content.includes("&&&http"))
+    {
+      let url=limb.content.substring(limb.content.lastIndexOf("&&&http")+3);
+      console.log("URL:"+url);
+
+    }
+    return;
   }
 
 
