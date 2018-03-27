@@ -20,8 +20,10 @@ export class LimbComponent implements OnInit {
   @Input() media : string;
   firstName: string;
   lastName: string;
-  @Input() user: User;
-  url : string;
+
+  @Input() user: User=new User;
+  url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
+
 
   constructor(private modalService: NgbModal, private server: BackendService) {  }
 
