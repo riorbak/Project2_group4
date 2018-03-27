@@ -145,7 +145,7 @@ public class BoerController {
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{username}/cover-img",
 			consumes="multipart/form-data",
-			produces="applicatoin/json")
+			produces="application/json")
 	public JsonNode uploadCoverImage(@PathVariable String username,
 			@RequestParam(name="inputImg") MultipartFile coverFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
