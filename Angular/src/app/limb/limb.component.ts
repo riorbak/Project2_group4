@@ -21,13 +21,12 @@ export class LimbComponent implements OnInit {
   firstName: string;
   lastName: string;
   @Input() user: User;
-  url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
+  url : string;
 
-  constructor(private modalService: NgbModal, private server: BackendService) {
-
-  }
+  constructor(private modalService: NgbModal, private server: BackendService) {  }
 
   ngOnInit() {
+    this.url =  "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
     let authorResult = this.server.getUserByUsername(this.owner).subscribe(res => {
       this.user = <User> res;
           if(this.user.profilePic)
