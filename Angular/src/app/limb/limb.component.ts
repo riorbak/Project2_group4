@@ -20,7 +20,8 @@ export class LimbComponent implements OnInit {
   @Input() media : string;
   firstName: string;
   lastName: string;
-  user: User;
+  @Input() user: User;
+  url : string;
 
   constructor(private modalService: NgbModal, private server: BackendService) {
 
@@ -28,9 +29,10 @@ export class LimbComponent implements OnInit {
 
   ngOnInit() {
     let authorResult = this.server.getUserByUsername(this.owner).subscribe(res => {
-      let user: User = <User>res;
-      this.firstName = user.firstName;
-      this.lastName = user.lastName;
+      this.user = <User> res;
+          if(this.user.profilePic)
+          this.url=this.user.profilePic;
+          console.log("User:"+JSON.stringify(this.user));
     });
   }
 

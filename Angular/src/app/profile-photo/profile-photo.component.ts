@@ -9,7 +9,8 @@ import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-br
 export class ProfilePhotoComponent implements OnInit {
 
   @Input() profilePhoto: any;
-  @Input('url') set url(value: any){
+  @Input('url') set url(value: any)
+  {
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
   };
 
@@ -17,10 +18,11 @@ export class ProfilePhotoComponent implements OnInit {
     
   }
   
-  ngOnInit() {
-    let aUrl = "/assets/images/user-200.png";
-    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
+  ngOnInit() 
+  {
 
+    this.url = "/assets/images/user-200.png";
+    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
   }
 
   ngOnChanges() {

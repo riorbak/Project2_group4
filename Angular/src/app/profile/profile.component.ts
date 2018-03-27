@@ -17,10 +17,8 @@ export class ProfileComponent implements OnInit {
 
   @Input() email: string;
   @Input() type: string;
-
   @Input() user : User;
-  firstName: string;
-  lastName: string;
+  url : string;
 
   editingOpen: boolean = false;
 
@@ -47,6 +45,8 @@ export class ProfileComponent implements OnInit {
       .subscribe(res => 
         {
           this.user = <User> res;
+          if(this.user.profilePic)
+          this.url=this.user.profilePic;
           console.log("User:"+JSON.stringify(this.user));
         }
       );

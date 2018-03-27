@@ -11,7 +11,7 @@
   </div>
   <div class="profile-photo-center">
     <div class="profile-photo-size profile-shadow">
-      <app-profile-photo></app-profile-photo>
+      <app-profile-photo [url]="url"></app-profile-photo>
       <div *ngIf="editingOpen">
         <div class="profile-pic-edit-icon" (click)="openProfileEditModal()">
           <i class="fa fa-edit profile-pic"></i>
@@ -22,8 +22,8 @@
   </div>
   <div class="profile-info-center">
     <div class="profile-info">
-      <p>{{firstName}} {{lastName}}</p>
-      <!-- <p>Number of Posts?</p> -->
+      <p>{{user.firstName}} {{user.lastName}}</p>
+      <p>Number of Posts: {{user.limbCount}}</p>
     </div>
 
   </div>
