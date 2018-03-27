@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   @Input() email: string;
   @Input() type: string;
-  @Input() user : User;
+  @Input() user : User=new User;
   url : string;
 
   editingOpen: boolean = false;
