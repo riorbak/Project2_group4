@@ -40,6 +40,7 @@ export class LimbComponent implements OnInit {
     });
   }
 
+  
   open() {
     const modalRef = this.modalService.open(EditLimbComponent);
     modalRef.componentInstance.id = this.id;
