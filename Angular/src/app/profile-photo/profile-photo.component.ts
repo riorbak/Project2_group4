@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
+import { User } from '../objects';
 
 @Component({
   selector: 'app-profile-photo',
@@ -20,7 +21,6 @@ export class ProfilePhotoComponent implements OnInit {
   ngOnInit() {
     let aUrl = "/assets/images/user-200.png";
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
-
   }
 
   ngOnChanges() {

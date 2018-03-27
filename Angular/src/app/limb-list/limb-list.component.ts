@@ -33,6 +33,9 @@ getAllLimbs()
         } else {
           tod = "AM";
         }
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
+        }
         res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
       }
@@ -49,6 +52,9 @@ getLimbsByUser(userName:string) {
           tod = "PM";
         } else {
           tod = "AM";
+        }
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
         }
         res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
