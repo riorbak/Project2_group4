@@ -30,16 +30,16 @@
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
-        top: 58px;
+        top: 55px;
         left: 12px;
-        font-family: Junction-light;
+        font-family: Fontin-Sans-Italics;
     }
     .decorated > .subtitle-left2{
         display: inline-block;
         position: absolute;
-        top: 58px;
+        top: 55px;
         left: 142px;
-        font-family: Junction-light;
+        font-family: Fontin-Sans-Regular;
     }
 }
 
@@ -47,16 +47,16 @@
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
-        top: 58px;
+        top: 55px;
         left: 12px;
-        font-family: Junction-light;
+        font-family: Fontin-Sans-Italics;
     }
     .decorated > .subtitle-left2{
         display: inline-block;
         position: absolute;
-        top: 58px;
+        top: 55px;
         right: 12px;
-        font-family: Junction-light;
+        font-family: Fontin-Sans-Regular;
     }
 }
 
