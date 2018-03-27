@@ -12,7 +12,7 @@ import { BackendService } from '../backend/backend.service';
 })
 export class SideBarComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() user: User=new User;
   url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
 
   constructor(private modalService: NgbModal, private server: BackendService) {
