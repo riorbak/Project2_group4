@@ -14,6 +14,7 @@ export class ProfilePhotoComponent implements OnInit {
   {
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
   };
+  
 
   constructor(private sanitization: DomSanitizer) { 
     
@@ -21,15 +22,12 @@ export class ProfilePhotoComponent implements OnInit {
   
 
   ngOnInit() {
-    // let aUrl = "/assets/images/user-200.png";
-    // this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
-    this.url = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
-    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+    // console.log(this.profilePhoto);
+    
   }
 
   ngOnChanges() {
-  //   console.log("profile-photo onchanges this.url: " + this.url);
-  //   console.log("profile-photo onchanges this.profilePhoto: " + this.profilePhoto);
+ 
   }
 
 
