@@ -117,13 +117,15 @@ export class BackendService
     let formData : FormData = new FormData();
     formData.append('inputImg', file, file.name);
     let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
-    if (imageType == "Profile")
+    if (imageType == "Profile"){
       url +='/profile-img';
     else if (imageType == "Cover")
       url +='/cover-img';
     else 
       url = appSettings.BACKEND_URL + 'upload';
-
+    } else {
+      url +='/cover-img';
+    }
     console.log("profile photo upload: " + url);
       return this.http.post(url, formData)
       .pipe(
