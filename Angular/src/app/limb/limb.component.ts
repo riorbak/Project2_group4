@@ -39,7 +39,6 @@ export class LimbComponent implements OnInit {
           console.log("User:"+JSON.stringify(this.user));
     });
   }
-
   
   open() {
     const modalRef = this.modalService.open(EditLimbComponent);
