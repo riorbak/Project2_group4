@@ -36,7 +36,7 @@ public class BoerController {
 	private AmazonBucketService s3BucketService;
 	
 	// Get all
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
 	public List<? extends JsonNode> getAllBoers() {
