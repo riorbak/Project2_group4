@@ -119,8 +119,10 @@ export class BackendService
     let url:string = appSettings.BACKEND_URL + 'boers/' + userName;
     if (imageType == "Profile")
       url +='/profile-img';
-    else
+    else if (imageType == "Cover")
       url +='/cover-img';
+    else
+      url = appSettings.BACKEND_URL + 'upload';
 
     console.log("profile photo upload: " + url);
       return this.http.post(url, formData)
