@@ -20,8 +20,7 @@ export class ProfilePhotoComponent implements OnInit {
   
   ngOnInit() 
   {
-
-    this.url = "/assets/images/user-200.png";
+    this.url = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
   }
 

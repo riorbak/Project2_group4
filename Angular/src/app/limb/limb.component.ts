@@ -21,7 +21,7 @@ export class LimbComponent implements OnInit {
   firstName: string;
   lastName: string;
   @Input() user: User;
-  url : string;
+  url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
 
   constructor(private modalService: NgbModal, private server: BackendService) {
 
@@ -31,7 +31,8 @@ export class LimbComponent implements OnInit {
     let authorResult = this.server.getUserByUsername(this.owner).subscribe(res => {
       this.user = <User> res;
           if(this.user.profilePic)
-          this.url=this.user.profilePic;
+            this.url=this.user.profilePic;
+          console.log(this.url+" of "+this.user.firstName)
           console.log("User:"+JSON.stringify(this.user));
     });
   }

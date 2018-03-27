@@ -3,7 +3,7 @@
     <!-- <div class="col-lg-2 col-md-4 col-sm-4 sidebar1" id="navBar"> -->
     <div class="sidebar1" id="navBar">
         <div class="img-div post-header-container">
-            <app-profile-photo></app-profile-photo>
+            <app-profile-photo [url]="url"></app-profile-photo>
         </div>
         <div class="nav-user-details">
             {{user.firstName}} {{user.lastName}}

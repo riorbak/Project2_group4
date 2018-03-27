@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
         {
           this.user = <User> res;
           if(this.user.profilePic)
-          this.url=this.user.profilePic;
+            this.url=this.user.profilePic;
           console.log("User:"+JSON.stringify(this.user));
         }
       );
