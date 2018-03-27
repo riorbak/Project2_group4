@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Limb } from '../objects';
 import { User } from '../objects';
@@ -81,7 +81,7 @@ export class BackendService
       catchError(this.handleError('getLimbsByUsername', []))
     );
   }
-
+// The original getUserByUsername
   getUserByUsername(username : string)
   {
     let url : string = appSettings.BACKEND_URL + 'boers/' + username;
@@ -158,3 +158,4 @@ export class BackendService
   }
 
 }
+

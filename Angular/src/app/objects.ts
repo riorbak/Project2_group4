@@ -16,4 +16,6 @@ export class User {
     bdate: string;
     profilePic: string;
     coverPic: string;
+    limbCount: number;
+    likedLimbCount: number;
 }

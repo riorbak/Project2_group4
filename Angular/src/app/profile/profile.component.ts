@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 import { BackendService } from '../backend/backend.service';
 import { User } from '../objects';
 import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
-
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-profile',
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   @Input() user : User=new User;
   url : any;
   coverUrl: any;
-  editingOpen: boolean = false;
+  editingOpen: boolean = true;
   showEditing: boolean = false;
 
   // check to see if current user's username matches this profile's username
@@ -36,6 +36,8 @@ export class ProfileComponent implements OnInit {
 
                 this.getUser();
                 this.showHideProfileEditing();
+               
+
   }
 
 
