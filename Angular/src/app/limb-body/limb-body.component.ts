@@ -34,7 +34,7 @@ export class LimbBodyComponent implements OnInit {
 
   openImgModal() {
     const modalRef = this.modalService.open(LimbMediaModalComponent);
-    modalRef.componentInstance.media = this.media;
+    modalRef.componentInstance.media = this.srcUrl;
   }
 
   format_images()
@@ -42,6 +42,7 @@ export class LimbBodyComponent implements OnInit {
     console.log("Cont: "+this.content);
     if(this.content.includes("&&&http"))
     {
+      this.hasMedia=true;
       let url=this.content.substring(this.content.lastIndexOf("&&&http")+3);
       console.log("URL:"+url);
 
