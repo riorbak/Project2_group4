@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   @Input() user : User=new User;
   url : any;
   coverUrl: any;
-  editingOpen: boolean = true;
+  editingOpen: boolean = false;
   showEditing: boolean = false;
 
   // check to see if current user's username matches this profile's username
