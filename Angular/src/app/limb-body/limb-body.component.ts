@@ -29,6 +29,8 @@ export class LimbBodyComponent implements OnInit {
       this.srcUrl = this.sanitization.bypassSecurityTrustUrl(this.media);
     }
 
+    this.format_images();
+
   }
 
 
@@ -36,5 +38,17 @@ export class LimbBodyComponent implements OnInit {
     const modalRef = this.modalService.open(LimbMediaModalComponent);
     modalRef.componentInstance.media = this.media;
   }
+
+  format_images()
+  {
+    console.log("Cont: "+this.content);
+    if(this.content.includes("&&&http"))
+    {
+      let url=this.content.substring(this.content.lastIndexOf("&&&http")+3);
+      console.log("URL:"+url);
+    }
+
+  }
+
 
 }

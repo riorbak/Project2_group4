@@ -1,5 +1,5 @@
 <div>
-<div id="limb-body" class="limb-body">
+<div id="limb-body" class="limb-body" (change)="format_images()">
 {{content}}
 </div>
 <div id="limb-media" *ngIf = "hasMedia" (click)="openImgModal()">
