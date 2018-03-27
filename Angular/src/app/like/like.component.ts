@@ -14,13 +14,11 @@ export class LikeComponent implements OnInit {
   @Input('owner') owner;
   @Input('id') id;
   temp: string;
-  clickCount: number;
   color: string;
 
   constructor(private Server: BackendService) { }
 
   ngOnInit() {
-    this.clickCount = 0;
     this.updateIcon(this.likes);
   }
 
@@ -28,13 +26,6 @@ export class LikeComponent implements OnInit {
   changeCount() {
     if (this.owner != localStorage.getItem('username')) {
       this.doLike(this.id);
-      this.clickCount++;
-      // if(this.clickCount % 2 == 1){
-      //   this.count += 1;
-      // } else {
-      //   this.count -= 1;
-      // }
-
     }
     else {
       alert("Don't like your own post, loser.");
@@ -47,7 +38,6 @@ export class LikeComponent implements OnInit {
       let result: Limb;
       result=<Limb>res;
       this.likes = result.likes;
-      console.log(result.likes);
       if(prev_likes!=this.likes)
         this.updateIcon(this.likes);
     });
