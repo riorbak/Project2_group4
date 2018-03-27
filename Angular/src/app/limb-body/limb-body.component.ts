@@ -14,20 +14,11 @@ export class LimbBodyComponent implements OnInit {
   @Input() content: string;
   @Input() media;
   srcUrl: any;
-  hasMedia: boolean;
+  edited : boolean;
+
   constructor(private sanitization: DomSanitizer, private modalService: NgbModal) { }
 
   ngOnInit() {
-    // this.contents = "Some words and stuff";
-    if(this.media != null){
-      this.hasMedia = true;
-    } else {
-      this.hasMedia = false;
-    }
-
-    if(this.hasMedia){
-      this.srcUrl= this.sanitization.bypassSecurityTrustUrl(this.media);
-    }
     this.format_images();
   }
 
@@ -40,9 +31,10 @@ export class LimbBodyComponent implements OnInit {
   format_images()
   {
     console.log("Cont: "+this.content);
+    this.edited=false;
     if(this.content.includes("&&&http"))
     {
-      this.hasMedia=true;
+      this.edited=true;
       let url=this.content.substring(this.content.lastIndexOf("&&&http")+3);
       console.log("URL:"+url);
 

@@ -2,7 +2,7 @@
 <div id="limb-body" class="limb-body" (change)="format_images()">
 {{content}}
 </div>
-<div id="limb-media" (click)="openImgModal()">
+<div *ngIf="edited" id="limb-media" (click)="openImgModal()">
     <img [src] = "srcUrl" class="limb-image">
 </div>
 </div>
