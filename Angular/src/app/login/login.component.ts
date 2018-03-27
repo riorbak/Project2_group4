@@ -14,19 +14,7 @@ export class LoginComponent implements OnInit
   
   constructor(private Server: BackendService,public auth: AuthenticationService) { }
   ngOnInit() 
-  { 
-      let user=new User();
-      user.username = 'GStar';
-      user.email='scott.g.bennett@gmail.com';
-      user.firstName='Scott';
-      user.lastName='Bennett';
-      //user.bdate='Sun Mar 25 2018 00:00:00 GMT-0400 (EDT)';
-      
-      
-      console.log("User is: " + JSON.stringify(user));
-      this.postNewUser(user);
-      
-  }
+  { }
 
   //TESTING
   postLimb(limb : Limb, username : string): void 
@@ -34,9 +22,7 @@ export class LoginComponent implements OnInit
     this.Server.postLimb(limb,username).subscribe( res=>{
       console.log(res);
       let x : Limb=<Limb>res;
-      console.log("thing 1"+x.timeStamp);
-    });
-    //console.log("thing 2");    
+    });  
   }
 
   postNewUser(user : User): void 
@@ -44,17 +30,14 @@ export class LoginComponent implements OnInit
     this.Server.postNewUser(user).subscribe( res=>{
       let x : User=<User>res;
       console.log(res);
-    });
-    console.log("thing 2");    
+    });  
   }
 
   postUpdateUser( user : User )
   {
     this.Server.postUpdateUser(user).subscribe( res=>{
       let x : User=<User>res;
-      console.log("thing 1"+x.firstName);
     });
-    console.log("thing 2"); 
   }
 
   getAllUsers()

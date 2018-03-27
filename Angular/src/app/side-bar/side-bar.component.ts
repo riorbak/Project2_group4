@@ -4,6 +4,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../objects';
 import { SettingsComponent } from '../settings/settings.component';
 import { BackendService } from '../backend/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,9 +14,10 @@ import { BackendService } from '../backend/backend.service';
 export class SideBarComponent implements OnInit {
 
   @Input() user: User=new User;
-  url : string = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
+  url : string;
 
-  constructor(private modalService: NgbModal, private server: BackendService) {
+
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('userObject'));
    }
 
@@ -24,9 +26,25 @@ export class SideBarComponent implements OnInit {
       this.user = <User> res;
           if(this.user.profilePic)
             this.url=this.user.profilePic;
-          console.log(this.url+" of "+this.user.firstName)
-          console.log("User:"+JSON.stringify(this.user));
+          //console.log(this.url+" of "+this.user.firstName)
+          // console.log("User:"+JSON.stringify(this.user));
     });
+  }
+
+  getUser(): void {
+    let username = localStorage.getItem("username");
+    this.server.getUserByUsername(username)
+      .subscribe(res => 
+        {
+          this.user = <User> res;
+          if(this.user.profilePic){
+            this.url=this.user.profilePic;
+          } else {
+            this.url = "/assets/images/user-200.png";
+            // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+          }
+          
+        });
   }
 
   openNewPost() {
@@ -47,6 +65,8 @@ export class SideBarComponent implements OnInit {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('email');
     localStorage.removeItem('username');
+    localStorage.removeItem('userObject');
+    this.router.navigate(['']);
   }
   
 

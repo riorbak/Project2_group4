@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { EmbedVideo } from 'ngx-embed-video';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -63,7 +63,7 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule
   ],
 
-  providers: [AuthenticationService,BackendService],
+  providers: [AuthenticationService, BackendService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
