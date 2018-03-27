@@ -17,10 +17,12 @@ export class ProfileComponent implements OnInit {
 
   @Input() email: string;
   @Input() type: string;
+
   @Input() user : User;
+  firstName: string;
+  lastName: string;
 
   editingOpen: boolean = false;
-
 
   // check to see if current user's username matches this profile's username
   constructor(private location: Location,
@@ -29,6 +31,7 @@ export class ProfileComponent implements OnInit {
               public auth:AuthenticationService, 
               private router:Router,
               public server: BackendService) { }
+
 
   ngOnInit() {
     // if (!this.auth.userProfile) {

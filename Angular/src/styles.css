@@ -12,3 +12,58 @@
     width: fit-content;
     margin: 2rem auto;
 }
+
+.selection.ng-untouched.ng-pristine.ng-valid {
+    text-align: center;
+}
+.selection.ng-touched.ng-pristine.ng-valid {
+    text-align: center;
+}
+
+
+div.mydp {
+    border: 1px solid #9E5A63;
+    color: #9E5A63;
+    box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);
+}
+
+div.mydp:hover, div.mydp:focus {
+    border-color: #97aabd;
+    box-shadow: 0 1px 1px #97aabd inset, 0 0 8px #97aabd;
+    color: #97aabd;
+}
+
+span.mydpicon.icon-mydpcalendar {
+    color:#9E5A63;
+}
+span.mydpicon.icon-mydpcalendar:hover, span.mydpicon.icon-mydpcalendar:focus {
+    color:#97aabd;
+}
+
+@font-face {
+    font-family: Fontin-Sans-Bold;
+    src: url("/assets/fonts/Fontin-Sans/Fontin_Sans_B_45b.otf") format("opentype");
+}
+@font-face {
+    font-family: Fontin-Sans-Regular;
+    src: url("/assets/fonts/Fontin-Sans/Fontin_Sans_R_45b.otf") format("opentype");
+}
+@font-face {
+    font-family: Fontin-Sans-SmallCaps;
+    src: url("/assets/fonts/Fontin-Sans/Fontin_Sans_SC_45b.otf") format("opentype");
+}
+@font-face {
+    font-family: Fontin-Sans-Bold-Italics;
+    src: url("/assets/fonts/Fontin-Sans/Fontin_Sans_BI_45b.otf") format("opentype");
+}
+@font-face {
+    font-family: Fontin-Sans-Italics;
+    src: url("/assets/fonts/Fontin-Sans/Fontin_Sans_I_45b.otf") format("opentype");
+}
+div, span {
+    font-family: Fontin-Sans-Regular;
+}
+
+label {
+    font-family: Fontin-Sans-Italics;
+}

@@ -49,23 +49,19 @@
     border-radius: 100%;
 }
 
-/* .main-content{
-    margin-left: 20vw; 
-    /* use data binding to set margin-left */
-   /* padding: 0px 0px;
-} */
-
-
 /* My CSS for Nav */
 
 .nav-pad{
-    padding-top: 35px;
+    padding-top: 15px;
 }
 .nav-user-details{
     color:#9E5A63;
     padding: 2px;
-    margin-top:5px;
-    font-weight: bold;
+    font-family: Fontin-Sans-SmallCaps;
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 15px;
 }
 
 .center-block {
@@ -84,9 +80,10 @@
 }
 
 .nav-link{
-    padding: 5px 0px 5px 40px;
+    padding: 5px 0px 5px 20px;
     color: #97AABD;
-    /* color: #C96567; */
+    font-size: 18px;
+    font-family: Fontin-Sans-Italics;
 }
 
 .nav-link:hover{

@@ -3,6 +3,7 @@ import { BirthdayInput } from 'angularjs-input-birthday';
 import { IMyDpOptions } from '../../../node_modules/angular4-datepicker/src/my-date-picker';
 import { User } from '../objects';
 import { BackendService } from '../backend/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,14 +12,16 @@ import { BackendService } from '../backend/backend.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private Server: BackendService) { }
+  constructor(private Server: BackendService, private router: Router) { }
 
   ngOnInit() {
   }
 
 public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'mm/dd/yyyy',
+
 };
+
 public date = new Date();
 public model: any = 
 { 
@@ -33,28 +36,30 @@ public user=new User();
 public password: string;
 public confirmpassword: string;
 public disabled: boolean=true;
+public email = localStorage.getItem("email");
 
-
-verifyPasswords()
-{
-  if(this.password!==this.confirmpassword)
-  {
-      //TODO: show a modal or some shit
-      alert("Passwords must match");
-  }
-  else
-  {
-    this.disabled=false;;
-  }
-}
+// verifyPasswords()
+// {
+//   if(this.password!==this.confirmpassword)
+//   {
+//       //TODO: show a modal or some shit
+//       alert("Passwords must match");
+//   }
+//   else
+//   {
+//     this.disabled=false;;
+//   }
+// }
 
 
 
 registerUser()
 {
   this.user.bdate=this.model.jsdate;
+  this.user.email = localStorage.getItem("email");
   console.log(this.user.bdate);
   this.postNewUser(this.user);
+  this.router.navigate(['/feed']);
 }
 
 postNewUser(user : User): void 

@@ -20,35 +20,49 @@ export class LimbListComponent implements OnInit {
    }
 
   @Input() parameter: number;
-// list: Array<LimbComponent>; 
-list: Limb[] = [];
+  // list: Array<LimbComponent>; 
+  list: Limb[] = [];
 
-getAllLimbs()
-{
-    this.Server.getAllLimbs().subscribe( res=>{
+  getAllLimbs() {
+    this.Server.getAllLimbs().subscribe(res => {
+      let tod: string;
       for (var i in res) {
-        res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
+        if (res[i].postTime.hour > 12) {
+          res[i].postTime.hour = res[i].postTime.hour - 12;
+          tod = "PM";
+        } else {
+          tod = "AM";
+        }
+        res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
+
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);
-  });
-}
+    });
+  }
 
-getLimbsByUser(userName:string) {
-  this.Server.getLimbsByUserName(userName).subscribe( res=>{
-    for (var i in res) {
-      res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
-      this.list.push(<Limb>res[i]);
-    }
-    console.log(this.list);
-});
-}
+  getLimbsByUser(userName: string) {
+    this.Server.getLimbsByUserName(userName).subscribe(res => {
+      let tod: string;
+      for (var i in res) {
+        if (res[i].postTime.hour > 12) {
+          res[i].postTime.hour = res[i].postTime.hour - 12;
+          tod = "PM";
+        } else {
+          tod = "AM";
+        }
+        res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
+        this.list.push(<Limb>res[i]);
+      }
+      console.log(this.list);
+    });
+  }
 
 
-@Input() editingOpen;
-// requestUrl: any;
+  @Input() editingOpen;
+  // requestUrl: any;
 
-// private http: HttpClient
+  // private http: HttpClient
 
 ngOnInit() 
 {

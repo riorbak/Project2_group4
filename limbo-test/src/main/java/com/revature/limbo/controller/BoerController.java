@@ -141,7 +141,7 @@ public class BoerController {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{username}/cover-img",
 			consumes="multipart/form-data",
@@ -217,7 +217,7 @@ public class BoerController {
 		return resultJsonObj;
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/{username}/profile-img",
 			consumes="multipart/form-data",
