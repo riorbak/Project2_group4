@@ -30,14 +30,16 @@
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 58px;
         left: 12px;
+        font-family: Junction-light;
     }
     .decorated > .subtitle-left2{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 58px;
         left: 142px;
+        font-family: Junction-light;
     }
 }
 
@@ -45,14 +47,16 @@
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 58px;
         left: 12px;
+        font-family: Junction-light;
     }
     .decorated > .subtitle-left2{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 58px;
         right: 12px;
+        font-family: Junction-light;
     }
 }
 
