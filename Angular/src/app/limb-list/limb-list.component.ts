@@ -6,6 +6,7 @@ import { LimbComponent } from '../limb/limb.component';
 
 import { Limb } from '../objects';
 import { BackendService } from '../backend/backend.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -15,19 +16,18 @@ import { BackendService } from '../backend/backend.service';
   styleUrls: ['./limb-list.component.css']
 })
 export class LimbListComponent implements OnInit {
-  constructor (private Server: BackendService) {
+  constructor (private Server: BackendService,private route: ActivatedRoute) {
    }
 
   @Input() parameter: number;
-// list: Array<LimbComponent>; 
-list: Limb[] = [];
+  // list: Array<LimbComponent>; 
+  list: Limb[] = [];
 
-getAllLimbs()
-{
-    this.Server.getAllLimbs().subscribe( res=>{
+  getAllLimbs() {
+    this.Server.getAllLimbs().subscribe(res => {
       let tod: string;
-      for (var i in res) {     
-        if(res[i].postTime.hour > 12){
+      for (var i in res) {
+        if (res[i].postTime.hour > 12) {
           res[i].postTime.hour = res[i].postTime.hour - 12;
           tod = "PM";
         } else {
@@ -40,14 +40,14 @@ getAllLimbs()
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);
-  });
-}
+    });
+  }
 
-getLimbsByUser(userName:string) {
-  this.Server.getLimbsByUserName(userName).subscribe( res=>{
-    let tod: string;
-      for (var i in res) {     
-        if(res[i].postTime.hour > 12){
+  getLimbsByUser(userName: string) {
+    this.Server.getLimbsByUserName(userName).subscribe(res => {
+      let tod: string;
+      for (var i in res) {
+        if (res[i].postTime.hour > 12) {
           res[i].postTime.hour = res[i].postTime.hour - 12;
           tod = "PM";
         } else {
@@ -59,15 +59,15 @@ getLimbsByUser(userName:string) {
         res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
       }
-    console.log(this.list);
-});
-}
+      console.log(this.list);
+    });
+  }
 
 
-@Input() editingOpen;
-// requestUrl: any;
+  @Input() editingOpen;
+  // requestUrl: any;
 
-// private http: HttpClient
+  // private http: HttpClient
 
 ngOnInit() 
 {
@@ -76,7 +76,7 @@ ngOnInit()
     this.getAllLimbs();
   else
   {
-    this.getLimbsByUser(localStorage.getItem('username'))
+    this.getLimbsByUser(this.route.snapshot.paramMap.get('username'))
   }
 }
 

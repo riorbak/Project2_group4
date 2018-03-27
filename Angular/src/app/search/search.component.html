@@ -2,6 +2,13 @@
   <div class="icon-addon">
       <label for="navSearch" class="fa fa-search"></label>
       <input #searchBox type="text" class="form-control" id="navSearch" placeholder="Search" (keyup)="search(searchBox.value)" >
+      <ul class="search-result">
+        <li *ngFor="let user of users$ | async" >
+          <a href="http://localhost:4200/profile/{{user.username}}">
+            {{user.username}}
+          </a>
+        </li>
+      </ul>
   </div>
 </div>
 

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'feed', component: FeedComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:username', component: ProfileComponent },
   { path: 'limbListTest', component: LimbListComponent },
   { path: 'auth', component: AuthenticationLanderComponent },
   { path: 'auth/:code/:state', component: AuthenticationLanderComponent },

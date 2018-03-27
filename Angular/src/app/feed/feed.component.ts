@@ -25,7 +25,7 @@ export class FeedComponent implements OnInit {
     var profile = localStorage.getItem('profile');
     userProfile = JSON.parse(profile);
     this.userEmail = userProfile.email;
-    let postResult = this.server.getUser(this.userEmail).subscribe(res => {
+    let postResult = this.server.getUserByEmail(this.userEmail).subscribe(res => {
       let user: User = <User>res;
       console.log(user);
       if (!user.lastName) {

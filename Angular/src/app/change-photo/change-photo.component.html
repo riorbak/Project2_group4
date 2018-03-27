@@ -11,7 +11,7 @@
     </div>
 
 
-    <form>
+    <form id="imageUploadForm">
       <div class="file-input-center">
         <div class="form-group-custom">
           <input type="file" name="inputImg" id="newProfileImg" class="inputfile" (change)="changeLabel()" />
@@ -24,7 +24,7 @@
         <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
       </div>
       <div class="right-btn">
-        <button type="button" id="submitBtn" class="btn-custom btn-form">Update!</button>
+        <button type="button" id="submitBtn" class="btn-custom btn-form" (click)="submitPhoto()" >Update!</button>
       </div>
     </form>
   </div>

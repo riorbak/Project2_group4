@@ -10,7 +10,8 @@ import { User } from '../objects';
 export class ProfilePhotoComponent implements OnInit {
 
   @Input() profilePhoto: any;
-  @Input('url') set url(value: any){
+  @Input('url') set url(value: any)
+  {
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
   };
 
@@ -18,9 +19,12 @@ export class ProfilePhotoComponent implements OnInit {
     
   }
   
+
   ngOnInit() {
-    let aUrl = "/assets/images/user-200.png";
-    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
+    // let aUrl = "/assets/images/user-200.png";
+    // this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
+    this.url = "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
+    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
   }
 
   ngOnChanges() {
