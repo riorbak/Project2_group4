@@ -106,15 +106,25 @@ export class NewLimbModalComponent implements OnInit {
 
     if(theFile)
     {
-      this.server.uploadPhoto(localStorage.getItem('username'),"",theFile).subscribe( res => {
-        let urlObject={url : ''};
-        urlObject=JSON.parse(JSON.stringify(res));
-        console.log(urlObject.url);
+      this.server.uploadPhoto(localStorage.getItem('username'),"",theFile).subscribe( res => 
+      {
+          let urlObject={url : ''};
+          urlObject=JSON.parse(JSON.stringify(res));
+          console.log(urlObject.url);
+
+          limb.content=limb.content+"&"+urlObject.url;
+          this.server.postLimb( limb, this.userName ).subscribe();
+          //reload the limb list
+          this.closeModal();
+
       });
     }
-    this.server.postLimb( limb, this.userName ).subscribe();
-    //reload the limb list
-    this.closeModal();
+    else
+    {
+      this.server.postLimb( limb, this.userName ).subscribe();
+      //reload the limb list
+      this.closeModal();
+    }
   }
   
 
