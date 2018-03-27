@@ -33,8 +33,10 @@ export class LimbListComponent implements OnInit {
         } else {
           tod = "AM";
         }
-        res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
-
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
+        }
+        res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);
@@ -51,7 +53,10 @@ export class LimbListComponent implements OnInit {
         } else {
           tod = "AM";
         }
-        res[i].postTime = res[i].postTime.monthValue + "/" + res[i].postTime.dayOfMonth + "/" + res[i].postTime.year + " " + res[i].postTime.hour + ":" + res[i].postTime.minute + " " + tod;
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
+        }
+        res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
       }
       console.log(this.list);

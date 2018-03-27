@@ -3,10 +3,9 @@
 }
 
 .cover-photo{
-    background-image: url("/assets/images/bg2.png");
     background-size: cover;
     height: 100vh;
-    /* width: 100vw; */
+    
 }
 
 .profile-shadow{
