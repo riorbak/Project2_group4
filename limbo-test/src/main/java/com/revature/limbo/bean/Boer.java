@@ -18,11 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
-@Entity(name="boers")
+@Entity(name="boer")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="username")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@Table(name="boer")
 public class Boer implements Comparable<Boer> {
 	@Id
 	@Column(name="username")
@@ -41,10 +40,10 @@ public class Boer implements Comparable<Boer> {
 	private LocalDate bdate;
 	
 	
-	@Column(name="profilePic")
+	@Column(name="profile_pic")
 	private String profilePic;
 	
-	@Column(name="coverPic")
+	@Column(name="cover_pic")
 	private String coverPic;
 	
 	@OneToMany(mappedBy="owner")
