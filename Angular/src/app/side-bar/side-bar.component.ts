@@ -22,7 +22,7 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.getUser();
   }
 
   getUser(): void {
