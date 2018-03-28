@@ -30,13 +30,13 @@ export class LimbBodyComponent implements OnInit {
 
   format_images()
   {
-    console.log("Cont: "+this.content);
+    // console.log("Cont: "+this.content);
     this.edited=false;
     if(this.content.includes("&&&http"))
     {
       this.edited=true;
       let url=this.content.substring(this.content.lastIndexOf("&&&http")+3);
-      console.log("URL:"+url);
+      // console.log("URL:"+url);
 
       this.srcUrl=url;
       // var image=document.createElement("img");

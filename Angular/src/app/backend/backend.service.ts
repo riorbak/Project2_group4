@@ -9,6 +9,7 @@ import { appSettings } from '../appSettings';
 import { Router } from '@angular/router';
 import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 import { Form } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const acceptHeader = {
   headers: new HttpHeaders({ 'Accept': 'application/json' })
@@ -24,6 +25,9 @@ const ImagehttpOptions = {
 @Injectable()
 export class BackendService
 {
+
+  private user = new BehaviorSubject(new User());
+  private observeUser = this.user.asObservable();
 
   public users : Observable<User[]>;
   constructor(private http: HttpClient, private router:Router) { 
@@ -54,6 +58,15 @@ export class BackendService
     return this.http.post(url,user,httpOptions)
     .pipe(
       catchError(this.handleError('postNewUser', []))
+    );
+  }
+
+  postUpdateLimb( limb : Limb, username: string )
+  {
+    let url : string =  appSettings.BACKEND_URL +'boers/' + username +"/limbs/update";
+    return this.http.post(url,limb,httpOptions)
+    .pipe(
+      catchError(this.handleError('postUpdateLimb', []))
     );
   }
 
@@ -155,6 +168,15 @@ export class BackendService
       this.router.navigate(['register']); 
       return of(result as T);
     };
+  }
+
+  deleteLimb(id: number){
+    let url : string = appSettings.BACKEND_URL + "limbs/" + id;
+    console.log(url);
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteLimb', []))
+      );
   }
 
 }

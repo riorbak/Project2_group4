@@ -52,11 +52,11 @@ export class NewLimbModalComponent implements OnInit {
     let res = text.replace( /\n/g, " " ).split( " " )
     res.forEach(element => 
     {
-        console.log(element);
+        // console.log(element);
         if(this.validateYouTubeUrl(element))
         {
           ++youtube_count;
-          console.log("youtube link:"+element);
+          // console.log("youtube link:"+element);
         }
     });
 
@@ -110,7 +110,7 @@ export class NewLimbModalComponent implements OnInit {
       {
           let urlObject={url : ''};
           urlObject=JSON.parse(JSON.stringify(res));
-          console.log(urlObject.url);
+          // console.log(urlObject.url);
 
           limb.content=limb.content+"&&&"+urlObject.url;
 

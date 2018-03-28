@@ -18,17 +18,11 @@ export class SideBarComponent implements OnInit {
 
 
   constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
-    this.user = JSON.parse(localStorage.getItem('userObject'));
-   }
+    this.getUser();
+  }
 
   ngOnInit() {
-    let authorResult = this.server.getUserByUsername(localStorage.getItem('username')).subscribe(res => {
-      this.user = <User> res;
-          if(this.user.profilePic)
-            this.url=this.user.profilePic;
-          //console.log(this.url+" of "+this.user.firstName)
-          // console.log("User:"+JSON.stringify(this.user));
-    });
+    
   }
 
   getUser(): void {
