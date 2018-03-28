@@ -48,7 +48,10 @@ export class SideBarComponent implements OnInit {
 
 
   openSettings() {
-    const modalRef = this.modalService.open(SettingsComponent);
+    
+    const modalRef = this.modalService.open(SettingsComponent).result.then(res => {
+      this.getUser();
+    });
     // modalRef.componentInstance.email = 'World';
   }
   
