@@ -1,6 +1,7 @@
 .modal-container {
     max-height: 95vh;
     max-width: 75vw;
+    width: max-content;
     padding: 2%;
     text-align: center;
     background: #314455;
@@ -29,6 +30,8 @@
     border-radius: 5px;
     width: 80px;
     height: 40px;
+    box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);
+    margin-bottom: 10px;
 }
 
 
@@ -44,6 +47,8 @@
     color: #ffffff;
     border-color: #314455;
     background-color: #314455;
+    box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);
+
 }
 
 .left-btn {

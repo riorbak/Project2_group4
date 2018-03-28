@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
@@ -22,13 +24,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity(name="limbs")
+@Entity(name="limb")
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class,
 				  property="id")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Limb implements Comparable<Limb> {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name="limb_id_seq", sequenceName="limb_id_seq")
+	@GeneratedValue(generator="limb_id_seq", strategy=GenerationType.SEQUENCE)
 	@Column(name="id")
 	private Integer id;
 	
@@ -38,13 +41,13 @@ public class Limb implements Comparable<Limb> {
 	@Column(name="post_time")
 	private LocalDateTime postTime;
 	
-	@ManyToOne(cascade=CascadeType.ALL,
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
 			optional=false)
 	@JoinColumn(name="owner")
 	@JsonIdentityReference(alwaysAsId=true)
 	private Boer owner;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinTable(name="liked_limbs",
 		joinColumns=@JoinColumn(name="liked_post", referencedColumnName="id"),
 		inverseJoinColumns=@JoinColumn(name="liked_by", referencedColumnName="username")

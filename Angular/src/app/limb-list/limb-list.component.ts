@@ -22,6 +22,7 @@ export class LimbListComponent implements OnInit {
   @Input() parameter: number;
   // list: Array<LimbComponent>; 
   list: Limb[] = [];
+  id: number;
 
   getAllLimbs() {
     this.Server.getAllLimbs().subscribe(res => {
@@ -38,9 +39,10 @@ export class LimbListComponent implements OnInit {
         }
         res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
+        
       }
       this.list.reverse();
-      console.log(this.list);
+      // console.log(this.list);
     });
   }
 
@@ -61,7 +63,7 @@ export class LimbListComponent implements OnInit {
         this.list.push(<Limb>res[i]);
       }
       this.list.reverse();
-      console.log(this.list);
+      // console.log(this.list);
     });
   }
 

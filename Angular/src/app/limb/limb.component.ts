@@ -32,7 +32,7 @@ export class LimbComponent implements OnInit {
     // this.url =  "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg";
     let authorResult = this.server.getUserByUsername(this.owner).subscribe(res => {
       this.user = <User> res;
-        console.log(this.user.profilePic);
+        // console.log(this.user.profilePic);
           if(this.user.profilePic){
             this.url=this.user.profilePic;
           } else {

@@ -4,6 +4,6 @@
 </div>
 <div *ngIf="edited | edited_video" id="limb-media" (click)="openImgModal()">
     <img *ngIf="edited" [src] = "srcUrl" class="limb-image">
-    <youtube-player *ngIf="edited_video"[videoId]="id"></youtube-player>
+    <youtube-player *ngIf="edited_video" [videoId]="id"></youtube-player>
 </div>
 </div>
