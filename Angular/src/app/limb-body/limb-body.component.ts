@@ -14,12 +14,16 @@ export class LimbBodyComponent implements OnInit {
   @Input() content: string;
   @Input() media;
   srcUrl: any;
+  ytUrl: any;
   edited : boolean;
+  edited_video : boolean;
+  constructor(public sanitizer: DomSanitizer, private modalService: NgbModal) 
+  { 
 
-  constructor(private sanitization: DomSanitizer, private modalService: NgbModal) { }
+  }
 
   ngOnInit() {
-    this.format_images();
+    this.format_media();
   }
 
 
@@ -28,10 +32,11 @@ export class LimbBodyComponent implements OnInit {
     modalRef.componentInstance.media = this.srcUrl;
   }
 
-  format_images()
+  format_media()
   {
     // console.log("Cont: "+this.content);
     this.edited=false;
+    this.edited_video=false;
     if(this.content.includes("&&&http"))
     {
       this.edited=true;
@@ -48,7 +53,50 @@ export class LimbBodyComponent implements OnInit {
       this.content=this.content.replace(url,'');
     }
 
+    //youtube check
+    let res = this.content.replace( /\n/g, " " ).split( " " );
+    var i=0;
+    let breakout : boolean=false;
+    let element;
+    while(!breakout)
+    {
+        element=res[i];
+        console.log(element);
+
+        if(this.validateYouTubeUrl(element))
+        {
+          this.edited_video=true;
+          //breakout=true;
+          this.content=this.content.replace(element,"");
+          
+          let id=element.substring(element.lastIndexOf("?v=")+3);
+          this.ytUrl="https://www.youtube.com/embed/"+id;
+
+        }
+
+        ++i;
+        if(i > res.length-1)
+        {
+          breakout=true;
+        }
+    }
+
   }
+
+  validateYouTubeUrl(url:string) : boolean
+  {
+          if (url != undefined || url != '') {
+              var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+              var match = url.match(regExp);
+              if (match && match[2].length == 11) {
+                  return true;
+              }
+              else {
+                  return false;
+              }
+          }
+  }
+
 
 
 }
