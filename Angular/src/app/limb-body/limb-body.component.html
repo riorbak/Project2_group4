@@ -2,7 +2,8 @@
 <div id="limb-body" class="limb-body" (change)="format_images()">
 {{content}}
 </div>
-<div *ngIf="edited" id="limb-media" (click)="openImgModal()">
-    <img [src] = "srcUrl" class="limb-image">
+<div *ngIf="(edited || edited_video)" id="limb-media" (click)="openImgModal()">
+    <img *ngIf="edited" [src] = "srcUrl" class="limb-image">
+    <iframe allowfullscreen="true" *ngIf="edited_video" [src]="sanitizer.bypassSecurityTrustResourceUrl(ytUrl)"></iframe>
 </div>
 </div>
