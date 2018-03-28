@@ -28,17 +28,11 @@
 
 @media (min-width: 1200px) {
     .decorated > .subtitle-left1{
-        display: inline-block;
-        position: absolute;
-        top: 65px;
-        left: 12px;
-        font-family: Fontin-Sans-Italics;
+        float: left;
+        font-family: Fontin-Sans-Regular;
     }
     .decorated > .subtitle-left2{
-        display: inline-block;
-        position: absolute;
-        top: 65px;
-        left: 202px;
+        float: right;
         font-family: Fontin-Sans-Regular;
     }
 }
