@@ -14,11 +14,13 @@ export class LimbBodyComponent implements OnInit {
   @Input() content: string;
   @Input() media;
   srcUrl: any;
-  id: any;
+  ytUrl: any;
   edited : boolean;
   edited_video : boolean;
+  constructor(public sanitizer: DomSanitizer, private modalService: NgbModal) 
+  { 
 
-  constructor(private sanitization: DomSanitizer, private modalService: NgbModal) { }
+  }
 
   ngOnInit() {
     this.format_media();
@@ -64,10 +66,11 @@ export class LimbBodyComponent implements OnInit {
         if(this.validateYouTubeUrl(element))
         {
           this.edited_video=true;
-          breakout=true;
+          //breakout=true;
           this.content=this.content.replace(element,"");
           
-          this.id=element.substring(element.lastIndexOf("?v=")+3);
+          let id=element.substring(element.lastIndexOf("?v=")+3);
+          this.ytUrl="https://www.youtube.com/embed/"+id;
 
         }
 

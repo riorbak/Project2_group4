@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
 import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { SettingsComponent } from './settings/settings.component';
-import { YoutubePlayerModule } from 'ng2-youtube-player';
 
 
 
@@ -61,8 +60,7 @@ import { YoutubePlayerModule } from 'ng2-youtube-player';
     HttpClientModule,
     EmbedVideo.forRoot(),
     MyDatePickerModule,
-    FormsModule,
-    YoutubePlayerModule
+    FormsModule
   ],
 
   providers: [AuthenticationService, BackendService],
