@@ -2,7 +2,8 @@
 <div id="limb-body" class="limb-body" (change)="format_images()">
 {{content}}
 </div>
-<div *ngIf="edited" id="limb-media" (click)="openImgModal()">
-    <img [src] = "srcUrl" class="limb-image">
+<div *ngIf="edited | edited_video" id="limb-media" (click)="openImgModal()">
+    <img *ngIf="edited" [src] = "srcUrl" class="limb-image">
+    <youtube-player *ngIf="edited_video"[videoId]="id"></youtube-player>
 </div>
 </div>
