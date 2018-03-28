@@ -6,7 +6,9 @@
 }
 
 .limb-image{
-    width: 25vw;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
     height: auto;
     margin-left: 27%;
     margin-bottom: 15px;

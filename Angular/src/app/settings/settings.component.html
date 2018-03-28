@@ -10,7 +10,7 @@
     <div *ngIf="editingOpen">
       <div class="form-container-custom">
         <!--servlet url-->
-        <form action="http://localhost:8000" method="post" enctype="multipart/form-data">
+        <form action="http://localhost:666" method="post" enctype="multipart/form-data">
           <div class="form-row">
             <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center">
               <div class="form-group">
@@ -25,26 +25,9 @@
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
                 <div class="icon-addon">
-                  <label for="newPass" class="fa fa-lock"></label>
-                  <input type="password" class="form-control" id="newPass" placeholder="{{password}}" value="{{password}}">
-                </div>
-
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <input type="password" class="form-control" id="newPassConfirm" placeholder="{{password}}" value="{{password}}">
-              </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <div class="icon-addon">
                   <label for="newFName" class="fa fa-user"></label>
                   <input type="text" class="form-control" id="newFName" placeholder="{{firstName}}" value="{{firstName}}">
                 </div>
-
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -79,38 +62,20 @@
           </div>
           <div class="col-md-6 col-sm-6 align-self-center" style="text-align:left">
             <span class="user-info">
-              {{firstName}}  {{lastName}}
+              {{firstName}} {{lastName}}
             </span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 col-sm-3 text-right">
-            <span class="icon-color">
-              <i class="fa fa-lock md"></i> :
-            </span>
-          </div>
-          <div class="col-md-6 col-sm-6 align-self-center">
-            <span id="containsPass" class="user-info pass">
-              {{password}}
-            </span>
-          </div>
-          <div class="col-md-3 col-sm-3">
-            <span class="icon-color">
-                <i id="passVisible" class="fa fa-eye-slash" (click)="showHidePass()"></i>
-            </span> 
-            
           </div>
         </div>
       </div>
     </div>
-
-    <div class="left-btn">
-      <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
-    </div>
-    <!-- <div *ngIf="editingOpen"> -->
-      <div class="right-btn" *ngIf="editingOpen">
-        <button type="button" id="updateBtn" class="btn-custom btn-form">Update!</button>
-      </div>
-    <!-- </div> -->
   </div>
+
+  <div class="left-btn">
+    <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
+  </div>
+  
+  <div class="right-btn" *ngIf="editingOpen">
+    <button type="button" id="updateBtn" class="btn-custom btn-form">Update!</button>
+  </div>
+  
 </div>
