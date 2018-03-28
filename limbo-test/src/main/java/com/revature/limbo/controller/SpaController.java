@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/", "/feed", "/login", "/auth", "/profile", "/verify", "profile/{name}"})
 public class SpaController {
 
 	@RequestMapping(method = RequestMethod.GET)
