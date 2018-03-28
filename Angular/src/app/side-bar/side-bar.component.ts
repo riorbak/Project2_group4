@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
-  @Input() user: User=new User;
+ user: User=new User;
   url : string;
 
 
