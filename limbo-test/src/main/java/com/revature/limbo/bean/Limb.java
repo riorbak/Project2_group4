@@ -41,7 +41,7 @@ public class Limb implements Comparable<Limb> {
 	@Column(name="post_time")
 	private LocalDateTime postTime;
 	
-	@ManyToOne(cascade=CascadeType.ALL,
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
 			optional=false)
 	@JoinColumn(name="owner")
 	@JsonIdentityReference(alwaysAsId=true)
