@@ -26,9 +26,6 @@ const ImagehttpOptions = {
 export class BackendService
 {
 
-  private user = new BehaviorSubject(new User());
-  private observeUser = this.user.asObservable();
-
   public users : Observable<User[]>;
   constructor(private http: HttpClient, private router:Router) { 
       this.users = this.getAllUsers();
