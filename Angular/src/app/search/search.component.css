@@ -35,6 +35,11 @@
     font-family: Fontin-Sans-Italics;
  }
 
+ .search-result {
+     list-style: none;
+     
+ }
+
 .icon-addon.addon-md .glyphicon,
 .icon-addon .glyphicon, 
 .icon-addon.addon-md .fa,
