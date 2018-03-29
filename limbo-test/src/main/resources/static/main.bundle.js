@@ -398,14 +398,14 @@ var AuthenticationService = /** @class */ (function () {
 /***/ "./src/app/authentication-lander/authentication-lander.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n }\r\n \r\n .logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n }\r\n \r\n .background{\r\n    margin: 0px;\r\n    background-image: url('/limbo/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n }\r\n \r\n html, body {\r\n    height:100%;\r\n }\r\n \r\n .logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n \r\n @font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }\r\n \r\n .auth-mess-background {\r\n    border-radius: 5px;\r\n    background: rgba(240, 240, 240, 0.938);\r\n    text-align: center;\r\n }\r\n \r\n .format-auth-land {\r\n    font-family: Fontin-Sans-Bold;\r\n    font-size: 20px;\r\n }"
+module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n }\r\n \r\n .logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n }\r\n \r\n .background{\r\n    margin: 0px;\r\n    background-image: url('/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n }\r\n \r\n html, body {\r\n    height:100%;\r\n }\r\n \r\n .logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n \r\n @font-face {\r\n    font-family: logoFont;\r\n    src: url('/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }\r\n \r\n .auth-mess-background {\r\n    border-radius: 5px;\r\n    background: rgba(240, 240, 240, 0.938);\r\n    text-align: center;\r\n }\r\n \r\n .format-auth-land {\r\n    font-family: Fontin-Sans-Bold;\r\n    font-size: 20px;\r\n }"
 
 /***/ }),
 
 /***/ "./src/app/authentication-lander/authentication-lander.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n </div>\r\n\r\n "
+module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n  \r\n </div>\r\n\r\n"
 
 /***/ }),
 
@@ -551,6 +551,11 @@ var BackendService = /** @class */ (function () {
         };
         return this.http.post(url, userEmail, httpOptions)
             .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleUserNotFoundError('ErrorFindingUser')));
+    };
+    BackendService.prototype.getLimbById = function (limbId) {
+        var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + "limbs/" + limbId;
+        return this.http.get(url, httpOptions)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('getLimbsById', [])));
     };
     BackendService.prototype.doLike = function (userName, limbId) {
         var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + "limbs/" + limbId + '/' + userName + '/1';
@@ -751,7 +756,7 @@ module.exports = ".modal-container {\r\n    height: auto;\r\n    width: 500px;\r
 /***/ "./src/app/edit-limb/edit-limb.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    Edit (Post ID: {{id}}):\r\n  </h2>\r\n\r\n  <div>\r\n    <form>\r\n      <div class=\"form-group-custom\">\r\n        <textarea class=\"form-control post-content\" id=\"limbTextArea\" rows=\"3\">{{limbBody}}</textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"center-btn\">\r\n          <button type=\"button\" id=\"deleteBtn\" class=\"btn-custom btn-form\" (click)=\"deleteLimb()\">Delete</button>\r\n        </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"updateLimb()\">Update!</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    Edit (Post ID: {{id}}):\r\n  </h2>\r\n\r\n  <div>\r\n    <form>\r\n      <div class=\"form-group-custom\">\r\n        <textarea class=\"form-control post-content\" id=\"limbTextArea\" rows=\"3\">{{content}}</textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"center-btn\">\r\n          <button type=\"button\" id=\"deleteBtn\" class=\"btn-custom btn-form\" (click)=\"deleteLimb()\">Delete</button>\r\n        </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"updateLimb()\">Update!</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -787,6 +792,16 @@ var EditLimbComponent = /** @class */ (function () {
     EditLimbComponent.prototype.closeModal = function () {
         this.activeModal.close();
     };
+    EditLimbComponent.prototype.changeLabel = function () {
+        var input;
+        var files = [];
+        var filename;
+        input = document.getElementById("newLimbImg");
+        files = input.files;
+        filename = files[0].name;
+        var label;
+        document.getElementById("inputImgLabel").innerHTML = '<i class="fa fa-upload" style="padding-right:.5em"></i>' + filename;
+    };
     EditLimbComponent.prototype.updateLimb = function () {
         var _this = this;
         var limbText = document.getElementById("limbTextArea").value;
@@ -797,14 +812,12 @@ var EditLimbComponent = /** @class */ (function () {
         var files = [];
         var filename;
         input = document.getElementById("inputImg");
-        if (input) {
-            files = input.files;
-            var theFile = files[0];
+        var theFile = files[0];
+        if (theFile) {
             limb.content = limbText;
             this.server.uploadPhoto(localStorage.getItem('username'), "", theFile).subscribe(function (res) {
                 var urlObject = { url: '' };
                 urlObject = JSON.parse(JSON.stringify(res));
-                // console.log(urlObject.url);
                 limb.content = limb.content + "&&&" + urlObject.url;
                 _this.server.postUpdateLimb(limb, localStorage.getItem("username")).subscribe();
                 //reload the limb list
@@ -812,13 +825,22 @@ var EditLimbComponent = /** @class */ (function () {
             });
         }
         else {
-            console.log("inside else");
-            limb.content = limbText;
-            console.log(limb);
-            this.server.postUpdateLimb(limb, localStorage.getItem("username")).subscribe();
-            //reload the limb list
-            this.closeModal();
+            //we have the id of the limb
+            this.server.getLimbById(this.id).subscribe(function (res) {
+                //get it from the server
+                var limb = res;
+                //extract the media link
+                if (limb.content.includes("&&&http")) {
+                    var url = limb.content.substring(limb.content.lastIndexOf("&&&http"));
+                    limbText = limbText + url;
+                }
+                //append link to the end of limb text using the correct annotation (&&&)
+                limb.content = limbText;
+                _this.server.postUpdateLimb(limb, localStorage.getItem("username")).subscribe();
+                _this.closeModal();
+            });
         }
+        this.closeModal();
     };
     EditLimbComponent.prototype.deleteLimb = function () {
         this.server.deleteLimb(this.id).subscribe();
@@ -828,6 +850,10 @@ var EditLimbComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], EditLimbComponent.prototype, "id", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], EditLimbComponent.prototype, "content", void 0);
     EditLimbComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-edit-limb',
@@ -846,7 +872,7 @@ var EditLimbComponent = /** @class */ (function () {
 /***/ "./src/app/feed/feed.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 0px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: 0;\r\n    font-family: logoFont;\r\n    font-size: 250px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-actual-center{\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n }\r\n\r\n\r\n.logo-center {\r\n    width: 50%;\r\n    height: 240px;\r\n    margin: auto;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
+module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 0px;\r\n    background-image: url('/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: 0;\r\n    font-family: logoFont;\r\n    font-size: 250px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-actual-center{\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n }\r\n\r\n\r\n.logo-center {\r\n    width: 50%;\r\n    height: 240px;\r\n    margin: auto;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
 
 /***/ }),
 
@@ -1442,7 +1468,7 @@ var LimbComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n}\r\n\r\n\r\n.btn-custom{\r\n    position: absolute;\r\n    top: 80%;\r\n    left: 40%;\r\n    border-radius: 5px;\r\n}\r\n\r\n\r\n.btn-custom.outline{\r\n    margin: 0px;\r\n    font-size: 20px;\r\n    border: 2px solid #97AABD;\r\n    color: #ffffff;\r\n    background: #97AABD;\r\n    padding: 5px 15px;\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.btn-custom.outline:hover, .btn-custom.outline:focus, .btn-custom.outline:active, .btn-custom.outline.active, .open > .dropdown-toggle.btn-custom {\r\n\tcolor: #ffffff;\r\n    border-color: #314455;\r\n    background-color: #314455;\r\n    -webkit-box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n\r\n}\r\n\r\n\r\nhr.drop_shadow{\r\n    width: 200px;\r\n    height: 10px;\r\n    border: 1;\r\n    -webkit-box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n            box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n      border-radius: 5px;\r\n}\r\n\r\n\r\n.logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.background{\r\n    margin: 0px;\r\n    background-image: url('/limbo/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n\r\nhtml, body {\r\n    height:100%;\r\n}\r\n\r\n\r\n.logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n}\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n}"
+module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n}\r\n\r\n\r\n.btn-custom{\r\n    position: absolute;\r\n    top: 80%;\r\n    left: 40%;\r\n    border-radius: 5px;\r\n}\r\n\r\n\r\n.btn-custom.outline{\r\n    margin: 0px;\r\n    font-size: 20px;\r\n    border: 2px solid #97AABD;\r\n    color: #ffffff;\r\n    background: #97AABD;\r\n    padding: 5px 15px;\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.btn-custom.outline:hover, .btn-custom.outline:focus, .btn-custom.outline:active, .btn-custom.outline.active, .open > .dropdown-toggle.btn-custom {\r\n\tcolor: #ffffff;\r\n    border-color: #314455;\r\n    background-color: #314455;\r\n    -webkit-box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n\r\n}\r\n\r\n\r\nhr.drop_shadow{\r\n    width: 200px;\r\n    height: 10px;\r\n    border: 1;\r\n    -webkit-box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n            box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n      border-radius: 5px;\r\n}\r\n\r\n\r\n.logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.background{\r\n    margin: 0px;\r\n    background-image: url('/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n\r\nhtml, body {\r\n    height:100%;\r\n}\r\n\r\n\r\n.logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n}\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n}"
 
 /***/ }),
 
@@ -1766,7 +1792,7 @@ var ProfilePhotoComponent = /** @class */ (function () {
 /***/ "./src/app/profile/profile.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n    padding-left: 20vw; \r\n}\r\n\r\n.cover-photo{\r\n    background-size: cover;\r\n    height: 100vh;\r\n    \r\n}\r\n\r\n.profile-shadow{\r\n    -webkit-box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n            box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n}\r\n\r\n.profile-background{\r\n    margin: 0px;\r\n    /* width: 100vw; */\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    height: 100%;\r\n    min-height: 100vh;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n.profile-photo-size{\r\n    height: 26vw;\r\n    width: 26vw;\r\n    border-radius:100%;\r\n}\r\n\r\n.profile-photo-center{\r\n    padding-top: 25vh;\r\n    padding-left: 37vw;\r\n}\r\n\r\n.profile-info-center{\r\n    margin-top: 30px;\r\n    width: 50%;\r\n    margin: auto;\r\n}\r\n\r\n.profile-info{\r\n    margin-top: 5vh;\r\n    text-align:center;\r\n    color:white;\r\n    font-size: 3vh;\r\n    font-family: Fontin-Sans-Bold;\r\n    text-shadow: -3px 3px black;\r\n}\r\n\r\n.edit-icon-position {\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n}\r\n\r\n.edit-visibility {\r\n    display: block;\r\n}\r\n\r\n.fa.fa-lock {\r\n    font-size: 30px;\r\n    color: #97AABD;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-unlock-alt {\r\n    font-size: 30px;\r\n    color: #C96567;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic:hover {\r\n    color: #C96567;\r\n    \r\n}\r\n\r\n.profile-pic-edit-icon {\r\n    position: absolute;\r\n    right: 33vw;\r\n    top: 22vh;\r\n}\r\n\r\n.fa.fa-edit.cover-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.cover-pic:hover {\r\n    color: #C96567;\r\n}\r\n\r\n.cover-pic-edit-icon {\r\n    position: absolute;\r\n    right: 60px;\r\n    top: 20px;\r\n}"
+module.exports = ".main-content{\r\n    padding-left: 20vw; \r\n}\r\n\r\n.cover-photo{\r\n    background-size: cover;\r\n    height: 100vh;\r\n    \r\n}\r\n\r\n.profile-shadow{\r\n    -webkit-box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n            box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n}\r\n\r\n.profile-background{\r\n    margin: 0px;\r\n    /* width: 100vw; */\r\n    padding-top: 50px;\r\n    background-image: url('/assets/images/bg2.png');\r\n    height: 100%;\r\n    min-height: 100vh;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n.profile-photo-size{\r\n    height: 26vw;\r\n    width: 26vw;\r\n    border-radius:100%;\r\n}\r\n\r\n.profile-photo-center{\r\n    padding-top: 25vh;\r\n    padding-left: 37vw;\r\n}\r\n\r\n.profile-info-center{\r\n    margin-top: 30px;\r\n    width: 50%;\r\n    margin: auto;\r\n}\r\n\r\n.profile-info{\r\n    margin-top: 5vh;\r\n    text-align:center;\r\n    color:white;\r\n    font-size: 3vh;\r\n    font-family: Fontin-Sans-Bold;\r\n    text-shadow: -3px 3px black;\r\n}\r\n\r\n.edit-icon-position {\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n}\r\n\r\n.edit-visibility {\r\n    display: block;\r\n}\r\n\r\n.fa.fa-lock {\r\n    font-size: 30px;\r\n    color: #97AABD;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-unlock-alt {\r\n    font-size: 30px;\r\n    color: #C96567;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic:hover {\r\n    color: #C96567;\r\n    \r\n}\r\n\r\n.profile-pic-edit-icon {\r\n    position: absolute;\r\n    right: 33vw;\r\n    top: 22vh;\r\n}\r\n\r\n.fa.fa-edit.cover-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.cover-pic:hover {\r\n    color: #C96567;\r\n}\r\n\r\n.cover-pic-edit-icon {\r\n    position: absolute;\r\n    right: 60px;\r\n    top: 20px;\r\n}"
 
 /***/ }),
 
