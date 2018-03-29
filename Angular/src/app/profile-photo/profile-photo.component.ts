@@ -23,7 +23,7 @@ export class ProfilePhotoComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.profilePhoto);
-    
+   
   }
 
   ngOnChanges() {

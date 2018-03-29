@@ -703,7 +703,7 @@ var ChangePhotoComponent = /** @class */ (function () {
     };
     ChangePhotoComponent.prototype.updateUser = function () {
         //get new user object with update image urls
-        this.server.getUserByUsername(localStorage.getItem('userName')).subscribe(function (res) {
+        this.server.getUserByUsername(localStorage.getItem('username')).subscribe(function (res) {
             var user = res;
             localStorage.setItem('userObject', JSON.stringify(user));
         });
