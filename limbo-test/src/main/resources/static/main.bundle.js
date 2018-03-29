@@ -405,7 +405,7 @@ module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r
 /***/ "./src/app/authentication-lander/authentication-lander.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n </div>"
+module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n </div>\r\n\r\n "
 
 /***/ }),
 
@@ -580,7 +580,7 @@ var BackendService = /** @class */ (function () {
         if (!term) {
             term = "garbled junk that isn't a username!!!";
         }
-        return this.users.map(function (users) { return users.filter(function (user) { return user.username.includes(term); }); });
+        return this.users.map(function (users) { return users.filter(function (user) { return user.firstName.includes(term) || user.lastName.includes(term); }); });
     };
     BackendService.prototype.handleError = function (operation, result) {
         if (operation === void 0) { operation = 'operation'; }
@@ -2034,7 +2034,7 @@ module.exports = ".search-custom{\r\n    max-width: 80%;\r\n    margin-bottom:20
 /***/ "./src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a class=\"nav-link\" href=\"http://35.185.104.21:8085/limbo/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a class=\"nav-link\" title=\"{{user.username}}\"href=\"http://35.185.104.21:8085/limbo/profile/{{user.username}}\">\r\n            {{user.firstName}} {{user.lastName}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
