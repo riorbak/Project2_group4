@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
-  @Input() user: User=new User;
+ user: User=new User;
   url : string;
 
 
@@ -22,7 +22,7 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.getUser();
   }
 
   getUser(): void {
@@ -42,12 +42,23 @@ export class SideBarComponent implements OnInit {
   }
 
   openNewPost() {
+<<<<<<< HEAD
+    const modalRef = this.modalService.open(NewLimbModalComponent).result.then(res => {
+      this.server.getAllLimbs();
+    });
+
+    //modalRef.componentInstance.name = 'World';
+=======
     const modalRef = this.modalService.open(NewLimbModalComponent);
+>>>>>>> 6e8ea488c95fa5d94de1b26712d4a6326cbb01f4
   }
 
 
   openSettings() {
-    const modalRef = this.modalService.open(SettingsComponent);
+    
+    const modalRef = this.modalService.open(SettingsComponent).result.then(res => {
+      this.getUser();
+    });
     // modalRef.componentInstance.email = 'World';
   }
   
