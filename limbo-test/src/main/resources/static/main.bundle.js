@@ -405,7 +405,7 @@ module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r
 /***/ "./src/app/authentication-lander/authentication-lander.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n  \r\n </div>\r\n\r\n"
+module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n </div>\r\n\r\n"
 
 /***/ }),
 
