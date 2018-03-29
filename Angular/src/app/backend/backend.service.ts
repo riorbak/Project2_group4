@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 import { Form } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 const acceptHeader = {
   headers: new HttpHeaders({ 'Accept': 'application/json' })

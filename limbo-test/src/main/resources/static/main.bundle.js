@@ -380,9 +380,9 @@ var AuthenticationService = /** @class */ (function () {
             }
             localStorage.setItem('username', user.username);
             localStorage.setItem('userObject', JSON.stringify(user));
+            localStorage.setItem('email', userProfile.email);
+            _this.router.navigate(['feed']);
         });
-        localStorage.setItem('email', userProfile.email);
-        this.router.navigate(['feed']);
     };
     AuthenticationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -466,6 +466,7 @@ var AuthenticationLanderComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__("./node_modules/rxjs/_esm5/operators.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__appSettings__ = __webpack_require__("./src/app/appSettings.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -475,6 +476,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
