@@ -249,8 +249,8 @@ var AppModule = /** @class */ (function () {
 var appSettings = /** @class */ (function () {
     function appSettings() {
     }
-    appSettings.ANGULAR_URL = 'http://35.185.104.21:8085/';
-    appSettings.BACKEND_URL = 'http://35.185.104.21:8085/';
+    appSettings.ANGULAR_URL = 'http://35.185.104.21:8085/limbo/';
+    appSettings.BACKEND_URL = 'http://35.185.104.21:8085/limbo/';
     return appSettings;
 }());
 
