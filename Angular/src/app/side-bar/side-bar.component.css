@@ -183,5 +183,6 @@
 .icon-addon .form-control:focus + .fa,
 .icon-addon:hover .fa {
     color: #97aabd;
+    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);
 }
 

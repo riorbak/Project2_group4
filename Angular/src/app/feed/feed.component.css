@@ -15,3 +15,17 @@
     background-size: cover;
 }
 
+.logo {
+    display: block;
+    font-family: logoFont;
+    font-size: 350px;
+    color: white;
+    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);
+ }
+ 
+ 
+ 
+ @font-face {
+    font-family: logoFont;
+    src: url('/assets/fonts/awesomebirds/Awesome\ Birds.ttf');
+ }
