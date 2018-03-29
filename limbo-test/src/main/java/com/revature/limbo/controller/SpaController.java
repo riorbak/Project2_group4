@@ -17,14 +17,11 @@ public class SpaController {
 	
 	@RequestMapping({"/", "/feed", "/login", "/auth", "/verify"})
 	public String getSPA() {
-		System.out.println("thing 1");
 		return "forward:/index.html";
 	}
 	
 	@RequestMapping("/profile/{username}")
 	public String getSPA2() {
-		
-		System.out.println("thing 2");
 		return "forward:/index.html";
 	}
 	
