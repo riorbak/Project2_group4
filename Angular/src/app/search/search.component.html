@@ -4,7 +4,7 @@
       <input #searchBox type="text" class="form-control" id="navSearch" placeholder="Search" (keyup)="search(searchBox.value)" >
       <ul class="search-result">
         <li *ngFor="let user of users$ | async" >
-          <a href="http://35.185.104.21:8085/limbo/profile/{{user.username}}">
+          <a class="navlink" href="http://35.185.104.21:8085/limbo/profile/{{user.username}}">
             {{user.username}}
           </a>
         </li>
