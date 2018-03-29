@@ -76,7 +76,7 @@ export class LimbListComponent implements OnInit {
 
 ngOnInit() 
 {
-  console.log("parameter is "+this.parameter);
+  
   if(this.parameter==1)
     this.getAllLimbs();
   else

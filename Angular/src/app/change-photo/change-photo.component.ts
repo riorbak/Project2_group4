@@ -79,7 +79,7 @@ export class ChangePhotoComponent implements OnInit {
 
 updateUser() {
       //get new user object with update image urls
-      this.server.getUserByUsername(localStorage.getItem('userName')).subscribe(res => {
+      this.server.getUserByUsername(localStorage.getItem('username')).subscribe(res => {
         let user: User = <User>res;
         localStorage.setItem('userObject', JSON.stringify(user));
       });

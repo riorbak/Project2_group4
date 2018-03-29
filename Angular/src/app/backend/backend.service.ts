@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 import { Form } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 const acceptHeader = {
   headers: new HttpHeaders({ 'Accept': 'application/json' })
@@ -84,6 +85,14 @@ export class BackendService
     );
   }
 
+  updateUser( user : User )
+  {
+    let url : string = appSettings.BACKEND_URL + 'boers/update';
+    return this.http.post(url, JSON.stringify(user),  httpOptions)
+    .pipe(
+      catchError(this.handleError("updateUser",[]))
+    );
+  }
 
   getLimbsByUserName(username : string) {
     let url : string = appSettings.BACKEND_URL + 'boers/' + username + '/limbs' 
@@ -149,7 +158,7 @@ export class BackendService
     {
       term="garbled junk that isn't a username!!!";
     }
-    return this.users.map(users => users.filter( user => user.username.includes(term)));
+    return this.users.map(users => users.filter( user => user.firstName.includes(term) || user.lastName.includes(term) ));
   }
 
   private handleError<T> (operation = 'operation', result?: T) 

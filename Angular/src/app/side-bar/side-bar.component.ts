@@ -13,16 +13,15 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
-  @Input() user: User=new User;
-  url : string;
+user: User;
+//user: User=new User;
+url : string;
 
 
-  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
-    this.getUser();
-  }
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {}
 
   ngOnInit() {
-    
+    this.getUser();
   }
 
   getUser(): void {
@@ -34,7 +33,7 @@ export class SideBarComponent implements OnInit {
           if(this.user.profilePic){
             this.url=this.user.profilePic;
           } else {
-            this.url = "/assets/images/user-200.png";
+            this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
             // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
           }
           
@@ -42,12 +41,19 @@ export class SideBarComponent implements OnInit {
   }
 
   openNewPost() {
-    const modalRef = this.modalService.open(NewLimbModalComponent);
+    const modalRef = this.modalService.open(NewLimbModalComponent).result.then(res => {
+      this.server.getAllLimbs();
+    });
+
+    //modalRef.componentInstance.name = 'World';
   }
 
 
   openSettings() {
-    const modalRef = this.modalService.open(SettingsComponent);
+    
+    const modalRef = this.modalService.open(SettingsComponent).result.then(res => {
+      this.getUser();
+    });
     // modalRef.componentInstance.email = 'World';
   }
   

@@ -113,9 +113,9 @@ export class AuthenticationService {
       }
       localStorage.setItem('username', user.username);
       localStorage.setItem('userObject', JSON.stringify(user));
+      localStorage.setItem('email', userProfile.email);
+      this.router.navigate(['feed']);
     });
-    localStorage.setItem('email', userProfile.email);
-    this.router.navigate(['feed']);
-  }
 
+  }
 }

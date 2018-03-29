@@ -162,7 +162,7 @@ public class BoerController {
 	public JsonNode updateBoer(HttpServletRequest req, @RequestBody Boer b) {
 		b.setLikedLimbs(null);
 		b.setLimbs(null);
-		
+
 		Object[] args = {
 				req.getRemoteAddr(), // IP
 				req.getRemotePort(), // Port
@@ -170,7 +170,10 @@ public class BoerController {
 				"Updating Boer with data 「" + jsonGenService.generateBoerJsonNode(b) + "」" // Message
 		};
 		logger.info(msg.format(args));
-		
+
+		b.setProfilePic(null);
+		b.setCoverPic(null);
+
 		Boer updatedBoer = boerService.updateBoer(b);
 		
 		args[2] = 2;

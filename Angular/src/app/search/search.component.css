@@ -28,6 +28,18 @@
     clear: both;
 }
 
+.nav-link{
+    padding: 5px 0px 5px;
+    color: #97AABD;
+    font-size: 16px;
+    font-family: Fontin-Sans-Italics;
+ }
+
+ .search-result {
+     list-style: none;
+
+ }
+
 .icon-addon.addon-md .glyphicon,
 .icon-addon .glyphicon, 
 .icon-addon.addon-md .fa,
