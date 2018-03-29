@@ -1718,19 +1718,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ProfilePhotoComponent = /** @class */ (function () {
+    // @Input('url') set url(value: any)
+    // {
+    //   this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
+    // };
     function ProfilePhotoComponent(sanitization) {
         this.sanitization = sanitization;
     }
-    Object.defineProperty(ProfilePhotoComponent.prototype, "url", {
-        set: function (value) {
-            this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url(" + value + ")");
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ;
     ProfilePhotoComponent.prototype.ngOnInit = function () {
         // console.log(this.profilePhoto);
+        this.profilePhoto = this.sanitization.bypassSecurityTrustStyle(this.url);
     };
     ProfilePhotoComponent.prototype.ngOnChanges = function () {
     };
@@ -1743,9 +1740,8 @@ var ProfilePhotoComponent = /** @class */ (function () {
     ], ProfilePhotoComponent.prototype, "profilePhoto", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('url'),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], ProfilePhotoComponent.prototype, "url", null);
+        __metadata("design:type", Object)
+    ], ProfilePhotoComponent.prototype, "url", void 0);
     ProfilePhotoComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile-photo',

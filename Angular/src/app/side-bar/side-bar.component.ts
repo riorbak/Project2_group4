@@ -18,9 +18,7 @@ user: User;
 url : string;
 
 
-  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
-    
-  }
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {}
 
   ngOnInit() {
     this.getUser();
