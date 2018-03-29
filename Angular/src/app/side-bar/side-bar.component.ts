@@ -13,31 +13,38 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
- user: User=new User;
-  url : string;
+  user: User = new User;
+  url: string;
 
 
-  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {  }
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) { this.getUser(); }
 
   ngOnInit() {
-    this.getUser();
+
   }
 
   getUser(): void {
     let username = localStorage.getItem("username");
     this.user = JSON.parse(localStorage.getItem("userObject"));
-    // this.server.getUserByUsername(username)
-    //   .subscribe(res => 
-    //     {
-    //       this.user = <User> res;
-    //       if(this.user.profilePic){
-    //         this.url=this.user.profilePic;
-    //       } else {
-    //         this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-    //         // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-    //       }
-          
-    //     });
+    if (this.user.profilePic) {
+      this.url = this.user.profilePic;
+    } else {
+      this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+      // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+
+      // this.server.getUserByUsername(username)
+      //   .subscribe(res => 
+      //     {
+      //       this.user = <User> res;
+      //       if(this.user.profilePic){
+      //         this.url=this.user.profilePic;
+      //       } else {
+      //         this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+      //         // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+      //       }
+
+      //     });
+    }
   }
 
   openNewPost() {
@@ -50,13 +57,13 @@ export class SideBarComponent implements OnInit {
 
 
   openSettings() {
-    
+
     const modalRef = this.modalService.open(SettingsComponent).result.then(res => {
       this.getUser();
     });
     // modalRef.componentInstance.email = 'World';
   }
-  
+
   logOut() {
     localStorage.removeItem('profile');
     localStorage.removeItem('access_token');
@@ -67,6 +74,6 @@ export class SideBarComponent implements OnInit {
     localStorage.removeItem('userObject');
     this.router.navigate(['']);
   }
-  
+
 
 }
