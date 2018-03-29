@@ -26,18 +26,7 @@
     color: #C96567;
 }
 
-@media (min-width: 1200px) {
-    .decorated > .subtitle-left1{
-        float: left;
-        font-family: Fontin-Sans-Regular;
-    }
-    .decorated > .subtitle-left2{
-        float: right;
-        font-family: Fontin-Sans-Regular;
-    }
-}
 
-@media (max-width: 1200px) {
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
@@ -52,7 +41,7 @@
         right: 12px;
         font-family: Fontin-Sans-Regular;
     }
-}
+
 
 
 
