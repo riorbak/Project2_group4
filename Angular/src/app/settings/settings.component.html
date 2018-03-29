@@ -10,7 +10,7 @@
     <div *ngIf="editingOpen">
       <div class="form-container-custom">
         <!--servlet url-->
-        <form action="http://localhost:8080" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <div class="form-row">
             <div class="col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center">
               <div class="form-group">
@@ -26,13 +26,13 @@
               <div class="form-group">
                 <div class="icon-addon">
                   <label for="newFName" class="fa fa-user"></label>
-                  <input type="text" class="form-control" id="newFName" placeholder="{{firstName}}" value="{{firstName}}">
+                  <input type="text" class="form-control" id="newFName" value="{{firstName}}">
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
-                <input type="text" class="form-control" id="newLName" placeholder="{{lastName}}" value="{{lastName}}">
+                <input type="text" class="form-control" id="newLName" value="{{lastName}}">
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
   </div>
   
   <div class="right-btn" *ngIf="editingOpen">
-    <button type="button" id="updateBtn" class="btn-custom btn-form">Update!</button>
+    <button (click)="updateUser()" type="button" id="updateBtn" class="btn-custom btn-form">Update!</button>
   </div>
   
 </div>

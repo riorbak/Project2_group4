@@ -93,7 +93,8 @@ public class BoerController {
 	public JsonNode updateBoer(@RequestBody Boer b) {
 		b.setLikedLimbs(null);
 		b.setLimbs(null);
-		
+		b.setProfilePic(null);
+		b.setCoverPic(null);
 		Boer updatedBoer = boerService.updateBoer(b);
 		return jsonGenService.generateBoerJsonNode(updatedBoer);
 	}

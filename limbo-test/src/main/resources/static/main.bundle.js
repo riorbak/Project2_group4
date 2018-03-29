@@ -249,8 +249,8 @@ var AppModule = /** @class */ (function () {
 var appSettings = /** @class */ (function () {
     function appSettings() {
     }
-    appSettings.ANGULAR_URL = 'http://localhost:4200/';
-    appSettings.BACKEND_URL = 'http://localhost:666/';
+    appSettings.ANGULAR_URL = 'http://35.185.104.21:8085/limbo/';
+    appSettings.BACKEND_URL = 'http://35.185.104.21:8085/limbo/';
     return appSettings;
 }());
 
@@ -525,6 +525,11 @@ var BackendService = /** @class */ (function () {
         var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + 'limbs/';
         return this.http.get(url, httpOptions)
             .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('getAllLimbs', [])));
+    };
+    BackendService.prototype.updateUser = function (user) {
+        var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + 'boers/update';
+        return this.http.post(url, JSON.stringify(user), httpOptions)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError("updateUser", [])));
     };
     BackendService.prototype.getLimbsByUserName = function (username) {
         var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + 'boers/' + username + '/limbs';
@@ -839,7 +844,7 @@ var EditLimbComponent = /** @class */ (function () {
 /***/ "./src/app/feed/feed.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 50px;\r\n    background-image: url('/src/main/resources/static/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n"
+module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -1325,7 +1330,7 @@ var LimbMediaModalComponent = /** @class */ (function () {
 /***/ "./src/app/limb/limb.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".edit-visibility{\r\n    display: none;\r\n}\r\n/* Limb Header Styling */\r\n.profile-photo-size{\r\n    height: 120px;\r\n    width: 120px;\r\n}\r\n.decorated{\r\n    overflow: hidden;\r\n    text-align: center;\r\n    padding-top: 5px;\r\n}\r\n.edit-limb-position{\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 15px;\r\n    width: auto;\r\n}\r\n.fa.fa-edit {\r\n    color: #97AABD;\r\n}\r\n.fa.fa-edit:hover {\r\n    color: #C96567;\r\n}\r\n@media (min-width: 1200px) {\r\n    .decorated > .subtitle-left1{\r\n        float: left;\r\n        font-family: Fontin-Sans-Regular;\r\n    }\r\n    .decorated > .subtitle-left2{\r\n        float: right;\r\n        font-family: Fontin-Sans-Regular;\r\n    }\r\n}\r\n@media (max-width: 1200px) {\r\n    .decorated > .subtitle-left1{\r\n        display: inline-block;\r\n        position: absolute;\r\n        top: 65px;\r\n        left: 12px;\r\n        font-family: Fontin-Sans-Italics;\r\n    }\r\n    .decorated > .subtitle-left2{\r\n        display: inline-block;\r\n        position: absolute;\r\n        top: 65px;\r\n        right: 12px;\r\n        font-family: Fontin-Sans-Regular;\r\n    }\r\n}\r\n.decorated > .img-div{\r\n   position: relative;\r\n   display: inline-block;\r\n}\r\n.decorated > .img-div:before, .decorated > .img-div:after{\r\n   content: '';\r\n   position: absolute;\r\n   top: 50%;\r\n   border-bottom: 2px solid #97AABD;\r\n   /* box-shadow: -.5px .5px 5px .05px rgb(135, 152, 168); */\r\n   width: 25vw; /* half of limiter */\r\n   margin: 0 10px;\r\n}\r\n.decorated > .img-div:before{\r\n   right: 100%;\r\n}\r\n.decorated > .img-div:after{\r\n   left: 100%;\r\n}\r\n/* Limb Body Styling */\r\n.limb-border {\r\n    -webkit-box-shadow: -5px 10px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 10px 8px 2px rgba(0, 0, 0, 0.808);\r\n    height: auto;\r\n    margin: 4px;\r\n    background-color: #ffffff;\r\n   \r\n}\r\n.container-custom{\r\n    /* margin: 30px; */\r\n    /* max-width: 72vw; */\r\n    width: 55vw;\r\n    margin-left: 3vw;\r\n    margin-top: 5vw;\r\n    margin-bottom: 5%;\r\n    \r\n}\r\n.bottom-right{\r\n    /* padding: 5px; */\r\n    position: absolute;\r\n    bottom: 5px;\r\n    right: -15px;\r\n    width: auto;\r\n    \r\n}"
+module.exports = ".edit-visibility{\r\n    display: none;\r\n}\r\n/* Limb Header Styling */\r\n.profile-photo-size{\r\n    height: 120px;\r\n    width: 120px;\r\n}\r\n.decorated{\r\n    overflow: hidden;\r\n    text-align: center;\r\n    padding-top: 5px;\r\n}\r\n.edit-limb-position{\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 15px;\r\n    width: auto;\r\n}\r\n.fa.fa-edit {\r\n    color: #97AABD;\r\n}\r\n.fa.fa-edit:hover {\r\n    color: #C96567;\r\n}\r\n.decorated > .subtitle-left1{\r\n        display: inline-block;\r\n        position: absolute;\r\n        top: 65px;\r\n        left: 12px;\r\n        font-family: Fontin-Sans-Italics;\r\n    }\r\n.decorated > .subtitle-left2{\r\n        display: inline-block;\r\n        position: absolute;\r\n        top: 65px;\r\n        right: 12px;\r\n        font-family: Fontin-Sans-Regular;\r\n    }\r\n.decorated > .img-div{\r\n   position: relative;\r\n   display: inline-block;\r\n}\r\n.decorated > .img-div:before, .decorated > .img-div:after{\r\n   content: '';\r\n   position: absolute;\r\n   top: 50%;\r\n   border-bottom: 2px solid #97AABD;\r\n   /* box-shadow: -.5px .5px 5px .05px rgb(135, 152, 168); */\r\n   width: 25vw; /* half of limiter */\r\n   margin: 0 10px;\r\n}\r\n.decorated > .img-div:before{\r\n   right: 100%;\r\n}\r\n.decorated > .img-div:after{\r\n   left: 100%;\r\n}\r\n/* Limb Body Styling */\r\n.limb-border {\r\n    -webkit-box-shadow: -5px 10px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 10px 8px 2px rgba(0, 0, 0, 0.808);\r\n    height: auto;\r\n    margin: 4px;\r\n    background-color: #ffffff;\r\n   \r\n}\r\n.container-custom{\r\n    /* margin: 30px; */\r\n    /* max-width: 72vw; */\r\n    width: 55vw;\r\n    margin-left: 3vw;\r\n    margin-top: 5vw;\r\n    margin-bottom: 5%;\r\n    \r\n}\r\n.bottom-right{\r\n    /* padding: 5px; */\r\n    position: absolute;\r\n    bottom: 5px;\r\n    right: -15px;\r\n    width: auto;\r\n    \r\n}"
 
 /***/ }),
 
@@ -1436,7 +1441,7 @@ var LimbComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n}\r\n\r\n\r\n.btn-custom{\r\n    position: absolute;\r\n    top: 80%;\r\n    left: 40%;\r\n    border-radius: 5px;\r\n}\r\n\r\n\r\n.btn-custom.outline{\r\n    margin: 0px;\r\n    font-size: 20px;\r\n    border: 2px solid #97AABD;\r\n    color: #ffffff;\r\n    background: #97AABD;\r\n    padding: 5px 15px;\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.btn-custom.outline:hover, .btn-custom.outline:focus, .btn-custom.outline:active, .btn-custom.outline.active, .open > .dropdown-toggle.btn-custom {\r\n\tcolor: #ffffff;\r\n    border-color: #314455;\r\n    background-color: #314455;\r\n    -webkit-box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n\r\n}\r\n\r\n\r\nhr.drop_shadow{\r\n    width: 200px;\r\n    height: 10px;\r\n    border: 1;\r\n    -webkit-box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n            box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n      border-radius: 5px;\r\n}\r\n\r\n\r\n.logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.background{\r\n    margin: 0px;\r\n    background-image: url('/src/main/resources/static/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n\r\nhtml, body {\r\n    height:100%;\r\n}\r\n\r\n\r\n.logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n}\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/src/main/resources/static/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n}"
+module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n}\r\n\r\n\r\n.btn-custom{\r\n    position: absolute;\r\n    top: 80%;\r\n    left: 40%;\r\n    border-radius: 5px;\r\n}\r\n\r\n\r\n.btn-custom.outline{\r\n    margin: 0px;\r\n    font-size: 20px;\r\n    border: 2px solid #97AABD;\r\n    color: #ffffff;\r\n    background: #97AABD;\r\n    padding: 5px 15px;\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.btn-custom.outline:hover, .btn-custom.outline:focus, .btn-custom.outline:active, .btn-custom.outline.active, .open > .dropdown-toggle.btn-custom {\r\n\tcolor: #ffffff;\r\n    border-color: #314455;\r\n    background-color: #314455;\r\n    -webkit-box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -2px 3px 3px .1px rgba(0, 0, 0, 0.808);\r\n\r\n}\r\n\r\n\r\nhr.drop_shadow{\r\n    width: 200px;\r\n    height: 10px;\r\n    border: 1;\r\n    -webkit-box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n            box-shadow: inset 0 9px 9px -3px #9E5A63;\r\n      border-radius: 5px;\r\n}\r\n\r\n\r\n.logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n}\r\n\r\n\r\n.background{\r\n    margin: 0px;\r\n    background-image: url('/limbo/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n}\r\n\r\n\r\nhtml, body {\r\n    height:100%;\r\n}\r\n\r\n\r\n.logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n}\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n}"
 
 /***/ }),
 
@@ -1526,7 +1531,7 @@ module.exports = ".modal-container {\r\n    height: auto;\r\n    width: auto;\r\
 /***/ "./src/app/new-limb-modal/new-limb-modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    New Post\r\n  </h2>\r\n\r\n  <div class=\"form-container\">\r\n                  <!--servlet url-->\r\n    <form action=\"http://localhost:8080/boers/GStar/limbs/new\" method=\"post\" enctype=\"multipart/form-data\">\r\n      <div class=\"form-group-custom\">\r\n        <!-- <label for=\"limbTextArea\">Example textarea</label> -->\r\n        <textarea class=\"form-control post-content\" name=\"postText\" id=\"limbTextArea\" rows=\"3\" placeholder=\"&#xf044;\" (change)=\"detectlinks()\"></textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"makeLimb()\">Post</button>\r\n      </div>\r\n      <br>\r\n      <br>\r\n      <p id=\"youtube_link\" style=\"color:white; display:none\">\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    New Post\r\n  </h2>\r\n\r\n  <div class=\"form-container\">\r\n                  <!--servlet url--> <!-- changed form actopn-->\r\n    <form method=\"post\" enctype=\"multipart/form-data\">\r\n      <div class=\"form-group-custom\">\r\n        <!-- <label for=\"limbTextArea\">Example textarea</label> -->\r\n        <textarea class=\"form-control post-content\" name=\"postText\" id=\"limbTextArea\" rows=\"3\" placeholder=\"&#xf044;\" (change)=\"detectlinks()\"></textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"makeLimb()\">Post</button>\r\n      </div>\r\n      <br>\r\n      <br>\r\n      <p id=\"youtube_link\" style=\"color:white; display:none\">\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1760,7 +1765,7 @@ var ProfilePhotoComponent = /** @class */ (function () {
 /***/ "./src/app/profile/profile.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n    padding-left: 20vw; \r\n}\r\n\r\n.cover-photo{\r\n    background-size: cover;\r\n    height: 100vh;\r\n    \r\n}\r\n\r\n.profile-shadow{\r\n    -webkit-box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n            box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n}\r\n\r\n.profile-background{\r\n    margin: 0px;\r\n    /* width: 100vw; */\r\n    padding-top: 50px;\r\n    background-image: url('/src/main/resources/static/assets/images/bg2.png');\r\n    height: 100%;\r\n    min-height: 100vh;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n.profile-photo-size{\r\n    height: 26vw;\r\n    width: 26vw;\r\n    border-radius:100%;\r\n}\r\n\r\n.profile-photo-center{\r\n    padding-top: 25vh;\r\n    padding-left: 37vw;\r\n}\r\n\r\n.profile-info-center{\r\n    margin-top: 30px;\r\n    width: 50%;\r\n    margin: auto;\r\n}\r\n\r\n.profile-info{\r\n    margin-top: 5vh;\r\n    text-align:center;\r\n    color:white;\r\n    font-size: 3vh;\r\n    font-family: Fontin-Sans-Bold;\r\n    text-shadow: -3px 3px black;\r\n}\r\n\r\n.edit-icon-position {\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n}\r\n\r\n.edit-visibility {\r\n    display: block;\r\n}\r\n\r\n.fa.fa-lock {\r\n    font-size: 30px;\r\n    color: #97AABD;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-unlock-alt {\r\n    font-size: 30px;\r\n    color: #C96567;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic:hover {\r\n    color: #C96567;\r\n    \r\n}\r\n\r\n.profile-pic-edit-icon {\r\n    position: absolute;\r\n    right: 33vw;\r\n    top: 22vh;\r\n}\r\n\r\n.fa.fa-edit.cover-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.cover-pic:hover {\r\n    color: #C96567;\r\n}\r\n\r\n.cover-pic-edit-icon {\r\n    position: absolute;\r\n    right: 60px;\r\n    top: 20px;\r\n}"
+module.exports = ".main-content{\r\n    padding-left: 20vw; \r\n}\r\n\r\n.cover-photo{\r\n    background-size: cover;\r\n    height: 100vh;\r\n    \r\n}\r\n\r\n.profile-shadow{\r\n    -webkit-box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n            box-shadow: -5px 6px 10px 2px rgb(0, 0, 0);\r\n}\r\n\r\n.profile-background{\r\n    margin: 0px;\r\n    /* width: 100vw; */\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    height: 100%;\r\n    min-height: 100vh;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n.profile-photo-size{\r\n    height: 26vw;\r\n    width: 26vw;\r\n    border-radius:100%;\r\n}\r\n\r\n.profile-photo-center{\r\n    padding-top: 25vh;\r\n    padding-left: 37vw;\r\n}\r\n\r\n.profile-info-center{\r\n    margin-top: 30px;\r\n    width: 50%;\r\n    margin: auto;\r\n}\r\n\r\n.profile-info{\r\n    margin-top: 5vh;\r\n    text-align:center;\r\n    color:white;\r\n    font-size: 3vh;\r\n    font-family: Fontin-Sans-Bold;\r\n    text-shadow: -3px 3px black;\r\n}\r\n\r\n.edit-icon-position {\r\n    position: absolute;\r\n    top: 20px;\r\n    right: 20px;\r\n}\r\n\r\n.edit-visibility {\r\n    display: block;\r\n}\r\n\r\n.fa.fa-lock {\r\n    font-size: 30px;\r\n    color: #97AABD;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-unlock-alt {\r\n    font-size: 30px;\r\n    color: #C96567;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.profile-pic:hover {\r\n    color: #C96567;\r\n    \r\n}\r\n\r\n.profile-pic-edit-icon {\r\n    position: absolute;\r\n    right: 33vw;\r\n    top: 22vh;\r\n}\r\n\r\n.fa.fa-edit.cover-pic {\r\n    color: #97AABD;\r\n    font-size: 30px;\r\n    text-shadow: 1px 1px rgba(66, 66, 66, 0.651);\r\n}\r\n\r\n.fa.fa-edit.cover-pic:hover {\r\n    color: #C96567;\r\n}\r\n\r\n.cover-pic-edit-icon {\r\n    position: absolute;\r\n    right: 60px;\r\n    top: 20px;\r\n}"
 
 /***/ }),
 
@@ -2028,7 +2033,7 @@ module.exports = ".search-custom{\r\n    max-width: 80%;\r\n    margin-bottom:20
 /***/ "./src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://localhost:666/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://35.185.104.21:8085/limbo/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -2096,7 +2101,7 @@ module.exports = ".modal-container {\r\n    height: auto;\r\n    width: auto;\r\
 /***/ "./src/app/settings/settings.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    User Settings\r\n  </h2>\r\n\r\n  <div class=\"adjust-width\">\r\n    <div class=\"edit-icon-position edit-visibility\" (click)=\"openCloseEditing()\">\r\n      <i id=\"editIcon\" class=\"fa fa-lock edit\"></i>\r\n    </div>\r\n    <div *ngIf=\"editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <!--servlet url-->\r\n        <form action=\"http://localhost:8080\" method=\"post\" enctype=\"multipart/form-data\">\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon disabled\">\r\n                  <label for=\"userEmail\" class=\"fa fa-envelope\"></label>\r\n                  <input type=\"email\" class=\"form-control\" id=\"userEmail\" placeholder=\"{{userEmail}}\" disabled>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon\">\r\n                  <label for=\"newFName\" class=\"fa fa-user\"></label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"newFName\" placeholder=\"{{firstName}}\" value=\"{{firstName}}\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"newLName\" placeholder=\"{{lastName}}\" value=\"{{lastName}}\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-envelope md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6  align-self-center\">\r\n            <span class=\"user-info\">\r\n              {{userEmail}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-user md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6 align-self-center\" style=\"text-align:left\">\r\n            <span class=\"user-info\">\r\n              {{firstName}} {{lastName}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"left-btn\">\r\n    <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n  </div>\r\n  \r\n  <div class=\"right-btn\" *ngIf=\"editingOpen\">\r\n    <button type=\"button\" id=\"updateBtn\" class=\"btn-custom btn-form\">Update!</button>\r\n  </div>\r\n  \r\n</div>\r\n"
+module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    User Settings\r\n  </h2>\r\n\r\n  <div class=\"adjust-width\">\r\n    <div class=\"edit-icon-position edit-visibility\" (click)=\"openCloseEditing()\">\r\n      <i id=\"editIcon\" class=\"fa fa-lock edit\"></i>\r\n    </div>\r\n    <div *ngIf=\"editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <!--servlet url-->\r\n        <form method=\"post\" enctype=\"multipart/form-data\">\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon disabled\">\r\n                  <label for=\"userEmail\" class=\"fa fa-envelope\"></label>\r\n                  <input type=\"email\" class=\"form-control\" id=\"userEmail\" placeholder=\"{{userEmail}}\" disabled>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon\">\r\n                  <label for=\"newFName\" class=\"fa fa-user\"></label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"newFName\" value=\"{{firstName}}\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"newLName\" value=\"{{lastName}}\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-envelope md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6  align-self-center\">\r\n            <span class=\"user-info\">\r\n              {{userEmail}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-user md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6 align-self-center\" style=\"text-align:left\">\r\n            <span class=\"user-info\">\r\n              {{firstName}} {{lastName}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"left-btn\">\r\n    <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n  </div>\r\n  \r\n  <div class=\"right-btn\" *ngIf=\"editingOpen\">\r\n    <button (click)=\"updateUser()\" type=\"button\" id=\"updateBtn\" class=\"btn-custom btn-form\">Update!</button>\r\n  </div>\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
@@ -2107,6 +2112,8 @@ module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objects__ = __webpack_require__("./src/app/objects.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__backend_backend_service__ = __webpack_require__("./src/app/backend/backend.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2118,16 +2125,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var SettingsComponent = /** @class */ (function () {
-    function SettingsComponent(activeModal) {
+    function SettingsComponent(activeModal, server) {
         this.activeModal = activeModal;
+        this.server = server;
+        this.user = new __WEBPACK_IMPORTED_MODULE_2__objects__["b" /* User */]();
         this.editingOpen = false;
-        this.userEmail = 'myemail@gmail.com';
-        this.firstName = 'My';
-        this.lastName = 'Name';
         this.password = 'myPassword';
     }
     SettingsComponent.prototype.ngOnInit = function () {
+        this.user = JSON.parse(localStorage.getItem("userObject"));
+        this.userEmail = this.user.email;
+        this.firstName = this.user.firstName;
+        this.lastName = this.user.lastName;
     };
     SettingsComponent.prototype.closeModal = function () {
         this.activeModal.close();
@@ -2156,6 +2168,18 @@ var SettingsComponent = /** @class */ (function () {
             document.getElementById("containsPass").setAttribute("class", "user-info pass");
         }
     };
+    SettingsComponent.prototype.updateUser = function () {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_2__objects__["b" /* User */]();
+        user.username = this.user.username;
+        user.firstName = document.getElementById("newFName").value;
+        user.lastName = document.getElementById("newLName").value;
+        //update localstorage
+        this.user.firstName = user.firstName;
+        this.user.lastName = user.lastName;
+        localStorage.setItem("userObject", JSON.stringify(this.user));
+        this.server.updateUser(user).subscribe(function (res) { _this.closeModal(); });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
@@ -2178,7 +2202,7 @@ var SettingsComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/settings/settings.component.html"),
             styles: [__webpack_require__("./src/app/settings/settings.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */], __WEBPACK_IMPORTED_MODULE_3__backend_backend_service__["a" /* BackendService */]])
     ], SettingsComponent);
     return SettingsComponent;
 }());
@@ -2238,6 +2262,7 @@ var SideBarComponent = /** @class */ (function () {
         this.getUser();
     }
     SideBarComponent.prototype.ngOnInit = function () {
+        this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
         var _this = this;
@@ -2255,10 +2280,17 @@ var SideBarComponent = /** @class */ (function () {
         });
     };
     SideBarComponent.prototype.openNewPost = function () {
-        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_1__new_limb_modal_new_limb_modal_component__["a" /* NewLimbModalComponent */]);
+        var _this = this;
+        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_1__new_limb_modal_new_limb_modal_component__["a" /* NewLimbModalComponent */]).result.then(function (res) {
+            _this.server.getAllLimbs();
+        });
+        //modalRef.componentInstance.name = 'World';
     };
     SideBarComponent.prototype.openSettings = function () {
-        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_4__settings_settings_component__["a" /* SettingsComponent */]);
+        var _this = this;
+        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_4__settings_settings_component__["a" /* SettingsComponent */]).result.then(function (res) {
+            _this.getUser();
+        });
         // modalRef.componentInstance.email = 'World';
     };
     SideBarComponent.prototype.logOut = function () {
@@ -2271,10 +2303,6 @@ var SideBarComponent = /** @class */ (function () {
         localStorage.removeItem('userObject');
         this.router.navigate(['']);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__objects__["b" /* User */])
-    ], SideBarComponent.prototype, "user", void 0);
     SideBarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-side-bar',

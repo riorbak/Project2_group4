@@ -84,6 +84,14 @@ export class BackendService
     );
   }
 
+  updateUser( user : User )
+  {
+    let url : string = appSettings.BACKEND_URL + 'boers/update';
+    return this.http.post(url, JSON.stringify(user),  httpOptions)
+    .pipe(
+      catchError(this.handleError("updateUser",[]))
+    );
+  }
 
   getLimbsByUserName(username : string) {
     let url : string = appSettings.BACKEND_URL + 'boers/' + username + '/limbs' 
