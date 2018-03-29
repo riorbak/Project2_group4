@@ -1995,7 +1995,7 @@ module.exports = ".search-custom{\r\n    max-width: 80%;\r\n    margin-bottom:20
 /***/ "./src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://localhost:4200/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://localhost:666/profile/{{user.username}}\">\r\n            HEY\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
