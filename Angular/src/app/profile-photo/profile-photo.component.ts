@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-browser';
+import { User } from '../objects';
 
 @Component({
   selector: 'app-profile-photo',
@@ -9,23 +10,24 @@ import { DomSanitizer, SafeHtml, SafeUrl, SafeStyle } from '@angular/platform-br
 export class ProfilePhotoComponent implements OnInit {
 
   @Input() profilePhoto: any;
-  @Input('url') set url(value: any){
+  @Input('url') set url(value: any)
+  {
     this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
   };
+  
 
   constructor(private sanitization: DomSanitizer) { 
     
   }
   
-  ngOnInit() {
-    let aUrl = "/assets/images/user-200.png";
-    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+aUrl+")");
 
+  ngOnInit() {
+    // console.log(this.profilePhoto);
+    
   }
 
   ngOnChanges() {
-  //   console.log("profile-photo onchanges this.url: " + this.url);
-  //   console.log("profile-photo onchanges this.profilePhoto: " + this.profilePhoto);
+ 
   }
 
 

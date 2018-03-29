@@ -89,7 +89,7 @@ public class LimbController {
 			return null;
 		}
 		limb.setOwner(null);
-		limb.setPostTime(LocalDateTime.now());
+		limb.setPostTime(null);
 		Limb updatedLimb = limbService.updateLimb(limb); 
 		return jsonGenService.generateLimbJsonNode(updatedLimb);
 	}
@@ -144,7 +144,7 @@ public class LimbController {
 		return likedLimbJsonList;
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/upload",
 			consumes="multipart/form-data",

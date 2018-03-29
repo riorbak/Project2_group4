@@ -40,6 +40,7 @@ export class NewLimbModalComponent implements OnInit {
   closeModal()
   {
     this.activeModal.close();
+
   }
 
   detectlinks()
@@ -51,11 +52,11 @@ export class NewLimbModalComponent implements OnInit {
     let res = text.replace( /\n/g, " " ).split( " " )
     res.forEach(element => 
     {
-        console.log(element);
+        // console.log(element);
         if(this.validateYouTubeUrl(element))
         {
           ++youtube_count;
-          console.log("youtube link:"+element);
+          // console.log("youtube link:"+element);
         }
     });
 
@@ -90,9 +91,41 @@ export class NewLimbModalComponent implements OnInit {
     limb.count = 0;
     limb.name = this.userName;
     limb.timeStamp = Timestamp;
+
+
+
+    //file uploading
+    let input: any;
+    let files = [];
+    let filename: any;
+    input = document.getElementById("newLimbImg");
+    files = input.files;
+
+    let theFile : File = files[0];
     limb.content = limbText;
-    this.server.postLimb( limb, this.userName ).subscribe();
-    this.closeModal();
+
+    if(theFile)
+    {
+      this.server.uploadPhoto(localStorage.getItem('username'),"",theFile).subscribe( res => 
+      {
+          let urlObject={url : ''};
+          urlObject=JSON.parse(JSON.stringify(res));
+          // console.log(urlObject.url);
+
+          limb.content=limb.content+"&&&"+urlObject.url;
+
+          this.server.postLimb( limb, this.userName ).subscribe();
+          //reload the limb list
+          this.closeModal();
+
+      });
+    }
+    else
+    {
+      this.server.postLimb( limb, this.userName ).subscribe();
+      //reload the limb list
+      this.closeModal();
+    }
   }
   
 

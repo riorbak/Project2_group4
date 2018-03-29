@@ -1,10 +1,10 @@
 export class Limb {
-    count: number = 0; //This will be the number of likes
-    name: string = 'My Name';
-    timeStamp: any = '1/01/00 00:00 AM';
+    count: number; //This will be the number of likes
+    name: string;
+    timeStamp: any;
     content: string;
-    limbId: number;
-    media: any = "/assets/images/cat.png";
+    id: number;
+    media: any;
     likes: number;
 }
 
@@ -14,4 +14,8 @@ export class User {
     lastName: string;
     email: string;
     bdate: string;
+    profilePic: string;
+    coverPic: string;
+    limbCount: number;
+    likedLimbCount: number;
 }

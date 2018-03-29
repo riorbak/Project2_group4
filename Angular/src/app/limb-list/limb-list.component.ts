@@ -6,6 +6,7 @@ import { LimbComponent } from '../limb/limb.component';
 
 import { Limb } from '../objects';
 import { BackendService } from '../backend/backend.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -15,39 +16,63 @@ import { BackendService } from '../backend/backend.service';
   styleUrls: ['./limb-list.component.css']
 })
 export class LimbListComponent implements OnInit {
-  constructor (private Server: BackendService) {
-   }
+  constructor (private Server: BackendService,private route: ActivatedRoute) {
+   
+  }
 
   @Input() parameter: number;
-// list: Array<LimbComponent>; 
-list: Limb[] = [];
+  // list: Array<LimbComponent>; 
+  list: Limb[] = [];
+  id: number;
 
-getAllLimbs()
-{
-    this.Server.getAllLimbs().subscribe( res=>{
+  getAllLimbs() {
+    this.Server.getAllLimbs().subscribe(res => {
+      let tod: string;
       for (var i in res) {
-        res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
+        if (res[i].postTime.hour > 12) {
+          res[i].postTime.hour = res[i].postTime.hour - 12;
+          tod = "PM";
+        } else {
+          tod = "AM";
+        }
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
+        }
+        res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
+        this.list.push(<Limb>res[i]);
+        
+      }
+      this.list.reverse();
+      // console.log(this.list);
+    });
+  }
+
+  getLimbsByUser(userName: string) {
+    this.Server.getLimbsByUserName(userName).subscribe(res => {
+      let tod: string;
+      for (var i in res) {
+        if (res[i].postTime.hour > 12) {
+          res[i].postTime.hour = res[i].postTime.hour - 12;
+          tod = "PM";
+        } else {
+          tod = "AM";
+        }
+        if(res[i].postTime.minute < 10){
+          res[i].postTime.minute = "0"+res[i].postTime.minute;
+        }
+        res[i].postTime=res[i].postTime.monthValue+"/"+res[i].postTime.dayOfMonth+"/"+res[i].postTime.year+" "+res[i].postTime.hour +":"+res[i].postTime.minute + " " + tod;
         this.list.push(<Limb>res[i]);
       }
-      console.log(this.list);
-  });
-}
-
-getLimbsByUser(userName:string) {
-  this.Server.getLimbsByUserName(userName).subscribe( res=>{
-    for (var i in res) {
-      res[i].postTime=res[i].postTime.month+res[i].postTime.dayOfMonth+res[i].postTime.year;
-      this.list.push(<Limb>res[i]);
-    }
-    console.log(this.list);
-});
-}
+      this.list.reverse();
+      // console.log(this.list);
+    });
+  }
 
 
-@Input() editingOpen;
-// requestUrl: any;
+  @Input() editingOpen;
+  // requestUrl: any;
 
-// private http: HttpClient
+  // private http: HttpClient
 
 ngOnInit() 
 {
@@ -56,7 +81,7 @@ ngOnInit()
     this.getAllLimbs();
   else
   {
-    this.getLimbsByUser(localStorage.getItem('username'))
+    this.getLimbsByUser(this.route.snapshot.paramMap.get('username'))
   }
 }
 

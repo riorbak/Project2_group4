@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { EmbedVideo } from 'ngx-embed-video';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -27,6 +27,7 @@ import { MyDatePickerModule } from '../../node_modules/angular4-datepicker/src/m
 import { FormsModule } from '@angular/forms';
 import { LimbMediaModalComponent } from './limb-media-modal/limb-media-modal.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -49,7 +50,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     ChangePhotoComponent,
     AuthenticationLanderComponent,
     LimbMediaModalComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,13 +63,14 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     FormsModule
   ],
 
-  providers: [AuthenticationService,BackendService],
+  providers: [AuthenticationService, BackendService],
   bootstrap: [AppComponent],
   entryComponents: [
     NewLimbModalComponent,
     EditLimbComponent,
     ChangePhotoComponent,
-    LimbMediaModalComponent
+    LimbMediaModalComponent,
+    SettingsComponent
   ]
 })
 export class AppModule { }

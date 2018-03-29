@@ -1,6 +1,6 @@
 <div class="modal-container">
   <h2 class="modal-title">
-    Edit (Post ID: {{limbId}}):
+    Edit (Post ID: {{id}}):
   </h2>
 
   <div>
@@ -19,8 +19,11 @@
       <div class="left-btn">
         <button type="button" id="cancelBtn" class="btn-custom btn-form" (click)="closeModal()">Cancel</button>
       </div>
+      <div class="center-btn">
+          <button type="button" id="deleteBtn" class="btn-custom btn-form" (click)="deleteLimb()">Delete</button>
+        </div>
       <div class="right-btn">
-        <button type="button" id="submitBtn" class="btn-custom btn-form">Update!</button>
+        <button type="button" id="submitBtn" class="btn-custom btn-form" (click)="updateLimb()">Update!</button>
       </div>
     </form>
   </div>

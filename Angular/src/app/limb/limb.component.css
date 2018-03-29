@@ -3,14 +3,14 @@
 }
 /* Limb Header Styling */
 .profile-photo-size{
-    height: 90px;
-    width: 90px;
+    height: 120px;
+    width: 120px;
 }
 
 .decorated{
     overflow: hidden;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .edit-limb-position{
@@ -26,33 +26,31 @@
     color: #C96567;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
     .decorated > .subtitle-left1{
-        display: inline-block;
-        position: absolute;
-        top: 55px;
-        left: 12px;
+        float: left;
+        font-family: Fontin-Sans-Regular;
     }
     .decorated > .subtitle-left2{
-        display: inline-block;
-        position: absolute;
-        top: 55px;
-        left: 142px;
+        float: right;
+        font-family: Fontin-Sans-Regular;
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .decorated > .subtitle-left1{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 65px;
         left: 12px;
+        font-family: Fontin-Sans-Italics;
     }
     .decorated > .subtitle-left2{
         display: inline-block;
         position: absolute;
-        top: 55px;
+        top: 65px;
         right: 12px;
+        font-family: Fontin-Sans-Regular;
     }
 }
 
