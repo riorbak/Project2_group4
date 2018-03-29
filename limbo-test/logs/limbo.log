@@ -1,0 +1,6 @@
+2018-03-28 23:36:10.232  INFO asora17 --- [nio-8080-exec-2] general-logger                           : [0:0:0:0:0:0:0:1]: GET ALL BOERS
+2018-03-28 23:43:29.143  INFO asora17 --- [nio-8080-exec-1] general-logger                           : [0:0:0:0:0:0:0:1 (55178)]: GET ALL BOERS
+2018-03-29 12:32:12.194  INFO asora17 --- [nio-8080-exec-1] general-logger                           : [0:0:0:0:0:0:0:1 (42,262)]: 「1/2」 Get all Boers
+2018-03-29 12:32:13.120  INFO asora17 --- [nio-8080-exec-1] general-logger                           : [0:0:0:0:0:0:0:1 (42,262)]: 「2/2」 Sending 6 Boers
+2018-03-29 12:38:58.767  INFO asora17 --- [nio-8080-exec-2] general-logger                           : [0:0:0:0:0:0:0:1 (42468)]: 「1/2」 Get all Limbs
+2018-03-29 12:39:00.158  INFO asora17 --- [nio-8080-exec-2] general-logger                           : [0:0:0:0:0:0:0:1 (42468)]: 「2/2」 Sending 17 Limbs
