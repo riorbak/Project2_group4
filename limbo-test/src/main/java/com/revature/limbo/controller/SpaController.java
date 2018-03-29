@@ -14,7 +14,7 @@ public class SpaController {
 		return "forward:/index.html";
 	}
 	
-	@RequestMapping("/profile/{username}")
+	@RequestMapping("profile/{username}")
 	public String getSPA2() {
 		return "forward:/index.html";
 	}

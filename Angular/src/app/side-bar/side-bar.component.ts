@@ -42,15 +42,11 @@ export class SideBarComponent implements OnInit {
   }
 
   openNewPost() {
-<<<<<<< HEAD
     const modalRef = this.modalService.open(NewLimbModalComponent).result.then(res => {
       this.server.getAllLimbs();
     });
 
     //modalRef.componentInstance.name = 'World';
-=======
-    const modalRef = this.modalService.open(NewLimbModalComponent);
->>>>>>> 6e8ea488c95fa5d94de1b26712d4a6326cbb01f4
   }
 
 

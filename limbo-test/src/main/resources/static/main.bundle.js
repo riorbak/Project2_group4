@@ -526,6 +526,11 @@ var BackendService = /** @class */ (function () {
         return this.http.get(url, httpOptions)
             .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError('getAllLimbs', [])));
     };
+    BackendService.prototype.updateUser = function (user) {
+        var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + 'boers/update';
+        return this.http.post(url, JSON.stringify(user), httpOptions)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["a" /* catchError */])(this.handleError("updateUser", [])));
+    };
     BackendService.prototype.getLimbsByUserName = function (username) {
         var url = __WEBPACK_IMPORTED_MODULE_4__appSettings__["a" /* appSettings */].BACKEND_URL + 'boers/' + username + '/limbs';
         return this.http.get(url, httpOptions)
@@ -1526,7 +1531,7 @@ module.exports = ".modal-container {\r\n    height: auto;\r\n    width: auto;\r\
 /***/ "./src/app/new-limb-modal/new-limb-modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    New Post\r\n  </h2>\r\n\r\n  <div class=\"form-container\">\r\n                  <!--servlet url-->\r\n    <form action=\"http://localhost:8080/boers/GStar/limbs/new\" method=\"post\" enctype=\"multipart/form-data\">\r\n      <div class=\"form-group-custom\">\r\n        <!-- <label for=\"limbTextArea\">Example textarea</label> -->\r\n        <textarea class=\"form-control post-content\" name=\"postText\" id=\"limbTextArea\" rows=\"3\" placeholder=\"&#xf044;\" (change)=\"detectlinks()\"></textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"makeLimb()\">Post</button>\r\n      </div>\r\n      <br>\r\n      <br>\r\n      <p id=\"youtube_link\" style=\"color:white; display:none\">\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    New Post\r\n  </h2>\r\n\r\n  <div class=\"form-container\">\r\n                  <!--servlet url--> <!-- changed form actopn-->\r\n    <form method=\"post\" enctype=\"multipart/form-data\">\r\n      <div class=\"form-group-custom\">\r\n        <!-- <label for=\"limbTextArea\">Example textarea</label> -->\r\n        <textarea class=\"form-control post-content\" name=\"postText\" id=\"limbTextArea\" rows=\"3\" placeholder=\"&#xf044;\" (change)=\"detectlinks()\"></textarea>\r\n      </div>\r\n      <div class=\"file-input-center\">\r\n        <div class=\"form-group-custom\">\r\n          <input type=\"file\" name=\"inputImg\" id=\"newLimbImg\" class=\"inputfile\" (change)=\"changeLabel()\" />\r\n          <label for=\"newLimbImg\" id=\"inputImgLabel\" class=\"file-btn\">\r\n            <i class=\"fa fa-upload\" style=\"padding-right:.5em\"></i> Add an Image</label>\r\n        </div>\r\n      </div>\r\n      \r\n      <div class=\"left-btn\">\r\n        <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n      <div class=\"right-btn\">\r\n        <button type=\"button\" id=\"submitBtn\" class=\"btn-custom btn-form\" (click)=\"makeLimb()\">Post</button>\r\n      </div>\r\n      <br>\r\n      <br>\r\n      <p id=\"youtube_link\" style=\"color:white; display:none\">\r\n      </p>\r\n    </form>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -2028,7 +2033,7 @@ module.exports = ".search-custom{\r\n    max-width: 80%;\r\n    margin-bottom:20
 /***/ "./src/app/search/search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://localhost:666/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"search-custom\">\r\n  <div class=\"icon-addon\">\r\n      <label for=\"navSearch\" class=\"fa fa-search\"></label>\r\n      <input #searchBox type=\"text\" class=\"form-control\" id=\"navSearch\" placeholder=\"Search\" (keyup)=\"search(searchBox.value)\" >\r\n      <ul class=\"search-result\">\r\n        <li *ngFor=\"let user of users$ | async\" >\r\n          <a href=\"http://35.185.104.21:8085/limbo/profile/{{user.username}}\">\r\n            {{user.username}}\r\n          </a>\r\n        </li>\r\n      </ul>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -2096,7 +2101,7 @@ module.exports = ".modal-container {\r\n    height: auto;\r\n    width: auto;\r\
 /***/ "./src/app/settings/settings.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    User Settings\r\n  </h2>\r\n\r\n  <div class=\"adjust-width\">\r\n    <div class=\"edit-icon-position edit-visibility\" (click)=\"openCloseEditing()\">\r\n      <i id=\"editIcon\" class=\"fa fa-lock edit\"></i>\r\n    </div>\r\n    <div *ngIf=\"editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <!--servlet url-->\r\n        <form action=\"http://localhost:8080\" method=\"post\" enctype=\"multipart/form-data\">\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon disabled\">\r\n                  <label for=\"userEmail\" class=\"fa fa-envelope\"></label>\r\n                  <input type=\"email\" class=\"form-control\" id=\"userEmail\" placeholder=\"{{userEmail}}\" disabled>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon\">\r\n                  <label for=\"newFName\" class=\"fa fa-user\"></label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"newFName\" placeholder=\"{{firstName}}\" value=\"{{firstName}}\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"newLName\" placeholder=\"{{lastName}}\" value=\"{{lastName}}\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-envelope md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6  align-self-center\">\r\n            <span class=\"user-info\">\r\n              {{userEmail}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-user md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6 align-self-center\" style=\"text-align:left\">\r\n            <span class=\"user-info\">\r\n              {{firstName}} {{lastName}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"left-btn\">\r\n    <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n  </div>\r\n  \r\n  <div class=\"right-btn\" *ngIf=\"editingOpen\">\r\n    <button type=\"button\" id=\"updateBtn\" class=\"btn-custom btn-form\">Update!</button>\r\n  </div>\r\n  \r\n</div>\r\n"
+module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\">\r\n    User Settings\r\n  </h2>\r\n\r\n  <div class=\"adjust-width\">\r\n    <div class=\"edit-icon-position edit-visibility\" (click)=\"openCloseEditing()\">\r\n      <i id=\"editIcon\" class=\"fa fa-lock edit\"></i>\r\n    </div>\r\n    <div *ngIf=\"editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <!--servlet url-->\r\n        <form method=\"post\" enctype=\"multipart/form-data\">\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 offset-md-3 col-sm-6 offset-sm-3 text-center\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon disabled\">\r\n                  <label for=\"userEmail\" class=\"fa fa-envelope\"></label>\r\n                  <input type=\"email\" class=\"form-control\" id=\"userEmail\" placeholder=\"{{userEmail}}\" disabled>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"form-row\">\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <div class=\"icon-addon\">\r\n                  <label for=\"newFName\" class=\"fa fa-user\"></label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"newFName\" value=\"{{firstName}}\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-6 col-sm-6\">\r\n              <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"newLName\" value=\"{{lastName}}\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"!editingOpen\">\r\n      <div class=\"form-container-custom\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-envelope md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6  align-self-center\">\r\n            <span class=\"user-info\">\r\n              {{userEmail}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3 col-sm-3 text-right\">\r\n            <span class=\"icon-color\">\r\n              <i class=\"fa fa-user md\"></i> :\r\n            </span>\r\n          </div>\r\n          <div class=\"col-md-6 col-sm-6 align-self-center\" style=\"text-align:left\">\r\n            <span class=\"user-info\">\r\n              {{firstName}} {{lastName}}\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"left-btn\">\r\n    <button type=\"button\" id=\"cancelBtn\" class=\"btn-custom btn-form\" (click)=\"closeModal()\">Cancel</button>\r\n  </div>\r\n  \r\n  <div class=\"right-btn\" *ngIf=\"editingOpen\">\r\n    <button (click)=\"updateUser()\" type=\"button\" id=\"updateBtn\" class=\"btn-custom btn-form\">Update!</button>\r\n  </div>\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
@@ -2107,6 +2112,8 @@ module.exports = "<div class=\"modal-container\">\r\n  <h2 class=\"modal-title\"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objects__ = __webpack_require__("./src/app/objects.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__backend_backend_service__ = __webpack_require__("./src/app/backend/backend.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2118,16 +2125,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var SettingsComponent = /** @class */ (function () {
-    function SettingsComponent(activeModal) {
+    function SettingsComponent(activeModal, server) {
         this.activeModal = activeModal;
+        this.server = server;
+        this.user = new __WEBPACK_IMPORTED_MODULE_2__objects__["b" /* User */]();
         this.editingOpen = false;
-        this.userEmail = 'myemail@gmail.com';
-        this.firstName = 'My';
-        this.lastName = 'Name';
         this.password = 'myPassword';
     }
     SettingsComponent.prototype.ngOnInit = function () {
+        this.user = JSON.parse(localStorage.getItem("userObject"));
+        this.userEmail = this.user.email;
+        this.firstName = this.user.firstName;
+        this.lastName = this.user.lastName;
     };
     SettingsComponent.prototype.closeModal = function () {
         this.activeModal.close();
@@ -2156,6 +2168,18 @@ var SettingsComponent = /** @class */ (function () {
             document.getElementById("containsPass").setAttribute("class", "user-info pass");
         }
     };
+    SettingsComponent.prototype.updateUser = function () {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_2__objects__["b" /* User */]();
+        user.username = this.user.username;
+        user.firstName = document.getElementById("newFName").value;
+        user.lastName = document.getElementById("newLName").value;
+        //update localstorage
+        this.user.firstName = user.firstName;
+        this.user.lastName = user.lastName;
+        localStorage.setItem("userObject", JSON.stringify(this.user));
+        this.server.updateUser(user).subscribe(function (res) { _this.closeModal(); });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
@@ -2178,7 +2202,7 @@ var SettingsComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/settings/settings.component.html"),
             styles: [__webpack_require__("./src/app/settings/settings.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */], __WEBPACK_IMPORTED_MODULE_3__backend_backend_service__["a" /* BackendService */]])
     ], SettingsComponent);
     return SettingsComponent;
 }());
@@ -2238,6 +2262,7 @@ var SideBarComponent = /** @class */ (function () {
         this.getUser();
     }
     SideBarComponent.prototype.ngOnInit = function () {
+        this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
         var _this = this;
@@ -2255,10 +2280,17 @@ var SideBarComponent = /** @class */ (function () {
         });
     };
     SideBarComponent.prototype.openNewPost = function () {
-        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_1__new_limb_modal_new_limb_modal_component__["a" /* NewLimbModalComponent */]);
+        var _this = this;
+        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_1__new_limb_modal_new_limb_modal_component__["a" /* NewLimbModalComponent */]).result.then(function (res) {
+            _this.server.getAllLimbs();
+        });
+        //modalRef.componentInstance.name = 'World';
     };
     SideBarComponent.prototype.openSettings = function () {
-        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_4__settings_settings_component__["a" /* SettingsComponent */]);
+        var _this = this;
+        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_4__settings_settings_component__["a" /* SettingsComponent */]).result.then(function (res) {
+            _this.getUser();
+        });
         // modalRef.componentInstance.email = 'World';
     };
     SideBarComponent.prototype.logOut = function () {
@@ -2271,10 +2303,6 @@ var SideBarComponent = /** @class */ (function () {
         localStorage.removeItem('userObject');
         this.router.navigate(['']);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__objects__["b" /* User */])
-    ], SideBarComponent.prototype, "user", void 0);
     SideBarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-side-bar',
