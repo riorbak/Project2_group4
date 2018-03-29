@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
- user: User=new User;
-  url : string;
+user: User;
+//user: User=new User;
+url : string;
 
 
   constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
@@ -27,7 +28,7 @@ export class SideBarComponent implements OnInit {
 
   getUser(): void {
     let username = localStorage.getItem("username");
-    this.server.getUserByUsername(username);
+    //this.server.getUserByUsername(username);
     this.user = <User>JSON.parse(localStorage.getItem('userObject'));
       // .subscribe(res => 
       //   {

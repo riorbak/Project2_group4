@@ -2232,10 +2232,9 @@ module.exports = "<div class=\"container-fluid\">\r\n    \r\n    <div class=\"si
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__new_limb_modal_new_limb_modal_component__ = __webpack_require__("./src/app/new-limb-modal/new-limb-modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__objects__ = __webpack_require__("./src/app/objects.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__settings_settings_component__ = __webpack_require__("./src/app/settings/settings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__backend_backend_service__ = __webpack_require__("./src/app/backend/backend.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings_settings_component__ = __webpack_require__("./src/app/settings/settings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__backend_backend_service__ = __webpack_require__("./src/app/backend/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2251,20 +2250,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var SideBarComponent = /** @class */ (function () {
     function SideBarComponent(modalService, server, router) {
         this.modalService = modalService;
         this.server = server;
         this.router = router;
-        this.user = new __WEBPACK_IMPORTED_MODULE_3__objects__["b" /* User */];
     }
     SideBarComponent.prototype.ngOnInit = function () {
         this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
         var username = localStorage.getItem("username");
-        this.server.getUserByUsername(username);
+        //this.server.getUserByUsername(username);
         this.user = JSON.parse(localStorage.getItem('userObject'));
         // .subscribe(res => 
         //   {
@@ -2286,7 +2283,7 @@ var SideBarComponent = /** @class */ (function () {
     };
     SideBarComponent.prototype.openSettings = function () {
         var _this = this;
-        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_4__settings_settings_component__["a" /* SettingsComponent */]).result.then(function (res) {
+        var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_3__settings_settings_component__["a" /* SettingsComponent */]).result.then(function (res) {
             _this.getUser();
         });
         // modalRef.componentInstance.email = 'World';
@@ -2307,7 +2304,7 @@ var SideBarComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/side-bar/side-bar.component.html"),
             styles: [__webpack_require__("./src/app/side-bar/side-bar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */], __WEBPACK_IMPORTED_MODULE_5__backend_backend_service__["a" /* BackendService */], __WEBPACK_IMPORTED_MODULE_6__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */], __WEBPACK_IMPORTED_MODULE_4__backend_backend_service__["a" /* BackendService */], __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */]])
     ], SideBarComponent);
     return SideBarComponent;
 }());
