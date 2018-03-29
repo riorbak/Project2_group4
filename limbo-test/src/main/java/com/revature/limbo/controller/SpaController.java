@@ -8,12 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class SpaController {
-
-//	@RequestMapping("/profile/{username}")
-//	public String profileGet(@PathVariable("username") String username) {
-//		System.out.println("Zain is a cockbag. Also this username:"+username);
-//		return "forward: index.html";
-//	}
 	
 	@RequestMapping({"/", "/feed", "/login", "/auth", "/verify"})
 	public String getSPA() {
