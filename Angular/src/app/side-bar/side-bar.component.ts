@@ -34,7 +34,7 @@ export class SideBarComponent implements OnInit {
           if(this.user.profilePic){
             this.url=this.user.profilePic;
           } else {
-            this.url = "/assets/images/user-200.png";
+            this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
             // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
           }
           
