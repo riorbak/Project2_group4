@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class SpaController {
 	
-	@RequestMapping({"/", "/feed", "/login", "/auth", "/verify"})
+	@RequestMapping({"/", "limbo/feed", "limbo/login", "limbo/auth", "limbo/verify"})
 	public String getSPA() {
 		return "forward:/index.html";
 	}
