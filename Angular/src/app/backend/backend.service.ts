@@ -123,6 +123,14 @@ export class BackendService
     );
   }
 
+  public getLimbById(limbId : number) {
+    let url : string = appSettings.BACKEND_URL + "limbs/" + limbId;
+    return this.http.get(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('getLimbsById', []))
+      ); 
+  }
+
   public doLike(userName : string, limbId : number) {
     let url : string = appSettings.BACKEND_URL + "limbs/" + limbId + '/' + userName + '/1';
     console.log(url);
