@@ -844,7 +844,7 @@ var EditLimbComponent = /** @class */ (function () {
 /***/ "./src/app/feed/feed.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: 0;\r\n    font-family: logoFont;\r\n    font-size: 250px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-actual-center{\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n }\r\n\r\n\r\n.logo-center {\r\n    width: 50%;\r\n    margin: auto;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
+module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 0px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: 0;\r\n    font-family: logoFont;\r\n    font-size: 250px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-actual-center{\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n }\r\n\r\n\r\n.logo-center {\r\n    width: 50%;\r\n    height: 240px;\r\n    margin: auto;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
 
 /***/ }),
 
@@ -2258,25 +2258,24 @@ var SideBarComponent = /** @class */ (function () {
         this.server = server;
         this.router = router;
         this.user = new __WEBPACK_IMPORTED_MODULE_3__objects__["b" /* User */];
-        this.getUser();
     }
     SideBarComponent.prototype.ngOnInit = function () {
         this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
-        var _this = this;
         var username = localStorage.getItem("username");
-        this.server.getUserByUsername(username)
-            .subscribe(function (res) {
-            _this.user = res;
-            if (_this.user.profilePic) {
-                _this.url = _this.user.profilePic;
-            }
-            else {
-                _this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-                // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-            }
-        });
+        this.server.getUserByUsername(username);
+        this.user = JSON.parse(localStorage.getItem('userObject'));
+        // .subscribe(res => 
+        //   {
+        //     this.user = <User> res;
+        //     if(this.user.profilePic){
+        //       this.url=this.user.profilePic;
+        //     } else {
+        //       this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+        //       // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+        //     }
+        //   });
     };
     SideBarComponent.prototype.openNewPost = function () {
         var _this = this;

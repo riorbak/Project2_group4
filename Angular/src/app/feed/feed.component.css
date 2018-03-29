@@ -6,7 +6,7 @@
 
 .feed-background{
     margin: 0px;
-    padding-top: 50px;
+    padding-top: 0px;
     background-image: url('/assets/images/bg2.png');
     min-height: 100vh;
     height: 100%;
@@ -31,6 +31,7 @@
  
  .logo-center {
     width: 50%;
+    height: 240px;
     margin: auto;
  }
  

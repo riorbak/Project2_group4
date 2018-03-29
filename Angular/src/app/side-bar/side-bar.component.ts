@@ -18,7 +18,7 @@ export class SideBarComponent implements OnInit {
 
 
   constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {
-    this.getUser();
+    
   }
 
   ngOnInit() {
@@ -27,18 +27,19 @@ export class SideBarComponent implements OnInit {
 
   getUser(): void {
     let username = localStorage.getItem("username");
-    this.server.getUserByUsername(username)
-      .subscribe(res => 
-        {
-          this.user = <User> res;
-          if(this.user.profilePic){
-            this.url=this.user.profilePic;
-          } else {
-            this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-            // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-          }
+    this.server.getUserByUsername(username);
+    this.user = <User>JSON.parse(localStorage.getItem('userObject'));
+      // .subscribe(res => 
+      //   {
+      //     this.user = <User> res;
+      //     if(this.user.profilePic){
+      //       this.url=this.user.profilePic;
+      //     } else {
+      //       this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+      //       // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+      //     }
           
-        });
+      //   });
   }
 
   openNewPost() {
