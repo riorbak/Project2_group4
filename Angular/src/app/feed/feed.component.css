@@ -23,7 +23,11 @@
     text-shadow: -5px 3px rgba(19, 19, 19, 0.952);
  }
  
- 
+ .logo-center {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+ }
  
  @font-face {
     font-family: logoFont;
