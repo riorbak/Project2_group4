@@ -4,11 +4,15 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.logging.log4j.Logger;
 import org.apache.tomcat.util.buf.HexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,16 +45,33 @@ public class BoerController {
 	@Autowired
 	private AmazonBucketService s3BucketService;
 	
+	@Autowired
+	private Logger logger;
+	
+	private static MessageFormat msg = new MessageFormat("[{0} ({1,number,#})]: 「{2,number,integer}/{3,number,integer}」 {4}");
+	
 	// Get all
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
-	public List<? extends JsonNode> getAllBoers() {
+	public List<? extends JsonNode> getAllBoers(HttpServletRequest req) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Get all Boers"		 // Message
+		};
+		logger.info(msg.format(args));
+		
 		List<Boer> boerList = boerService.getAllBoers();
 		List<ObjectNode> boerJsonNodeList = new ArrayList<>();
 		boerList.stream().forEach((Boer b) -> {
 			boerJsonNodeList.add(jsonGenService.generateBoerJsonNode(b));
 		});
+		
+		args[2] = 2;
+		args[4] = "Sending " + boerJsonNodeList.size() + " Boers";
+		logger.info(msg.format(args));
 		
 		return boerJsonNodeList;
 	}
@@ -59,8 +80,20 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}")
-	public JsonNode getBoerById(@PathVariable String username) {
-		Boer b = boerService.getBoerById(username); 
+	public JsonNode getBoerById(HttpServletRequest req, @PathVariable String username) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Requested Boer: " + username		 // Message
+		};
+		logger.info(msg.format(args));
+		
+		Boer b = boerService.getBoerById(username);
+		
+		args[2] = 2;
+		args[4] = "Boer 「" + b.getUsername() + "」　" + (b == null ? "not found." : "found.");
+		logger.info(msg.format(args));
 		
 		return jsonGenService.generateBoerJsonNode(b);
 	}
@@ -69,16 +102,28 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/email")
-	public JsonNode getBoerByEmail(@RequestBody(required=true) ObjectNode param) {
+	public JsonNode getBoerByEmail(HttpServletRequest req, @RequestBody(required=true) ObjectNode param) {
 		JsonNode emailNode = param.get("email");
 		
 		if(emailNode == null || !emailNode.isTextual()) {
+			
 			return JsonNodeFactory.instance.nullNode();
 		}
-		
 		String email = emailNode.textValue();
 		
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Requesting Boer by Email 「" + email + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		Boer b = boerService.getBoerByEmail(email);
+		
+		args[2] = 2;
+		args[4] = b == null ? "Boer not found." : "Boer found.";
+		logger.info(msg.format(args));
 		
 		return jsonGenService.generateBoerJsonNode(b);
 	}
@@ -87,8 +132,22 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/new")
-	public JsonNode addBoer(@RequestBody Boer b) {
+	public JsonNode addBoer(HttpServletRequest req, @RequestBody Boer b) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Adding Boer 「" + jsonGenService.generateBoerJsonNode(b) + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		Boer addedBoer = boerService.addBoer(b); 
+		
+		
+		args[2] = 2;
+		args[4] = addedBoer == null ? "Failed to add" : "Successfully added";
+		logger.info(msg.format(args));
+		
 		return jsonGenService.generateBoerJsonNode(addedBoer);
 	}
 	
@@ -96,11 +155,25 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.POST,
 			value="/boers/update")
-	public JsonNode updateBoer(@RequestBody Boer b) {
+	public JsonNode updateBoer(HttpServletRequest req, @RequestBody Boer b) {
 		b.setLikedLimbs(null);
 		b.setLimbs(null);
 		
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Updating Boer with data 「" + jsonGenService.generateBoerJsonNode(b) + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		Boer updatedBoer = boerService.updateBoer(b);
+		
+		args[2] = 2;
+		args[4] = updatedBoer == null ? "Failed to update boer 「" + b.getUsername() + "」" : 
+			"Succeeded in updating Boer 「" + jsonGenService.generateBoerJsonNode(updatedBoer) + "」";
+		logger.info(msg.format(args));
+		
 		return jsonGenService.generateBoerJsonNode(updatedBoer);
 	}
 	
@@ -108,7 +181,15 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.DELETE,
 			value="/boers/{username}")
-	public void deleteBoer(@PathVariable String username) {
+	public void deleteBoer(HttpServletRequest req, @PathVariable String username) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 1,				 // Message #/Total Messages
+				"Deleting Boer 「" + username + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		boerService.deleteBoer(username);
 	}
 	
@@ -118,14 +199,28 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs")
-	public List<? extends JsonNode> getLimbsByBoer(@PathVariable String username) {
+	public List<? extends JsonNode> getLimbsByBoer(HttpServletRequest req, @PathVariable String username) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Requesting Limbs by Boer 「" + username + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		List<Limb> boerLimbList = boerService.getAllUserLimbs(username); 
 		List<ObjectNode> boerLimbJsonNodeList = new ArrayList<>();
+		
+		
 		
 		boerLimbList.stream().forEach((Limb l) -> {
 			boerLimbJsonNodeList.add(
 					jsonGenService.generateLimbJsonNode(l));
 		});
+		
+		args[2] = 2;
+		args[4] = boerLimbJsonNodeList.size() + " limbs found by 「" + username + "」";
+		logger.info(msg.format(args));
 		
 		return boerLimbJsonNodeList;
 	}
@@ -134,14 +229,27 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers/{username}/limbs/liked")
-	public List<? extends JsonNode> getLikedLimbsByBoer(@PathVariable String username) {
+	public List<? extends JsonNode> getLikedLimbsByBoer(HttpServletRequest req, @PathVariable String username) {
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Requesting Liked Limbs of 「" + username + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		List<Limb> likedLimbList = boerService.getLimbsLikedByUser(username); 
 		List<ObjectNode> likedLimbJsonNodeList = new ArrayList<>();
+		
 		
 		likedLimbList.stream().forEach((Limb l) -> {
 			likedLimbJsonNodeList.add(
 					jsonGenService.generateLimbJsonNode(l));
 		});
+		
+		args[2] = 2;
+		args[4] = "Found 「" + likedLimbJsonNodeList.size() + "」 liked limbs.";
+		logger.info(msg.format(args));
 		
 		return likedLimbJsonNodeList;
 	}
@@ -193,21 +301,38 @@ public class BoerController {
 			value="/boers/{username}/cover-img",
 			consumes="multipart/form-data",
 			produces="application/json")
-	public JsonNode uploadCoverImage(@PathVariable String username,
+	public JsonNode uploadCoverImage(HttpServletRequest req, @PathVariable String username,
 			@RequestParam(name="inputImg") MultipartFile coverFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
 		final String KEY_SUCCESS = "success";
 		final String KEY_MESSAGE = "message";
 		final String KEY_OWNER = "owner";
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Attempting to upload cover image for 「" + username + "」" // Message
+		};
+		logger.info(msg.format(args));
 		
 		// Check for non-empty 
 		if(coverFile == null) {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "File null.");
+			
+			args[2] = 2;
+			args[4] = "Cover file provided is null. Details:「" + resultJsonObj.toString() + "」";
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		} else if(coverFile.isEmpty()) {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "File empty.");
+			
+			args[2] = 2;
+			args[4] = "Cover file provided has no data. Details:「" + resultJsonObj.toString() + "」";
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
 		
@@ -216,9 +341,24 @@ public class BoerController {
 			if(!isValidImageData(coverFile.getBytes())) {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Invalid file type.");
+				
+				args[2] = 2;
+				args[4] = "Cover file provided is not of a valid type [PNG/WEBP/BMP/JPG(RAW/JFIF/EXIF)/GIF(87a/89a)]. "
+						+ "Details:「" + resultJsonObj.toString() + "」";
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			}
-		} catch(IOException ex) {}
+		} catch(IOException ex) {
+			StringWriter stackTraceWriter = new StringWriter();
+			PrintWriter wrapper = new PrintWriter(stackTraceWriter);
+			ex.printStackTrace(wrapper);
+			
+			args[2] = -1;
+			args[4] = "Exception occurred: " + ex.getMessage() + "\n" + stackTraceWriter.toString();
+			
+			logger.error(msg.format(args));
+		}
 		
 		// Upload file
 		String urlString = s3BucketService.uploadFile(coverFile);
@@ -228,6 +368,12 @@ public class BoerController {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "Error uploading file.");
 			resultJsonObj.putNull(KEY_OWNER);
+			
+			args[2] = 2;
+			args[4] = "Failed to upload. Details:「" + resultJsonObj.toString() + "」";
+			
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
 		
@@ -244,6 +390,12 @@ public class BoerController {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Boer does not exist.");
 				resultJsonObj.putNull(KEY_OWNER);
+				
+				args[2] = 2;
+				args[4] = "Boer does not exist. Details:「" + resultJsonObj.toString() + "」";
+				
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			} else if(b.getCoverPic().equals(urlString)) { // Updated boer data successfully.
 				// Successful update.
@@ -256,6 +408,12 @@ public class BoerController {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Failed to link image to user.");
 				resultJsonObj.set(KEY_OWNER, jsonGenService.generateBoerJsonNode(b));
+				
+				args[2] = 2;
+				args[4] = "Failed to update user's cover image. Details:「" + resultJsonObj.toString() + "」";
+				
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			}
 		} catch(Exception ex) {
@@ -267,9 +425,19 @@ public class BoerController {
 			ex.printStackTrace(pw);
 			pw.flush();
 			String stackTraceStr = stackTraceWriter.toString();
-			resultJsonObj.put("stack-trace", stackTraceStr);
+			
+			args[2] = 2;
+			args[4] = "Exception occurred: " + ex.getMessage() + "\n" + stackTraceStr;
+			
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
+		
+		args[2] = 2;
+		args[4] = "Successfully updated cover image of 「" + username + "」 to 「" + b.getCoverPic() + "」";
+		
+		logger.info(msg.format(args));
 		
 		return resultJsonObj;
 	}
@@ -279,21 +447,39 @@ public class BoerController {
 			value="/boers/{username}/profile-img",
 			consumes="multipart/form-data",
 			produces="application/json")
-	public JsonNode uploadProfileImage(@PathVariable String username,
+	public JsonNode uploadProfileImage(HttpServletRequest req, @PathVariable String username,
 			@RequestParam(name="inputImg") MultipartFile profileFile) {
 		ObjectNode resultJsonObj = JsonNodeFactory.instance.objectNode();
 		final String KEY_SUCCESS = "success";
 		final String KEY_MESSAGE = "message";
 		final String KEY_OWNER = "owner";
 		
+		Object[] args = {
+				req.getRemoteAddr(), // IP
+				req.getRemotePort(), // Port
+				1, 2,				 // Message #/Total Messages
+				"Attempting to upload profile image for 「" + username + "」" // Message
+		};
+		logger.info(msg.format(args));
+		
 		// Check for non-empty 
 		if(profileFile == null) {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "File null.");
+			
+			args[2] = 2;
+			args[4] = "Profile file provided is null. Details:「" + resultJsonObj.toString() + "」";
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		} else if(profileFile.isEmpty()) {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "File empty.");
+			
+			args[2] = 2;
+			args[4] = "Profile file provided has no data. Details:「" + resultJsonObj.toString() + "」";
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
 		
@@ -302,9 +488,24 @@ public class BoerController {
 			if(!isValidImageData(profileFile.getBytes())) {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Invalid file type.");
+				
+				args[2] = 2;
+				args[4] = "Profile file provided is not of a valid type [PNG/WEBP/BMP/JPG(RAW/JFIF/EXIF)/GIF(87a/89a)]. "
+						+ "Details:「" + resultJsonObj.toString() + "」";
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			}
-		} catch(IOException ex) {}
+		} catch(IOException ex) {
+			StringWriter stackTraceWriter = new StringWriter();
+			PrintWriter wrapper = new PrintWriter(stackTraceWriter);
+			ex.printStackTrace(wrapper);
+			
+			args[2] = -1;
+			args[4] = "Exception occurred: " + ex.getMessage() + "\n" + stackTraceWriter.toString();
+			
+			logger.error(msg.format(args));
+		}
 		
 		
 		// Upload file
@@ -315,6 +516,12 @@ public class BoerController {
 			resultJsonObj.put(KEY_SUCCESS, false);
 			resultJsonObj.put(KEY_MESSAGE, "Error uploading file.");
 			resultJsonObj.putNull(KEY_OWNER);
+			
+			args[2] = 2;
+			args[4] = "Failed to upload. Details:「" + resultJsonObj.toString() + "」";
+			
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
 		
@@ -331,6 +538,12 @@ public class BoerController {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Boer does not exist.");
 				resultJsonObj.putNull(KEY_OWNER);
+				
+				args[2] = 2;
+				args[4] = "Boer does not exist. Details:「" + resultJsonObj.toString() + "」";
+				
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			} else if(b.getProfilePic().equals(urlString)) { // Updated boer data successfully.
 				// Successful update.
@@ -343,6 +556,12 @@ public class BoerController {
 				resultJsonObj.put(KEY_SUCCESS, false);
 				resultJsonObj.put(KEY_MESSAGE, "Failed to link image to user.");
 				resultJsonObj.set(KEY_OWNER, jsonGenService.generateBoerJsonNode(b));
+				
+				args[2] = 2;
+				args[4] = "Failed to update user's profile image. Details:「" + resultJsonObj.toString() + "」";
+				
+				logger.error(msg.format(args));
+				
 				return resultJsonObj;
 			}
 		} catch(Exception ex) {
@@ -354,9 +573,19 @@ public class BoerController {
 			ex.printStackTrace(pw);
 			pw.flush();
 			String stackTraceStr = stackTraceWriter.toString();
-			resultJsonObj.put("stack-trace", stackTraceStr);
+			
+			args[2] = 2;
+			args[4] = "Exception occurred: " + ex.getMessage() + "\n" + stackTraceStr;
+			
+			logger.error(msg.format(args));
+			
 			return resultJsonObj;
 		}
+		
+		args[2] = 2;
+		args[4] = "Successfully updated profile image of 「" + username + "」 to 「" + b.getProfilePic() + "」";
+		
+		logger.info(msg.format(args));
 		
 		return resultJsonObj;
 	}
