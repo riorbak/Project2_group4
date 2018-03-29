@@ -56,7 +56,7 @@ export class LikeComponent implements OnInit {
     } else if (numCount == 3) {
       this.temp = 'fa fa-thermometer-three-quarters';
       this.color = 'color4';
-    } else {
+    } else if (numCount > 3) {
       this.temp = 'fa fa-thermometer-full';
       this.color = 'color5';
     }
