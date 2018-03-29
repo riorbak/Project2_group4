@@ -1,6 +1,6 @@
 export class appSettings {
 
-    public static ANGULAR_URL: string = 'http://localhost:4200/';
-    public static BACKEND_URL: string = 'http://localhost:666/';
+    public static ANGULAR_URL: string = 'http://35.185.104.21:8085/';
+    public static BACKEND_URL: string = 'http://35.185.104.21:8085/';
 
 }
