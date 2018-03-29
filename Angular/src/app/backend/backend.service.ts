@@ -158,7 +158,7 @@ export class BackendService
     {
       term="garbled junk that isn't a username!!!";
     }
-    return this.users.map(users => users.filter( user => user.username.includes(term)));
+    return this.users.map(users => users.filter( user => user.firstName.includes(term) || user.lastName.includes(term) ));
   }
 
   private handleError<T> (operation = 'operation', result?: T) 
