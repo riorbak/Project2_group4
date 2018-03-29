@@ -10,11 +10,11 @@ import { User } from '../objects';
 export class ProfilePhotoComponent implements OnInit {
 
   @Input() profilePhoto: any;
-  @Input('url') url: any;
-  // @Input('url') set url(value: any)
-  // {
-  //   this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
-  // };
+
+  @Input('url') set url(value: any)
+  {
+    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
+  };
   
 
   constructor(private sanitization: DomSanitizer) { 
@@ -24,7 +24,6 @@ export class ProfilePhotoComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.profilePhoto);
-    this.profilePhoto = this.sanitization.bypassSecurityTrustStyle(this.url);
   }
 
   ngOnChanges() {

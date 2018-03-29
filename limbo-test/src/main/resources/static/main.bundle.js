@@ -1718,16 +1718,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ProfilePhotoComponent = /** @class */ (function () {
-    // @Input('url') set url(value: any)
-    // {
-    //   this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url("+value+")");
-    // };
     function ProfilePhotoComponent(sanitization) {
         this.sanitization = sanitization;
     }
+    Object.defineProperty(ProfilePhotoComponent.prototype, "url", {
+        set: function (value) {
+            this.profilePhoto = this.sanitization.bypassSecurityTrustStyle("url(" + value + ")");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
     ProfilePhotoComponent.prototype.ngOnInit = function () {
         // console.log(this.profilePhoto);
-        this.profilePhoto = this.sanitization.bypassSecurityTrustStyle(this.url);
     };
     ProfilePhotoComponent.prototype.ngOnChanges = function () {
     };
@@ -1740,8 +1743,9 @@ var ProfilePhotoComponent = /** @class */ (function () {
     ], ProfilePhotoComponent.prototype, "profilePhoto", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('url'),
-        __metadata("design:type", Object)
-    ], ProfilePhotoComponent.prototype, "url", void 0);
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], ProfilePhotoComponent.prototype, "url", null);
     ProfilePhotoComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile-photo',
@@ -2256,19 +2260,19 @@ var SideBarComponent = /** @class */ (function () {
         this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
+        var _this = this;
         var username = localStorage.getItem("username");
-        //this.server.getUserByUsername(username);
-        this.user = JSON.parse(localStorage.getItem('userObject'));
-        // .subscribe(res => 
-        //   {
-        //     this.user = <User> res;
-        //     if(this.user.profilePic){
-        //       this.url=this.user.profilePic;
-        //     } else {
-        //       this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-        //       // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-        //     }
-        //   });
+        this.server.getUserByUsername(username)
+            .subscribe(function (res) {
+            _this.user = res;
+            if (_this.user.profilePic) {
+                _this.url = _this.user.profilePic;
+            }
+            else {
+                _this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+                // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+            }
+        });
     };
     SideBarComponent.prototype.openNewPost = function () {
         var _this = this;
