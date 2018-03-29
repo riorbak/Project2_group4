@@ -17,10 +17,10 @@ export class SideBarComponent implements OnInit {
   url: string;
 
 
-  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) { this.getUser(); }
+  constructor(private modalService: NgbModal, private server: BackendService, private router: Router) {  }
 
   ngOnInit() {
-
+    this.getUser();
   }
 
   getUser(): void {
