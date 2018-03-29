@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.Logger;
 import org.apache.tomcat.util.buf.HexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,7 +56,8 @@ public class BoerController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET,
 			value="/boers")
-	public List<? extends JsonNode> getAllBoers(HttpServletRequest req) {
+	public ResponseEntity<List<? extends JsonNode>> getAllBoers(HttpServletRequest req) {
+		
 		Object[] args = {
 				req.getRemoteAddr(), // IP
 				req.getRemotePort(), // Port
@@ -73,7 +76,8 @@ public class BoerController {
 		args[4] = "Sending " + boerJsonNodeList.size() + " Boers";
 		logger.info(msg.format(args));
 		
-		return boerJsonNodeList;
+//		return ResponseEntity.ok(boerJsonNodeList);
+		return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(boerJsonNodeList);
 	}
 	
 	// Get by ID
