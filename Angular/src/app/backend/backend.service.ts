@@ -26,9 +26,6 @@ const ImagehttpOptions = {
 export class BackendService
 {
 
-  private user = new BehaviorSubject(new User());
-  private observeUser = this.user.asObservable();
-
   public users : Observable<User[]>;
   constructor(private http: HttpClient, private router:Router) { 
       this.users = this.getAllUsers();
@@ -87,6 +84,7 @@ export class BackendService
     );
   }
 
+<<<<<<< HEAD
   updateUser( user : User )
   {
     let url : string = appSettings.BACKEND_URL + 'boers/update';
@@ -95,6 +93,8 @@ export class BackendService
       catchError(this.handleError("updateUser",[]))
     );
   }
+=======
+>>>>>>> ac53ac694f8885327be21912896015ce0953dbe6
 
   getLimbsByUserName(username : string) {
     let url : string = appSettings.BACKEND_URL + 'boers/' + username + '/limbs' 

@@ -17,7 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LimbListComponent implements OnInit {
   constructor (private Server: BackendService,private route: ActivatedRoute) {
-   }
+   
+  }
 
   @Input() parameter: number;
   // list: Array<LimbComponent>; 
