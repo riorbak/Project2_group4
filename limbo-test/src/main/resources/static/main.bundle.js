@@ -844,14 +844,14 @@ var EditLimbComponent = /** @class */ (function () {
 /***/ "./src/app/feed/feed.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-center {\r\n    width: 80%;\r\n    margin: auto;\r\n    text-align: center;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
+module.exports = ".main-content{\r\n\r\n    padding-left: 20vw;\r\n}\r\n\r\n\r\n.feed-background{\r\n    margin: 0px;\r\n    padding-top: 50px;\r\n    background-image: url('/limbo/assets/images/bg2.png');\r\n    min-height: 100vh;\r\n    height: 100%;\r\n    background-position: center;\r\n    /* background-repeat: no-repeat; */\r\n    background-size: cover;\r\n}\r\n\r\n\r\n.logo {\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    width: -webkit-fit-content;\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    margin: 0;\r\n    font-family: logoFont;\r\n    font-size: 250px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n\r\n\r\n.logo-center {\r\n    display: block;\r\n    width: 50%;\r\n    margin: auto;\r\n    text-align: center;\r\n }\r\n\r\n\r\n@font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }"
 
 /***/ }),
 
 /***/ "./src/app/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-side-bar>\r\n</app-side-bar>\r\n\r\n<div class=\"main-content feed-background\">\r\n    <!-- <app-limb-list [requestUrl] = '/limbs'></app-limb-list> -->\r\n    <div class=\"logo-center\">\r\n        <span class=\"logo\">Limbo</span>\r\n    </div>\r\n    <app-limb-list [parameter]=\"1\"></app-limb-list>\r\n</div>"
+module.exports = "<app-side-bar></app-side-bar>\r\n\r\n<div class=\"logo-center\">\r\n       <span class=\"logo\">Limbo</span>\r\n</div>\r\n<div class=\"main-content feed-background\">\r\n   \r\n<app-limb-list [parameter]=\"1\"></app-limb-list>\r\n</div>"
 
 /***/ }),
 
@@ -2262,28 +2262,22 @@ var SideBarComponent = /** @class */ (function () {
         this.getUser();
     }
     SideBarComponent.prototype.ngOnInit = function () {
+        this.getUser();
     };
     SideBarComponent.prototype.getUser = function () {
+        var _this = this;
         var username = localStorage.getItem("username");
-        this.user = JSON.parse(localStorage.getItem("userObject"));
-        if (this.user.profilePic) {
-            this.url = this.user.profilePic;
-        }
-        else {
-            this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-            // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-            // this.server.getUserByUsername(username)
-            //   .subscribe(res => 
-            //     {
-            //       this.user = <User> res;
-            //       if(this.user.profilePic){
-            //         this.url=this.user.profilePic;
-            //       } else {
-            //         this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
-            //         // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
-            //       }
-            //     });
-        }
+        this.server.getUserByUsername(username)
+            .subscribe(function (res) {
+            _this.user = res;
+            if (_this.user.profilePic) {
+                _this.url = _this.user.profilePic;
+            }
+            else {
+                _this.url = "https://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.pnghttps://s3.us-east-2.amazonaws.com/limbo-bucket/user-200.png";
+                // this.url = this.sanitization.bypassSecurityTrustStyle("url("+this.url+")");
+            }
+        });
     };
     SideBarComponent.prototype.openNewPost = function () {
         var _this = this;
