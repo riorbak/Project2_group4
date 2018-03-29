@@ -398,14 +398,14 @@ var AuthenticationService = /** @class */ (function () {
 /***/ "./src/app/authentication-lander/authentication-lander.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".container {\r\n    text-align: center;\r\n    width: 100vw;\r\n }\r\n \r\n .logo-image {\r\n    -webkit-box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n            box-shadow: -5px 6px 8px 2px rgba(0, 0, 0, 0.808);\r\n }\r\n \r\n .background{\r\n    margin: 0px;\r\n    background-image: url('/limbo/assets/images/bg1.png');\r\n    height: 100vh;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n }\r\n \r\n html, body {\r\n    height:100%;\r\n }\r\n \r\n .logo {\r\n    display: block;\r\n    font-family: logoFont;\r\n    font-size: 350px;\r\n    color: white;\r\n    text-shadow: -5px 3px rgba(19, 19, 19, 0.952);\r\n }\r\n \r\n @font-face {\r\n    font-family: logoFont;\r\n    src: url('/limbo/assets/fonts/awesomebirds/Awesome\\ Birds.ttf');\r\n }\r\n \r\n .auth-mess-background {\r\n    border-radius: 5px;\r\n    background: rgba(240, 240, 240, 0.938);\r\n    text-align: center;\r\n }\r\n \r\n .format-auth-land {\r\n    font-family: Fontin-Sans-Bold;\r\n    font-size: 20px;\r\n }"
 
 /***/ }),
 
 /***/ "./src/app/authentication-lander/authentication-lander.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  Don't wait. Authenticate.\r\n</p>\r\n"
+module.exports = "<div class=\"background\">\r\n  <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-6 offset-lg-3\">\r\n              <span class=\"logo\">Limbo</span>\r\n          </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 offset-lg-3\">\r\n          <div class=\"auth-mess-background\">\r\n             <div class=\"format-auth-land\">\r\n              Don't wait! Authenticate!\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n </div>"
 
 /***/ }),
 
