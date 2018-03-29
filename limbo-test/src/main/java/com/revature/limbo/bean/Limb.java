@@ -30,9 +30,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Limb implements Comparable<Limb> {
 	@Id
-	@SequenceGenerator(name="limb_id_seq", sequenceName="limb_id_seq")
-	@GeneratedValue(generator="limb_id_seq", strategy=GenerationType.SEQUENCE)
-	@Column(name="id")
+	@SequenceGenerator(name="limb_id_seq", sequenceName="limb_id_seq",allocationSize=1)
+	@GeneratedValue(generator="limb_id_seq",strategy=GenerationType.SEQUENCE)
+	@Column(name="id", updatable=false)
 	private Integer id;
 	
 	@Column(name="content")
